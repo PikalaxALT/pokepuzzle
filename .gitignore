@@ -1,0 +1,8 @@
+*.o
+*.1bpp
+*.2bpp
+*.gbc
+*.sym
+*.sav
+*.map
+baserom.*
