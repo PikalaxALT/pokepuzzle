@@ -384,3 +384,157 @@ Func_1366::
 	bankswitch
 	ret
 
+
+
+Func_137a::
+	homecall Func_81383
+	homecall Func_84000
+	ret
+
+Func_13a1::
+	push af
+	push hl
+	ld l, a
+	ld a, [wc601]
+	and a
+	jr nz, .asm_13bd
+	ld a, [hROMBank]
+	push af
+	ld a, MUSIC_ENGINE
+	bankswitch
+	call Func_813ba
+	pop af
+	bankswitch
+.asm_13bd
+	pop hl
+	pop af
+	ret
+
+Func_13c0::
+	ld de, MBC5RomBank
+	ld a, [hROMBank]
+	push af
+	ld a, MUSIC_ENGINE
+	ld [hROMBank], a
+	ld [de], a
+	ld a, [hld]
+	ld [wc5fc], a
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	pop af
+	ld [hROMBank], a
+	ld [de], a
+	ret
+
+Func_13d7::
+	ld a, [hROMBank]
+	push af
+	ld a, [wc5fc]
+	bankswitch
+	ld a, [hli]
+	ld e, a
+	pop af
+	bankswitch
+	ret
+
+Func_13eb:: ; 13eb (0:13eb)
+	homecall Func_84012
+	homecall Func_814c5
+	ret
+
+Func_1412::
+	ld hl, MBC5RomBank
+	ld a, [hROMBank]
+	push af
+	ld a, [wc5fc]
+	ld [hROMBank], a
+	ld [hl], a
+	ld a, [bc]
+	inc bc
+	ld e, a
+	pop af
+	ld [hROMBank], a
+	ld [hl], a
+	ret
+
+Func_1426::
+	homecall Func_840c0
+	homecall Func_8143e
+	ret
+
+Func_144d::
+	ld e, a
+	ld a, [hROMBank]
+	push af
+	ld a, MUSIC_ENGINE
+	bankswitch
+	call Func_816fd
+	pop af
+	bankswitch
+	ret
+
+Func_1462::
+	homecall Func_81817
+	ret
+
+Func_1476::
+	ld a, [hROMBank]
+	push af
+	ld a, MUSIC_ENGINE
+	bankswitch
+.asm_1480
+	ld a, [hli]
+	ld [$ff00+c], a
+	inc c
+	dec b
+	jr nz, .asm_1480
+	pop af
+	bankswitch
+	ret
+
+Func_148d::
+	homecall Func_81468
+	ret
+
+Func_14a1::
+	homecall Func_81482
+	ret
+
+Func_14b5::
+	homecall Func_81490
+	ret
+
+Func_14c9::
+	homecall Func_814a9
+	ret
+
+Func_14dd::
+	ld a, [wc601]
+	and a
+	jr z, .asm_14e5
+	scf
+	ret
+
+.asm_14e5
+	ld a, [wc5fd]
+	and a
+	ret nz
+	ld a, [wc60a]
+	and a
+	ret nz
+	ld a, [wc63a]
+	and a
+	ret nz
+	ld a, [wc66a]
+	and a
+	ret nz
+	ld a, [wc69a]
+	and a
+	ret nz
+	scf
+	ret
+
+Func_1500::
+	homecall Func_81857
+	ret

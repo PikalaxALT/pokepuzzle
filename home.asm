@@ -97,7 +97,7 @@ Func_0186:: ; 186 (0:0186)
 	ld [hJoyHoldTimerResetSubsequent], a
 	ld a, $d9 ; reti
 	ld [wLCDInterrupt], a
-	; wVBlank:: jp DefaultVBlank
+	; wVBlank: jp DefaultVBlank
 	ld hl, wVBlank
 	ld [hl], $c3 ; jp
 	inc hl
@@ -639,6 +639,7 @@ Func_0545::
 	jr nz, .asm_055d
 	ret
 
+Func_0563::
 	dec bc
 	inc b
 	inc c
@@ -1864,14 +1865,10 @@ Func_0d3a:: ; d3a (0:0d3a)
 	push hl
 	push de
 	call Func_05f2
-	ld b, d
-	jp Func_1c00
-
-Func_0d43::
-	ld b, c
-	inc b
-	ld a, l
-	nop
+	dw $c342
+	dw $1c00
+	dw $0441
+	dw $007d
 	pop de
 	pop hl
 	ld a, $2a
@@ -2216,7 +2213,7 @@ Func_0f24::
 	ld [hli], a
 	ret
 
-Func_0f49:: ; f49 (0::0f49)
+Func_0f49:: ; f49 (0:0f49)
 	ld hl, wc323
 	ld a, [hld]
 	ld b, a
@@ -2327,7 +2324,7 @@ Func_0fc1::
 	ld [hl], a
 	ret
 
-Func_0fca:: ; fca (0::0fca)
+Func_0fca:: ; fca (0:0fca)
 	ld a, [wc5a1]
 	and a
 	jr nz, .asm_0fec
@@ -2500,14 +2497,291 @@ Func_1095::
 
 INCLUDE "home/music.asm"
 
-Func_137a::
-	dr $137a, $13eb
+Data_1514::
+	dr $1514, $185c
 
-Func_13eb::
-	dr $13eb, $1c00
+Func_185c: ; 185c (0:185c)
+	ld a, [hROMBank]
+	push af
+	ld a, e
+	ld [MBC5RomBank], a
+	ld [hROMBank], a
+	push hl
+	push bc
+	ld hl, rWave_0
+	ld b, $10
+	ld a, $ff
+.asm_186e
+	ld [hli], a
+	dec b
+	jr nz, .asm_186e
+	ld a, $80
+	ld [rNR30], a
+	ld a, $20
+	ld [rNR32], a
+	ld a, $ff
+	ld [rNR33], a
+	ld a, $80
+	ld [rNR34], a
+	pop bc
+	pop hl
+	ld a, [hFFA8]
+	ld e, a
+	ld a, $11
+	sub e
+	ld e, a
+.asm_188b
+	inc e
+	dec e
+	call z, Func_18dd
+	ld a, [hl]
+	and $30
+	sla a
+	ld [rNR32], a
+	ld a, [hl]
+	and $c0
+	swap a
+	srl a
+	srl a
+	inc a
+	dec a
+	jr z, .asm_18af
+.asm_18a4
+	inc e
+	dec e
+	call z, Func_18dd
+	call Func_18dd
+	dec a
+	jr nz, .asm_18a4
+.asm_18af
+	inc e
+	dec e
+	call z, Func_18dd
+	ld a, [hl]
+	and $3
+	sla a
+	swap a
+	ld [rNR32], a
+	ld a, [hli]
+	srl a
+	srl a
+	and $3
+	jr z, .asm_18d1
+.asm_18c6
+	inc e
+	dec e
+	call z, Func_18dd
+	call Func_18dd
+	dec a
+	jr nz, .asm_18c6
+.asm_18d1
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_188b
+	pop af
+	ld [MBC5RomBank], a
+	ld [hROMBank], a
+	ret
 
-Func_1c00::
-	dr $1c00, $2a99
+Func_18dd: ; 18dd (0:18dd)
+	inc e
+	dec e
+	jr nz, .asm_18e9
+	inc d
+	dec d
+	jr nz, .asm_18eb
+	nop
+	nop
+	nop
+	nop
+.asm_18e9
+	nop
+	nop
+.asm_18eb
+	nop
+	nop
+	nop
+	nop
+	nop
+	ret
+
+Func_18f1::
+	ld e, a
+	add a
+	add a
+	add e
+	ld e, a
+	push de
+	ld d, $0
+	ld hl, Data_1911 + 4
+	add hl, de
+	pop de
+	ld a, [hld]
+	ld b, a
+	ld a, [hld]
+	ld c, a
+	ld a, [hld]
+	ld e, a
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_1910
+	call Func_185c
+.asm_1910
+	ret
+
+Data_1911::
+	dab Data_180d40
+	dw $0c3b
+
+	dab Data_99880
+	dw $0c49
+
+	dab Data_90000
+	dw $076c
+
+	dab Data_9a4d0
+	dw $065f
+
+Func_1925::
+	homecall Func_198c03
+	ret
+
+Func_1939::
+	homecall Func_198c5c
+	ret
+
+Data_194d::
+	dr $194d, $1968
+
+Func_1968: ; 1968 (0:1968)
+	bankswitch
+	ret
+
+FarCall::
+	ld b, a
+	ld a, [hROMBank]
+	push af
+	ld a, b
+	bankswitch
+	call ._hl_
+	pop af
+	bankswitch
+	ret
+
+._hl_
+	jp [hl]
+
+Func_1983::
+	bankswitch
+	call ._hl_
+	ld a, $1
+	bankswitch
+	ret
+
+._hl_:
+	jp [hl]
+
+Func_1994::
+	push bc
+	ld b, a
+	ld a, [hROMBank]
+	ld c, a
+	ld a, b
+	call Func_1968
+	ld a, c
+	pop bc
+	push af
+	call Func_0563
+	pop af
+	call Func_1968
+	ret
+
+Func_19a8::
+	push bc
+	ld b, a
+	ld a, [hROMBank]
+	ld c, a
+	ld a, b
+	call Func_1968
+	ld a, c
+	pop bc
+	push af
+	call Func_09a0
+	pop af
+	call Func_1968
+	ret
+
+Func_19bc::
+	jp Func_025e
+
+Func_19bf::
+	xor a
+	vrambankswitch
+last_src = $00
+last_dest = $00
+cur_src = $dd80
+cur_dest = $9800
+cur_vbank = 0
+REPT 40
+IF cur_dest >= $9a80
+cur_dest = $9800
+cur_vbank = 1
+	inc a
+	vrambankswitch
+ENDC
+IF (last_src != (cur_src >> 8)) & (cur_vbank == 0)
+	ld hl, rHDMA1
+	ld a, cur_src / $100
+	ld [hli], a
+	ld a, cur_src % $100
+	ld [hli], a
+	ld a, cur_dest / $100
+	ld [hli], a
+	ld a, cur_dest % $100
+	ld [hli], a
+	xor a
+	ld [hl], a
+ELSE
+IF last_src != (cur_src >> 8)
+	ld a, cur_src / $100
+	ld [rHDMA1], a
+ENDC
+	ld a, cur_src % $100
+	ld [rHDMA2], a
+IF last_dest != (cur_dest >> 8)
+	ld a, cur_dest / $100
+	ld [rHDMA3], a
+ENDC
+	ld a, cur_dest % $100
+	ld [rHDMA4], a
+	xor a
+	ld [rHDMA5], a
+ENDC
+last_src = cur_src >> 8
+last_dest = cur_dest >> 8
+cur_src = cur_src + $10
+cur_dest = cur_dest + $20
+ENDR
+	ret
+
+Func_1ba2::
+	ld hl, wc51a
+	ld de, wc9be
+REPT $3F
+	ld a, [hli]
+	ld [de], a
+	inc de
+ENDR
+	ld a, [hli]
+	ld [de], a
+	ret
+
+Func_1c68::
+	dr $1c68, $2a99
 
 Func_2a99::
 	dr $2a99, $2b03
