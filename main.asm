@@ -1,15 +1,42 @@
 INCLUDE "includes.asm"
 SECTION "Bank 01", ROMX, BANK [$01]
-	dr $4000, $8000
+Softlock_4000::
+	jp Softlock_4000
+
+Func_4003::
+	dr $4003, $8000
 
 SECTION "Bank 02", ROMX, BANK [$02]
 	dr $8000, $c000
 
 SECTION "Bank 03", ROMX, BANK [$03]
-	dr $c000, $10000
+Func_c000::
+	dr $c000, $c04e
+
+Func_c04e::
+	dr $c04e, $d08b
+
+Func_d08b::
+	dr $d08b, $10000
 
 SECTION "Bank 04", ROMX, BANK [$04]
-	dr $10000, $14000
+Func_10000::
+	dr $10000, $10018
+
+Func_10018::
+	dr $10018, $1013d
+
+Data_1013d::
+	dr $1013d, $1025e
+
+Func_1025e::
+	dr $1025e, $10996
+
+Func_10996::
+	dr $10996, $109c0
+
+Func_109c0::
+	dr $109c0, $14000
 
 SECTION "Bank 05", ROMX, BANK [$05]
 	dr $14000, $18000
@@ -48,34 +75,90 @@ SECTION "Bank 10", ROMX, BANK [$10]
 	dr $40000, $44000
 
 SECTION "Bank 11", ROMX, BANK [$11]
-	dr $44000, $48000
+	dr $44000, $46b39
+
+Func_46b39::
+	dr $46b39, $46e47
+
+Func_46e47::
+	dr $46e47, $48000
 
 SECTION "Bank 12", ROMX, BANK [$12]
-	dr $48000, $4c000
+	dr $48000, $48825
+
+Func_48825::
+	dr $48825, $4c000
 
 SECTION "Bank 13", ROMX, BANK [$13]
-	dr $4c000, $50000
+	dr $4c000, $4c219
+
+Func_4c219::
+	dr $4c219, $50000
 
 SECTION "Bank 14", ROMX, BANK [$14]
-	dr $50000, $54000
+Func_50000::
+    dr $50000, $5001f
+
+Func_5001f::
+	dr $5001f, $5170a
+
+Func_5170a::
+	dr $5170a, $528f3
+
+Func_528f3::
+	dr $528f3, $5343d
+
+Func_5343d::
+	dr $5343d, $54000
 
 SECTION "Bank 15", ROMX, BANK [$15]
-	dr $54000, $58000
+	dr $54000, $5485a
+
+Func_5485a::
+	dr $5485a, $55282
+
+Func_55282::
+	dr $55282, $55ded
+
+Func_55ded::
+	dr $55ded, $56aa2
+
+Func_56aa2::
+	dr $56aa2, $58000
 
 SECTION "Bank 16", ROMX, BANK [$16]
-	dr $58000, $5c000
+	dr $58000, $58d49
+
+Func_58d49::
+	dr $58d49, $58d64
+
+Func_58d64::
+	dr $58d64, $5c000
 
 SECTION "Bank 17", ROMX, BANK [$17]
-	dr $5c000, $60000
+	dr $5c000, $5d40c
+
+Func_5d40c::
+	dr $5d40c, $60000
 
 SECTION "Bank 18", ROMX, BANK [$18]
-	dr $60000, $64000
+Func_60000::
+	dr $60000, $608c0
+
+Func_608c0::
+	dr $608c0, $617fb
+
+Func_617fb::
+	dr $617fb, $64000
 
 SECTION "Bank 19", ROMX, BANK [$19]
 	dr $64000, $68000
 
 SECTION "Bank 1a", ROMX, BANK [$1a]
-	dr $68000, $6c000
+	dr $68000, $6a7b4
+
+Func_6a7b4::
+	dr $6a7b4, $6c000
 
 SECTION "Bank 1b", ROMX, BANK [$1b]
 	dr $6c000, $70000
@@ -84,7 +167,11 @@ SECTION "Bank 1c", ROMX, BANK [$1c]
 	dr $70000, $74000
 
 SECTION "Bank 1d", ROMX, BANK [$1d]
-	dr $74000, $78000
+Func_74000::
+	dr $74000, $74140
+
+Func_74140::
+	dr $74140, $78000
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
 	dr $78000, $7c000
@@ -141,10 +228,31 @@ SECTION "Bank 2f", ROMX, BANK [$2f]
 	dr $bc000, $c0000
 
 SECTION "Bank 30", ROMX, BANK [$30]
-	dr $c0000, $c4000
+	dr $c0000, $c02c0
+
+Func_c02c0::
+	dr $c02c0, $c0367
+
+Func_c0367::
+	dr $c0367, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
-	dr $c4000, $c8000
+	dr $c4000, $c727a
+
+Func_c727a::
+	dr $c727a, $c738a
+
+Func_c738a::
+	dr $c738a, $c7391
+
+Func_c7391::
+	dr $c7391, $c73d6
+
+Func_c73d6::
+	dr $c73d6, $c7a99
+
+Func_c7a99::
+	dr $c7a99, $c8000
 
 SECTION "Bank 32", ROMX, BANK [$32]
 	dr $c8000, $cc000
@@ -195,9 +303,16 @@ SECTION "Bank 41", ROMX, BANK [$41]
 	dr $104000, $108000
 
 SECTION "Bank 42", ROMX, BANK [$42]
-	dr $108000, $10c000
+	dr $108000, $108018
+
+Func_108018::
+	dr $108018, $108040
+
+Func_108040::
+	dr $108040, $10c000
 
 SECTION "Bank 43", ROMX, BANK [$43]
+Func_10c000::
 	dr $10c000, $110000
 
 SECTION "Bank 44", ROMX, BANK [$44]

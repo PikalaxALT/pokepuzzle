@@ -16,7 +16,7 @@ $(foreach obj, $(objs:.o=), \
 	$(eval $(obj)_dep := $(shell $(includes) $(obj).asm)) \
 )
 
-opts = -Cjv -k 01 -l 0x33 -m 0x1b -p 0xFF -r 03 -t "POKEMONPC" -i "BPNE"
+opts = -Cjv -k 01 -l 0x33 -m 0x1b -n 0x00 -p 0xFF -r 03 -t "POKEMONPC" -i "BPNE"
 
 .SUFFIXES:
 .SUFFIXES: .asm .o .gbc .png .2bpp .1bpp
@@ -42,7 +42,7 @@ $(objs): %.o: %.asm $$(%_dep)
 	rgbasm -o $@ $*.asm
 
 $(rom): $(objs)
-	rgblink -n $*.sym -m $*.map -o $@ $^
+	rgblink -n $*.sym -m $*.map -p 0xFF -o $@ $^
 	rgbfix $(opts) $@
 
 %.png:  ;
