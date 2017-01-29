@@ -2041,10 +2041,464 @@ Func_0e3f:: ; e3f (0:0e3f)
 	ret
 
 Serial::
-	dr $e54, $ef8
+	ei
+	push af
+	push hl
+	push bc
+	push de
+	ld a, [hFFEE]
+	and a
+	jr z, .asm_0e63
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
+.asm_0e63
+	ld a, $1
+	ld [hFFEE], a
+	xor a
+	ld [hFFF0], a
+	ld a, [hFFEB]
+	and a
+	jr nz, .asm_0eae
+	ld a, [hFFEC]
+	and a
+	jr z, .asm_0ea5
+	ld a, [rSB]
+	cp $dd
+	jr z, .asm_0e8d
+	cp $fe
+	jr z, .asm_0e97
+.asm_0e7e
+	xor a
+	ld [hFFE7], a
+	ld [hFFED], a
+	ld a, $dd
+	ld [rSB], a
+	ld a, $80
+	ld [rSC], a
+	jr .asm_0ef0
+
+.asm_0e8d
+	ld a, $1
+	ld [hFFEB], a
+	ld [hFFE8], a
+	ld [hFFE7], a
+	jr .asm_0ea5
+
+.asm_0e97
+	ld a, [hFFED]
+	and a
+	jr nz, .asm_0e7e
+	ld a, $1
+	ld [hFFEB], a
+	xor a
+	ld [hFFE8], a
+	ld [hFFE7], a
+.asm_0ea5
+	xor a
+	ld [rSB], a
+	ld a, $80
+	ld [rSC], a
+	jr .asm_0ef0
+
+.asm_0eae
+	ld a, $1
+	ld [hFFEA], a
+	ld a, [hFFE7]
+	xor $1
+	ld [hFFE7], a
+	ld h, wc300 / $100
+	ld a, [hFFE9]
+	ld l, a
+	ld a, [rSB]
+	ld [hl], a
+	ld a, l
+	ld b, a
+	add $7
+	ld l, a
+	ld a, [hl]
+	ld [rSB], a
+	ld a, $80
+	ld [rSC], a
+	inc b
+	ld a, b
+	ld [hFFE9], a
+	cp $24
+	jr nz, .asm_0ee3
+	ld a, $20
+	ld [hFFE9], a
+	xor a
+	ld [hFFEA], a
+	call Func_0f49
+	call Func_0f24
+	jr .asm_0ef0
+
+.asm_0ee3
+	ld a, [hFFE7]
+	and a
+	jr z, .asm_0ef0
+	ld a, [hFFEF]
+	ld [rTIMA], a
+	ld a, $7
+	ld [rTAC], a
+.asm_0ef0
+	xor a
+	ld [hFFEE], a
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
 
 Timer::
-	dr $ef8, $137a
+	push af
+	ld a, $3
+	ld [rTAC], a
+	ld a, $81
+	ld [rSC], a
+	pop af
+	reti
+	ld hl, wc336
+	ld a, [hld]
+	ld b, a
+	ld a, [hld]
+	or [hl]
+	or b
+	ret z
+	ld a, [wc33a]
+	ld e, a
+	ld d, wc100 / $100
+	ld a, [hli]
+	ld [de], a
+	inc e
+	ld a, [hli]
+	ld [de], a
+	inc e
+	ld a, [hl]
+	ld [de], a
+	inc e
+	xor a
+	ld [hld], a
+	ld [hld], a
+	ld [hl], a
+	ld a, e
+	ld [wc33a], a
+	ret
+
+Func_0f24::
+	ld a, [wc33b]
+	ld e, a
+	ld a, [wc33a]
+	cp e
+	jr z, .asm_0f41
+	ld d, $c1
+	ld hl, wc327
+	ld a, [de]
+	inc e
+	ld [hli], a
+	ld a, [de]
+	inc e
+	ld [hli], a
+	ld a, [de]
+	inc e
+	ld [hli], a
+	ld a, e
+	ld [wc33b], a
+	ret
+
+.asm_0f41
+	ld hl, wc327
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ret
+
+Func_0f49:: ; f49 (0::0f49)
+	ld hl, wc323
+	ld a, [hld]
+	ld b, a
+	ld a, [hld]
+	or [hl]
+	or b
+	ret z
+	ld a, [wc33c]
+	ld e, a
+	ld d, wc200 / $100
+	ld a, [hli]
+	ld [de], a
+	inc e
+	ld a, [hli]
+	ld [de], a
+	inc e
+	ld a, [hl]
+	ld [de], a
+	inc e
+	xor a
+	ld [hld], a
+	ld [hld], a
+	ld [hl], a
+	ld a, e
+	ld [wc33c], a
+	ret
+
+Func_0f6a::
+	ld a, [wc33d]
+	ld e, a
+	ld a, [wc33c]
+	cp e
+	jr z, .asm_0f87
+	ld d, wc200 / $100
+	ld hl, wc32e
+	ld a, [de]
+	inc e
+	ld [hli], a
+	ld a, [de]
+	inc e
+	ld [hli], a
+	ld a, [de]
+	inc e
+	ld [hli], a
+	ld a, e
+	ld [wc33d], a
+	ret
+
+.asm_0f87
+	ld hl, wc32e
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ret
+
+Func_0f8f::
+	push hl
+	push bc
+	push de
+	ld de, wc5a7
+	ld bc, $38
+	call Func_0570
+	pop de
+	pop bc
+	pop hl
+	ret
+
+Func_0f9f::
+	add a
+	add a
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, wc5a7
+	add hl, bc
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_0fad::
+	push hl
+	ld hl, wc5a7
+	add hl, de
+	pop de
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	xor a
+	ld [hli], a
+	inc hl
+	inc hl
+	inc hl
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hl], a
+	ret
+
+Func_0fc1::
+	ld hl, wc5ad
+	add hl, de
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hl], a
+	ret
+
+Func_0fca:: ; fca (0::0fca)
+	ld a, [wc5a1]
+	and a
+	jr nz, .asm_0fec
+.asm_0fd0
+	ld a, [hli]
+	bit 7, a
+	jr nz, .asm_1014
+	ld [wc5a1], a
+	ld a, [hli]
+	ld [wc5a2], a
+	ld a, [hli]
+	ld [wc5a3], a
+	ld a, [hli]
+	ld [wc5a4], a
+	ld a, l
+	ld [wc59f], a
+	ld a, h
+	ld [wc5a0], a
+.asm_0fec
+	ld a, [wc5a5]
+	ld b, a
+	ld a, [wc5a6]
+	ld c, a
+	ld a, [wc5a2]
+	ld l, a
+	ld a, [wc5a3]
+	ld h, a
+	or l
+	jr z, .asm_100c
+	push hl
+	push bc
+	push de
+	ld a, [wc5a4]
+	ld e, a
+	call Func_032c
+	pop de
+	pop bc
+	pop hl
+.asm_100c
+	ld a, [wc5a1]
+	dec a
+	ld [wc5a1], a
+	ret
+
+.asm_1014
+	cp $80
+	jr nz, .asm_1027
+	ld a, [hli]
+	ld [wc59f], a
+	ld a, [hl]
+	ld [wc5a0], a
+	ld h, a
+	ld a, [wc59f]
+	ld l, a
+	jr .asm_0fd0
+
+.asm_1027
+	cp $81
+	jr nz, .asm_1035
+	ld a, [hli]
+	ld [wc5a6], a
+	ld a, [hli]
+	ld [wc5a5], a
+	jr .asm_0fd0
+
+.asm_1035
+	cp $82
+	jr nz, .asm_104c
+	ld a, [wc5a6]
+	add [hl]
+	ld [wc5a6], a
+	inc hl
+	ld a, [wc5a5]
+	add [hl]
+	ld [wc5a5], a
+	inc hl
+	jp .asm_0fd0
+
+.asm_104c
+	cp $83
+	jr nz, .asm_105f
+	ld a, $df
+	add [hl]
+	ld e, a
+	ld a, $c5
+	adc $0
+	ld d, a
+	inc hl
+	ld a, [hli]
+	ld [de], a
+	jp .asm_0fd0
+
+.asm_105f
+	cp $84
+	jr nz, .asm_1075
+	ld a, wc5df % $100
+	add [hl]
+	ld e, a
+	ld a, wc5df / $100
+	adc $0
+	ld d, a
+	inc hl
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	jp .asm_0fd0
+
+.asm_1075
+	cp $85
+	jr nz, .asm_1086
+	push hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call ._hl_
+	pop hl
+	inc hl
+	inc hl
+	jp .asm_0fd0
+
+.asm_1086
+	cp $86
+	jr nz, .soft_lock
+	xor a
+	ld [wc59f], a
+	ld [wc5a0], a
+	ret
+
+._hl_
+	jp [hl]
+
+.soft_lock
+	jr .soft_lock
+
+Func_1095::
+	ld e, $7
+	ld hl, wc5a7
+.asm_109a
+	push de
+	push hl
+	ld bc, wc59f
+	ld d, $8
+.asm_10a1
+	ld a, [hli]
+	ld [bc], a
+	inc bc
+	dec d
+	jr nz, .asm_10a1
+	ld a, [wc59f]
+	ld l, a
+	ld a, [wc5a0]
+	ld h, a
+	or l
+	call nz, Func_0fca
+	pop hl
+	ld bc, wc59f
+	ld d, $8
+.asm_10b9
+	ld a, [bc]
+	ld [hli], a
+	inc bc
+	dec d
+	jr nz, .asm_10b9
+	pop de
+	dec e
+	jr nz, .asm_109a
+	ret
+
+INCLUDE "home/music.asm"
 
 Func_137a::
 	dr $137a, $13eb

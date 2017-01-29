@@ -179,8 +179,38 @@ SECTION "Bank 1e", ROMX, BANK [$1e]
 SECTION "Bank 1f", ROMX, BANK [$1f]
 	dr $7c000, $80000
 
-SECTION "Bank 20", ROMX, BANK [$20]
-	dr $80000, $84000
+SECTION "Bank 20", ROMX, BANK [MUSIC_ENGINE]
+	dr $80000, $80023
+
+Func_80023::
+	dr $80023, $803e3
+
+Func_803e3::
+	dr $803e3, $803e6
+
+Func_803e6::
+	dr $803e6, $80548
+
+Func_80548::
+	dr $80548, $80908
+
+Func_80908::
+	dr $80908, $8090b
+
+Func_8090b::
+	dr $8090b, $80a6d
+
+Func_80a6d::
+	dr $80a6d, $80e31
+
+Func_80e31::
+	dr $80e31, $80e34
+
+Func_80e34::
+	dr $80e34, $80fa3
+
+Func_80fa3::
+	dr $80fa3, $84000
 
 SECTION "Bank 21", ROMX, BANK [$21]
 	dr $84000, $88000

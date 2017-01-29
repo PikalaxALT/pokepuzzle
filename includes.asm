@@ -1,4 +1,5 @@
 INCLUDE "macros.asm"
 INCLUDE "constants.asm"
+INCLUDE "contents.asm"
 INCLUDE "gbhw.asm"
 INCLUDE "hram.asm"
