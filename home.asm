@@ -759,7 +759,7 @@ Func_058d::
 	vrambankswitch
 	ret
 
-Func_05f2:: ; 5f2 (0:05f2)
+StackFarCopyMemory:: ; 5f2 (0:05f2)
 	pop de
 	ld hl, $8
 	add hl, de
@@ -1864,7 +1864,7 @@ Func_0d26::
 Func_0d3a:: ; d3a (0:0d3a)
 	push hl
 	push de
-	call Func_05f2
+	call StackFarCopyMemory
 	dwb wLCDInterrupt, $0
 	dab Func_1011c
 	dw $007d
@@ -3571,11 +3571,11 @@ Func_208e::
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-	call Func_05f2
+	call StackFarCopyMemory
 	dab w7_d000
 	dab s1_a000
 	dw $0684
-	call Func_05f2
+	call StackFarCopyMemory
 	dab s2_a000
 	dab w7_d000
 	dw $0684
@@ -4214,7 +4214,7 @@ Func_26d4:: ; 26d4 (0:26d4)
 
 Func_26ea:: ; 26ea (0:26ea)
 	pushsramstateandenable_nobankswitch
-	call Func_05f2
+	call StackFarCopyMemory
 	dab s1_a42a
 	dab wcdc3
 	dw $0016
@@ -4223,7 +4223,7 @@ Func_26ea:: ; 26ea (0:26ea)
 
 Func_2706::
 	pushsramstateandenable_nobankswitch
-	call Func_05f2
+	call StackFarCopyMemory
 	dab wcdc3
 	dab s1_a42a
 	dw $0016
@@ -4621,8 +4621,376 @@ Func_2af5: ; 2af5 (0:2af5)
 	and a
 	ret
 
-Func_2b03::
-	dr $2b03, $2de3
+Func_2b03: ; 2b03 (0:2b03)
+	pushsramstateandenable 0
+.asm_2b17
+	call Func_2b30
+	call Func_2cd9
+	ld a, [hFFB6]
+	cp $1a
+	jr z, .asm_2b17
+	popsramstate
+	ret
+
+Func_2b30: ; 2b30 (0:2b30)
+	ld a, [wce34]
+	ld e, a
+	ld d, $0
+	ld hl, Pointers_2b46 + 2
+	add hl, de
+	add hl, de
+	add hl, de
+	ld a, [hld]
+	bankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	jp [hl]
+
+Pointers_2b46::
+	dab Func_7c000
+	dab Func_7c0a7
+	dab Func_14000
+	dab Func_14257
+	dab Func_2015a
+	dab Func_2027f
+	dab Func_2435b
+	dab Func_244c1
+	dab Func_1442e
+	dab Func_7c33a
+	dab Func_1813f
+	dab Func_1821d
+	dab Func_182b0
+	dab Func_30255
+	dab Func_3067d
+	dab Func_b8156
+	dab Func_b8175
+	dab Func_b878c
+	dab Func_b8b16
+	dab Func_b6aa8
+	dab Func_b6bdf
+	dab Func_1c000
+	dab Func_1c2f4
+	dab Func_3d5ab
+	dab Func_3d6f4
+	dab Func_3d706
+	dab Func_1c524
+	dab Func_1c747
+	dab Func_1cc63
+	dab Func_1cc76
+	dab Func_64000
+	dab Func_649c1
+	dab Func_649ce
+	dab Func_64c67
+	dab Func_64db5
+	dab Func_65fc4
+	dab Func_661c3
+	dab Func_661d0
+	dab Func_662c3
+	dab Func_662dd
+	dab Func_a4f4e
+	dab Func_a507a
+	dab Func_a509b
+	dab Func_a50c5
+	dab Func_7dbff
+	dab Func_7defa
+	dab Func_7df32
+	dab Func_7e055
+	dab Func_7e182
+	dab Func_7e19a
+	dab Func_2402f
+	dab Func_241b4
+	dab Func_104000
+	dab Func_104222
+	dab Func_10424f
+	dab Func_1042b3
+	dab Func_1042c6
+	dab Func_106719
+	dab Func_106865
+	dab Func_106992
+	dab Func_188cf
+	dab Func_18a9d
+	dab Func_9cf0f
+	dab Func_9d0ff
+	dab Func_9d106
+	dab Func_9d130
+	dab Func_1887e
+	dab Func_188a3
+	dab Func_d56c9
+	dab Func_d5828
+	dab Func_d584f
+	dab Func_d5879
+
+Func_2c1e::
+	push af
+	push bc
+	push de
+	push hl
+	ld a, [hVBlankHasOccurred]
+	and a
+	jr z, .asm_2c97
+	ld a, [hFFBB]
+	and a
+	jr z, .asm_2c43
+	ld h, a
+	ld a, [hFFBA]
+	ld l, a
+	ld a, [hROMBank]
+	push af
+	ld a, [hFFBC]
+	ld [hROMBank], a
+	ld [MBC5RomBank], a
+	call Func_2cd8
+	pop af
+	ld [hROMBank], a
+	ld [MBC5RomBank], a
+.asm_2c43
+	call hPushOAM
+	ld a, [wcf0c]
+	and a
+	call nz, Func_347d
+	call wce4b
+	call wce48
+	call wce51
+	ei
+	xor a
+	ld [hVBlankHasOccurred], a
+	ld a, [hLCDC]
+.asm_2c5c
+	ld [rLCDC], a
+	ld a, [wce3b]
+	and a
+	jr nz, .asm_2c80
+	ld a, [hFFAC]
+	ld [rSCX], a
+	ld [wce3d], a
+	ld a, [hFFAD]
+	ld [rSCY], a
+.asm_2c6f
+	ld [wce3e], a
+	ld a, [hFFAE]
+	ld [rWX], a
+	ld [wce3f], a
+	ld a, [hFFAF]
+	ld [rWY], a
+	ld [wce40], a
+.asm_2c80
+	call Func_2d7c
+	ld a, [hFFEB]
+	and a
+	call z, Func_13eb
+	ld hl, hFFB7
+	inc [hl]
+	ld hl, hFFB8
+	ld [hl], $0
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+.asm_2c97
+	ld b, $1
+.asm_2c99
+	dec b
+	jr nz, .asm_2c99
+	ei
+	ld a, [hLCDC]
+	ld [rLCDC], a
+	ld a, [wce3b]
+	and a
+	jr nz, .asm_2cc6
+	ld a, [hFFAC]
+	ld [rSCX], a
+	ld [wce3d], a
+	ld a, [hFFAD]
+	ld [rSCY], a
+	ld [wce3e], a
+	ld a, [hFFAE]
+	ld [rWX], a
+	ld [wce3f], a
+	ld a, [hFFAF]
+	ld [rWY], a
+	ld [wce40], a
+	call Func_0504
+.asm_2cc6
+	call Func_2d7c
+	ld a, [hFFEB]
+	and a
+	call z, Func_13eb
+	ld hl, hFFB8
+	inc [hl]
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+Func_2cd8: ; 2cd8 (0:2cd8)
+	jp [hl]
+
+Func_2cd9: ; 2cd9 (0:2cd9)
+	push bc
+	push de
+	push hl
+	ld a, [hFFB8]
+	push af
+	call Func_0532
+	call ReadJoypad
+	call Func_038c
+	call Func_0e31
+	ld hl, wce35
+	inc [hl]
+	pop af
+	inc a
+.asm_2cf1
+	push af
+	ld a, [hFFEB]
+	and a
+	call nz, Func_13eb
+	pop af
+	dec a
+	jr nz, .asm_2cf1
+	pop hl
+	pop de
+	pop bc
+	ret
+
+Func_2d00::
+	farcall Func_1036d
+	ret
+
+Func_2d07::
+	ld a, [hVRAMBank]
+	push af
+	xor a
+	vrambankswitch
+	ld a, [wce54]
+	and a
+	jr z, .asm_2d2e
+	dec a
+	jr nz, .asm_2d44
+	ld a, $a300 / $100
+	ld [rHDMA1], a
+	ld a, $a300 % $100
+	ld [rHDMA2], a
+	ld a, $9500 / $100
+	ld [rHDMA3], a
+	ld a, $9500 % $100
+	ld [rHDMA4], a
+	ld a, $8
+	ld [rHDMA5], a
+	jr .asm_2d58
+
+.asm_2d2e
+	ld a, $a300 / $100
+	ld [rHDMA1], a
+	ld a, $a300 % $100
+	ld [rHDMA2], a
+	ld a, $9100 / $100
+	ld [rHDMA3], a
+	ld a, $9100 % $100
+	ld [rHDMA4], a
+	ld a, $8
+	ld [rHDMA5], a
+	jr .asm_2d58
+
+.asm_2d44
+	ld a, $a300 / $100
+	ld [rHDMA1], a
+	ld a, $a300 % $100
+	ld [rHDMA2], a
+	ld a, $9160 / $100
+	ld [rHDMA3], a
+	ld a, $9160 % $100
+	ld [rHDMA4], a
+	ld a, $8
+	ld [rHDMA5], a
+.asm_2d58
+	ld a, $c9
+	ld [wce48], a
+	pop af
+	vrambankswitch
+	ret
+
+Func_2d63::
+	ld a, [hVRAMBank]
+	push af
+	xor a
+	vrambankswitch
+	farcall Func_a5383
+	ld a, $c9
+	ld [wce51], a
+	pop af
+	vrambankswitch
+	ret
+
+Func_2d7c:: ; 2d7c (0:2d7c)
+	ld a, [wce3a]
+	and a
+	jr nz, .asm_2d85
+	call Func_0545
+.asm_2d85
+	ret
+
+Func_2d86::
+	ld hl, wc495
+	ld a, $80
+	ld [rBGPI], a
+	ld b, $10
+	ld c, $69
+.asm_2d91
+	ld a, [hli]
+	ld [$ff00+c], a
+	dec b
+	jr nz, .asm_2d91
+	ret
+
+Func_2d97::
+	ld a, $b4
+	ld [rBGPI], a
+	ld a, [wc5df]
+	ld [rBGPD], a
+	ld a, [wc5e0]
+	ld [rBGPD], a
+	ld a, $bc
+	ld [rBGPI], a
+	ld a, [wc5e1]
+	ld [rBGPD], a
+	ld a, [wc5e2]
+	ld [rBGPD], a
+	ret
+
+Func_2db4:: ; 2db4 (0:2db4)
+	ld a, $c9
+	ld [wce48], a
+	ld [wce4e], a
+	ld [wce4b], a
+	ld [wce51], a
+	ret
+
+Func_2dc3::
+	call Func_2db4
+	xor a
+	ld [hFFBA], a
+	ld [hFFBB], a
+	ld hl, wVBlank
+	ld [hl], $c3 ; jp
+	inc hl
+	ld [hl], Func_2c1e % $100
+	inc hl
+	ld [hl], Func_2c1e / $100
+	ret
+
+Func_2dd7::
+	ld hl, wVBlank
+	ld [hl], $c3 ; jp
+	inc hl
+	ld [hl], DefaultVBlank % $100
+	inc hl
+	ld [hl], DefaultVBlank / $100
+	ret
 
 Func_2de3::
-	dr $2de3, $35b6
+	dr $2de3, $347d
+
+Func_347d::
+	dr $347d, $35b6
