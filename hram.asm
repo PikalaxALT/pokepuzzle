@@ -66,18 +66,15 @@ hJoyLast EQU $ffc0
 hJoyHoldTimer EQU $ffc1
 hJoyHoldTimerResetFirst EQU $ffc2
 hJoyHoldTimerResetSubsequent EQU $ffc3
-hFFC4 EQU $ffc4
-hFFC5 EQU $ffc5
-hFFC6 EQU $ffc6
-hFFC7 EQU $ffc7
-hFFC8 EQU $ffc8
-hFFC9 EQU $ffc9
-hFFCA EQU $ffca
-hFFCB EQU $ffcb
-hFFCC EQU $ffcc
-hFFCD EQU $ffcd
-hFFCE EQU $ffce
-hFFCF EQU $ffcf
+
+hGFXSourceAddr EQU $ffc4
+hGFXSourceBank EQU $ffc6
+hGFXDestAddr EQU $ffc7
+hGFXDestBank EQU $ffc9
+hGFXSubBlockSize EQU $ffca
+hGFXBlockSize EQU $ffcc
+hGFXNumBlocks EQU $ffce
+
 hFFD0 EQU $ffd0
 hFFD1 EQU $ffd1
 hFFD2 EQU $ffd2

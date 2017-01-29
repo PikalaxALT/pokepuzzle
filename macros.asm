@@ -1,5 +1,7 @@
 INCLUDE "macros/enum.asm"
 
+percent EQUS "* 256 / 100"
+
 dr: MACRO
 INCBIN "baserom.gbc", \1, \2 - \1
 ENDM
@@ -26,6 +28,31 @@ RGB: MACRO
 	dw (\3 << 10) | (\2 << 5) | (\1)
 	ENDM
 
+pushsramstateandenable_nobankswitch: MACRO
+	ld a, [hSRamEnable]
+	push af
+	enablesram
+	ENDM
+
+pushsramstateandenable: MACRO
+	pushsramstateandenable_nobankswitch
+	ld a, [hSRAMBank]
+	push af
+	ld a, \1
+	srambankswitch
+	ENDM
+
+popsramstate_nobankswitch: MACRO
+	pop af
+	sramstate
+	ENDM
+
+popsramstate: MACRO
+	pop af
+	srambankswitch
+	popsramstate_nobankswitch
+	ENDM
+
 bankswitch: MACRO
 	ld [hROMBank], a
 	ld [MBC5RomBank], a
@@ -36,10 +63,19 @@ bankswitchhi: MACRO
 	ld [MBC5RomBankHi], a
 	ENDM
 
-disablesram: MACRO
-	ld a, SRAM_DISABLE
+sramstate: MACRO
 	ld [hSRamEnable], a
 	ld [MBC5SRamEnable], a
+	ENDM
+
+enablesram: MACRO
+	ld a, SRAM_ENABLE
+	sramstate
+	ENDM
+
+disablesram: MACRO
+	ld a, SRAM_DISABLE
+	sramstate
 	ENDM
 
 wrambankswitch: MACRO

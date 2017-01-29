@@ -1,5 +1,5 @@
 INCLUDE "includes.asm"
-SECTION "SRAM Bank 0", SRAMX, BANK [0]
+SECTION "SRAM Bank 0", SRAM, BANK [0]
 s0_a000:: ds 1
 s0_a001:: ds 1
 s0_a002:: ds 1
@@ -8192,7 +8192,7 @@ s0_bffc:: ds 1
 s0_bffd:: ds 1
 s0_bffe:: ds 1
 s0_bfff:: ds 1
-SECTION "SRAM Bank 1", SRAMX, BANK [1]
+SECTION "SRAM Bank 1", SRAM, BANK [1]
 s1_a000:: ds 1
 s1_a001:: ds 1
 s1_a002:: ds 1
@@ -16385,7 +16385,7 @@ s1_bffc:: ds 1
 s1_bffd:: ds 1
 s1_bffe:: ds 1
 s1_bfff:: ds 1
-SECTION "SRAM Bank 2", SRAMX, BANK [2]
+SECTION "SRAM Bank 2", SRAM, BANK [2]
 s2_a000:: ds 1
 s2_a001:: ds 1
 s2_a002:: ds 1
@@ -24578,7 +24578,7 @@ s2_bffc:: ds 1
 s2_bffd:: ds 1
 s2_bffe:: ds 1
 s2_bfff:: ds 1
-SECTION "SRAM Bank 3", SRAMX, BANK [3]
+SECTION "SRAM Bank 3", SRAM, BANK [3]
 s3_a000:: ds 1
 s3_a001:: ds 1
 s3_a002:: ds 1

@@ -10,6 +10,7 @@ includes := $(PYTHON) extras/pokemontools/scan_includes.py
 objs := \
 	main.o \
 	wram.o \
+	sram.o \
 	home.o
 
 $(foreach obj, $(objs:.o=), \
