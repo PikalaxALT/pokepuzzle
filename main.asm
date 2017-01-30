@@ -42,7 +42,10 @@ Func_10996::
 	dr $10996, $109c0
 
 Func_109c0::
-	dr $109c0, $13cf1
+	dr $109c0, $10e63
+
+Func_10e63::
+	dr $10e63, $13cf1
 
 SECTION "Bank 05", ROMX, BANK [$05]
 Func_14000::
@@ -624,7 +627,10 @@ Func_108040::
 
 SECTION "Bank 43", ROMX, BANK [$43]
 Func_10c000::
-	dr $10c000, $10eb1e
+	dr $10c000, $10c011
+
+Func_10c011::
+	dr $10c011, $10eb1e
 
 SECTION "Bank 44", ROMX, BANK [$44]
 	dr $110000, $112079
@@ -687,7 +693,19 @@ SECTION "Bank 57", ROMX, BANK [$57]
 	dr $15c000, $15ea77
 
 SECTION "Bank 58", ROMX, BANK [$58]
-	dr $160000, $1604ed
+	dr $160000, $160445
+
+Data_160445::
+	dr $160445, $16044d
+
+Data_16044d::
+	dr $16044d, $1604c5
+
+Data_1604c5::
+	dr $1604c5, $1604ce
+
+Data_1604ce::
+	dr $1604ce, $1604ed
 
 SECTION "Bank 59", ROMX, BANK [$59]
 	dr $164000, $167ea3

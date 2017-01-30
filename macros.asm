@@ -107,3 +107,15 @@ farcall: MACRO
 	call StackFarCall
 	dab \1
 	ENDM
+
+bgcoord: MACRO
+IF _NARG < 4
+	ld \1, $9800 + \3 * $20 + \2
+ELSE
+	ld \1, \4 + \3 * $20 + \2
+ENDC
+ENDM
+
+bcbgcoord EQUS "bgcoord bc,"
+debgcoord EQUS "bgcoord de,"
+hlbgcoord EQUS "bgcoord hl,"

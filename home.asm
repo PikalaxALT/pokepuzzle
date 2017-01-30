@@ -3389,6 +3389,7 @@ Random_1in4::
 
 Random_1in5::
 	call Random
+RoughlyDivideBy5::
 	cp $33
 	jr c, .asm_1fc6
 	cp $66
@@ -3418,6 +3419,7 @@ Random_1in5::
 
 Random_1in6:: ; 1fc8 (0:1fc8)
 	call Random
+RoughlyDivideBy6::
 	cp $2b
 	jr c, .asm_1fee
 	cp $56
@@ -4989,8 +4991,1345 @@ Func_2dd7::
 	ld [hl], DefaultVBlank / $100
 	ret
 
-Func_2de3::
-	dr $2de3, $347d
+Func_2de3:: ; 2de3 (0::2de3)
+	call Func_2dea
+	call Func_2e04
+	ret
 
-Func_347d::
-	dr $347d, $35b6
+Func_2dea:: ; 2dea (0::2dea)
+	ld de, wce34
+	ld bc, $68
+	call Func_0570
+	call Func_2db4
+	ret
+
+Func_2df7::
+	ld de, wce3a
+	ld bc, $62
+	call Func_0570
+	call Func_2db4
+	ret
+
+Func_2e04:: ; 2e04 (0::2e04)
+	ld a, [hWRAMBank]
+	push af
+	ld a, $1
+	wrambankswitch
+	ld de, wdaa1
+	ld bc, $50f
+	call Func_0570
+	pop af
+	wrambankswitch
+	ret
+
+Func_2e1c::
+	ld a, $1
+	wrambankswitch
+	ld a, [wcea1]
+	ld c, a
+	ld b, $0
+	ld hl, Data_2e3d
+	add hl, bc
+	ld a, [hl]
+	ld [wce36], a
+	ld a, $e
+	ld [wce34], a
+	ld a, $1a
+	ld [hFFB6], a
+	xor a
+	ld [hFFBB], a
+	ret
+
+Data_2e3d::
+	db $4f
+	db $60
+	db $7e
+	db $91
+	db $a2
+	db $71
+	db $b3
+	db $bc
+	db $c5
+
+Func_2e46::
+	ld a, [hWRAMBank]
+	push af
+	ld a, $1
+	wrambankswitch
+	ld a, [wddb6]
+	cp $4
+	jr z, .asm_2e6b
+	call Func_0180
+	cpl
+	ld d, c
+	ld b, b
+	and a
+	jr z, .asm_2e6b
+	ld a, $1
+	ld [wdefb], a
+	ld a, $10
+	ld [wce34], a
+	jr .asm_2e72
+
+.asm_2e6b
+	ld a, $a
+	ld [wce34], a
+	jr .asm_2e72
+
+.asm_2e72
+	ld a, $1a
+	ld [hFFB6], a
+	xor a
+	ld [hFFBB], a
+	pop af
+	wrambankswitch
+	ret
+
+Func_2e7f::
+	dec bc
+	inc b
+	inc c
+.asm_2e82
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_2e82
+.asm_2e88
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_2e88
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .asm_2e82
+	dec b
+	jr nz, .asm_2e82
+	ret
+
+Func_2e98::
+.asm_2e98
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_2e98
+.asm_2e9e
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_2e9e
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .asm_2e98
+	ret
+
+Func_2eab::
+	pop bc
+	ld hl, $9
+	add hl, bc
+	push hl
+	ld l, c
+	ld h, b
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld [hFF8C], a
+	ld a, [hli]
+	ld [hFF8D], a
+	ld a, [hli]
+	ld [hFF8E], a
+	ld a, [hli]
+	ld [hFF8F], a
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	ld [hFF90], a
+	ld a, [hROMBank]
+	push af
+	ld a, [hSRAMBank]
+	push af
+	ld a, [hVRAMBank]
+	push af
+	ld a, [hWRAMBank]
+	push af
+	ld a, d
+	cp $80
+	jr c, .asm_2efc
+	cp $a0
+	jr c, .asm_2ef4
+	cp $c0
+	jr c, .asm_2eeb
+	ld a, [hFF8C]
+	wrambankswitch
+	jr .asm_2efe
+
+.asm_2eeb
+	ld a, [hFF8C]
+	srambankswitch
+	jr .asm_2efe
+
+.asm_2ef4
+	ld a, [hFF8C]
+	vrambankswitch
+	jr .asm_2efe
+
+.asm_2efc
+	jr .asm_2efc
+
+.asm_2efe
+	ld a, [hFF8D]
+	ld l, a
+	ld a, [hFF8E]
+	ld h, a
+	cp $80
+	jr c, .asm_2f29
+	cp $a0
+	jr c, .asm_2f21
+	cp $c0
+	jr c, .asm_2f18
+	ld a, [hFF8F]
+	wrambankswitch
+	jr .asm_2f30
+
+.asm_2f18
+	ld a, [hFF8F]
+	srambankswitch
+	jr .asm_2f30
+
+.asm_2f21
+	ld a, [hFF8F]
+	vrambankswitch
+	jr .asm_2f30
+
+.asm_2f29
+	ld a, [hFF8F]
+	bankswitch
+.asm_2f30
+	ld a, c
+	and a
+	jr nz, .asm_2f38
+	ld a, b
+	and a
+	jr z, .asm_2f5f
+.asm_2f38
+	dec bc
+	inc b
+	inc c
+.asm_2f3b
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_2f3b
+.asm_2f41
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_2f41
+	ld a, [rLY]
+	cp $98
+	jr nc, .asm_2f3b
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .asm_2f3b
+	dec b
+	jr nz, .asm_2f3b
+.asm_2f5f
+	ld a, [hFF90]
+	and a
+	jr z, .asm_2f7d
+	ld b, a
+.asm_2f65
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_2f65
+.asm_2f6b
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_2f6b
+	ld a, [rLY]
+	cp $98
+	jr nc, .asm_2f65
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_2f65
+.asm_2f7d
+	pop af
+	wrambankswitch
+	pop af
+	vrambankswitch
+	pop af
+	srambankswitch
+	pop af
+	bankswitch
+	ret
+
+Func_2f94::
+	pop bc
+	ld hl, $8
+	add hl, bc
+	push hl
+	ld l, c
+	ld h, b
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld [hFF8C], a
+	ld a, [hli]
+	ld [hFF8D], a
+	ld a, [hli]
+	ld [hFF8E], a
+	ld a, [hli]
+	ld [hFF8F], a
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hROMBank]
+	push af
+	ld a, [hSRAMBank]
+	push af
+	ld a, [hVRAMBank]
+	push af
+	ld a, [hWRAMBank]
+	push af
+	ld a, d
+	cp $80
+	jr c, .asm_2fe2
+	cp $a0
+	jr c, .asm_2fda
+	cp $c0
+	jr c, .asm_2fd1
+	ld a, [hFF8C]
+	wrambankswitch
+	jr .asm_2fe4
+
+.asm_2fd1
+	ld a, [hFF8C]
+	srambankswitch
+	jr .asm_2fe4
+
+.asm_2fda
+	ld a, [hFF8C]
+	vrambankswitch
+	jr .asm_2fe4
+
+.asm_2fe2
+	jr .asm_2fe2
+
+.asm_2fe4
+	ld a, [hFF8D]
+	ld l, a
+	ld a, [hFF8E]
+	ld h, a
+	cp $80
+	jr c, .asm_300f
+	cp $a0
+	jr c, .asm_3007
+	cp $c0
+	jr c, .asm_2ffe
+	ld a, [hFF8F]
+	wrambankswitch
+	jr .asm_3016
+
+.asm_2ffe
+	ld a, [hFF8F]
+	srambankswitch
+	jr .asm_3016
+
+.asm_3007
+	ld a, [hFF8F]
+	vrambankswitch
+	jr .asm_3016
+
+.asm_300f
+	ld a, [hFF8F]
+	bankswitch
+.asm_3016
+	dec bc
+	inc b
+	inc c
+.asm_3019
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3019
+.asm_301f
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_301f
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .asm_3019
+	dec b
+	jr nz, .asm_3019
+	pop af
+	wrambankswitch
+	pop af
+	vrambankswitch
+	pop af
+	srambankswitch
+	pop af
+	bankswitch
+	ret
+
+.asm_3045
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_3045
+	ld a, [hFF8A]
+	ld b, a
+	ld a, [hFF8B]
+.asm_3050
+	inc de
+	dec a
+	jr nz, .asm_3050
+	dec c
+	jr nz, .asm_3045
+	ret
+
+.asm_3058
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3058
+.asm_305e
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_305e
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_3058
+	ld a, [hFF8A]
+	ld b, a
+	ld a, [hFF8B]
+.asm_306f
+	inc de
+	dec a
+	jr nz, .asm_306f
+	dec c
+	jr nz, .asm_3058
+	ret
+
+.asm_3077
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3077
+.asm_307d
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_307d
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_3077
+	ld a, [hFF8A]
+	ld b, a
+	ld a, [hFF8B]
+.asm_308e
+	inc de
+	inc hl
+	dec a
+	jr nz, .asm_308e
+	dec c
+	jr nz, .asm_3077
+	ret
+
+Func_3097::
+	pop bc
+	ld hl, $9
+	add hl, bc
+	push hl
+	ld l, c
+	ld h, b
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld [hFF8C], a
+	ld a, [hli]
+	ld [hFF8D], a
+	ld a, [hli]
+	ld [hFF8E], a
+	ld a, [hli]
+	ld [hFF8F], a
+	ld a, [hli]
+	ld [hFF90], a
+	ld a, [hli]
+	ld [hFF91], a
+	ld a, [hli]
+	ld [hFF92], a
+	ld a, [hROMBank]
+	push af
+	ld a, [hSRAMBank]
+	push af
+	ld a, [hVRAMBank]
+	push af
+	ld a, [hWRAMBank]
+	push af
+	ld a, d
+	cp $80
+	jr c, .asm_30ea
+	cp $a0
+	jr c, .asm_30e2
+	cp $c0
+	jr c, .asm_30d9
+	ld a, [hFF8C]
+	wrambankswitch
+	jr .asm_30ec
+
+.asm_30d9
+	ld a, [hFF8C]
+	srambankswitch
+	jr .asm_30ec
+
+.asm_30e2
+	ld a, [hFF8C]
+	vrambankswitch
+	jr .asm_30ec
+
+.asm_30ea
+	jr .asm_30ea
+
+.asm_30ec
+	ld a, [hFF8D]
+	ld l, a
+	ld a, [hFF8E]
+	ld h, a
+	cp $80
+	jr c, .asm_3117
+	cp $a0
+	jr c, .asm_310f
+	cp $c0
+	jr c, .asm_3106
+	ld a, [hFF8F]
+	wrambankswitch
+	jr .asm_311e
+
+.asm_3106
+	ld a, [hFF8F]
+	srambankswitch
+	jr .asm_311e
+
+.asm_310f
+	ld a, [hFF8F]
+	vrambankswitch
+	jr .asm_311e
+
+.asm_3117
+	ld a, [hFF8F]
+	bankswitch
+.asm_311e
+	ld a, [hFF90]
+	ld b, a
+	ld a, [hFF92]
+	ld c, a
+.asm_3124
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3124
+.asm_312a
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_312a
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_3124
+	ld a, [hFF90]
+	ld b, a
+	ld a, [hFF91]
+	add e
+	ld e, a
+	jr nc, .asm_3140
+	inc d
+.asm_3140
+	dec c
+	jr nz, .asm_3124
+	pop af
+	wrambankswitch
+	pop af
+	vrambankswitch
+	pop af
+	srambankswitch
+	pop af
+	bankswitch
+	ret
+
+Func_315a::
+	ld l, e
+	ld h, d
+	dec bc
+	inc b
+	inc c
+.asm_315f
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_315f
+.asm_3165
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_3165
+	xor a
+	ld [hli], a
+	dec c
+	jr nz, .asm_315f
+	dec b
+	jr nz, .asm_315f
+	ret
+
+.asm_3174
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3174
+.asm_317a
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_317a
+	xor a
+	ld [hli], a
+	dec c
+	jr nz, .asm_3174
+	ret
+
+.asm_3186
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3186
+.asm_318c
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_318c
+	ret
+
+	push af
+.asm_3194
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3194
+.asm_319a
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_319a
+	pop af
+	ret
+
+Func_31a2::
+	ld hl, Func_31c2
+	ld de, wLCDInterrupt
+	ld bc, $7
+	call CopyBytes
+	ld a, [rSTAT]
+	or $40
+	ld [rSTAT], a
+	ld a, $77
+	ld [rLYC], a
+	xor a
+	ld [rIF], a
+	ld a, $3
+	ld [hFFAA], a
+	ld [rIE], a
+	ret
+
+Func_31c2::
+	push af
+	ld a, $b0
+	ld [rWX], a
+	pop af
+	reti
+
+Func_31c9::
+.asm_31c9
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_31c9
+.asm_31cf
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_31cf
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .asm_31c9
+	ret
+
+.asm_31dc
+	push af
+.asm_31dd
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_31dd
+.asm_31e3
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_31e3
+	ld a, $1
+	vrambankswitch
+	ld a, [de]
+	ld [hl], a
+	ld a, $0
+	vrambankswitch
+	ld a, [bc]
+	ld [hli], a
+	inc de
+	inc bc
+	pop af
+	dec a
+	jr nz, .asm_31dc
+	ret
+
+.asm_3200
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3200
+.asm_3206
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_3206
+	push hl
+	ld l, c
+	ld h, b
+	ld a, $1
+	vrambankswitch
+	ld a, [hli]
+	ld [de], a
+	ld c, l
+	ld b, h
+	pop hl
+	xor a
+	vrambankswitch
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hFF8C]
+	dec a
+	ld [hFF8C], a
+	jr nz, .asm_3200
+	ld a, [hFF8D]
+	ld [hFF8C], a
+	ld a, [hFF8B]
+.asm_322f
+	inc de
+	dec a
+	jr nz, .asm_322f
+	ld a, [hFF8A]
+	dec a
+	ld [hFF8A], a
+	jr nz, .asm_3200
+	ret
+
+.asm_323b
+	ld [hli], a
+	dec b
+	jr nz, .asm_323b
+	ret
+
+Func_3240::
+	ld d, a
+.asm_3241
+	ld a, [rSTAT]
+	and $3
+	jr z, .asm_3241
+.asm_3247
+	ld a, [rSTAT]
+	and $3
+	jr nz, .asm_3247
+	ld a, d
+	ld [hli], a
+	dec b
+	jr nz, .asm_3241
+	ret
+
+Func_3253::
+	dec bc
+	inc b
+	inc c
+.asm_3256
+	ld [hli], a
+	dec c
+	jr nz, .asm_3256
+	dec b
+	jr nz, .asm_3256
+	ret
+
+Func_325e::
+.asm_325e
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	dec b
+	jr nz, .asm_325e
+	ret
+
+Func_3266::
+	call Random
+	jp RoughlyDivideBy5
+
+Func_326c::
+	call Random
+	jp RoughlyDivideBy6
+
+Func_3272::
+	push hl
+	push de
+	push bc
+	ld a, [hFFB8]
+	push af
+	call Func_0532
+	call ReadJoypad
+	call Func_0e31
+	pop af
+	inc a
+.asm_3283
+	push af
+	ld a, [hFFEB]
+	and a
+	call nz, Func_13eb
+	farcall Func_10e63
+	pop af
+	dec a
+	jr nz, .asm_3283
+	pop bc
+	pop de
+	pop hl
+	ret
+
+Func_3298::
+	push af
+	push bc
+	push de
+	push hl
+	ld a, [hVBlankHasOccurred]
+	and a
+	jr z, .asm_32cf
+	call hPushOAM
+	call wd28c
+	ei
+	ld a, [hLCDC]
+	ld [rLCDC], a
+	ld a, [hFFAC]
+	ld [rSCX], a
+	ld a, [hFFAD]
+	ld [rSCY], a
+	ld a, [hFFAE]
+	ld [rWX], a
+	xor a
+	ld [hVBlankHasOccurred], a
+	ld a, [hFFEB]
+	and a
+	call z, Func_13eb
+	ld hl, hFFB7
+	inc [hl]
+	ld hl, hFFB8
+	ld [hl], $0
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+
+.asm_32cf
+	ei
+	ld hl, hFFB8
+	inc [hl]
+	ld a, [hFFEB]
+	and a
+	call z, Func_13eb
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+	push af
+	push bc
+	push de
+	push hl
+	ld a, [hVBlankHasOccurred]
+	and a
+	jr z, .asm_3329
+	ld a, [hFFBB]
+	and a
+	jr z, .asm_3304
+	ld h, a
+	ld a, [hFFBA]
+	ld l, a
+	ld a, [hROMBank]
+	push af
+	ld a, [hFFBC]
+	bankswitch
+	call ._hl_
+	pop af
+	bankswitch
+.asm_3304
+	ei
+	ld a, [hLCDC]
+	ld [rLCDC], a
+	ld a, [hFFAC]
+	ld [rSCX], a
+	ld a, [hFFAD]
+	ld [rSCY], a
+	ld a, [hFFEB]
+	and a
+	call z, Func_13eb
+	ld hl, hFFB7
+	inc [hl]
+	ld hl, hFFB8
+	ld [hl], $0
+	xor a
+	ld [hVBlankHasOccurred], a
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+
+._hl_
+	jp [hl]
+
+.asm_3329
+	ei
+	ld hl, hFFB8
+	inc [hl]
+	ld a, [hFFEB]
+	and a
+	call z, Func_13eb
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+
+Func_3339::
+	ld a, [hVRAMBank]
+	push af
+	ld a, $0
+	vrambankswitch
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(Data_160445)
+	bankswitch
+	debgcoord 12, 2
+	ld hl, Data_160445
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	debgcoord 2, 4
+	ld hl, Data_1604c5
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	pop af
+	bankswitch
+	pop af
+	vrambankswitch
+	ret
+
+Func_3397::
+	ld a, [hVRAMBank]
+	push af
+	ld a, $0
+	vrambankswitch
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(Data_16044d)
+	bankswitch
+	debgcoord 12, 2
+	ld hl, Data_16044d
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	debgcoord 2, 4
+	ld hl, Data_1604ce
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	pop af
+	bankswitch
+	pop af
+	vrambankswitch
+	ret
+
+Func_33f5::
+	ld a, [hROMBank]
+	push af
+	ld hl, wdd21
+	ld a, [hld]
+	bankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld a, [hli]
+	ld e, a
+	ld a, l
+	ld [wdd1f], a
+	ld a, h
+	ld [wdd20], a
+	pop af
+	bankswitch
+	ld a, e
+	ret
+
+Func_3416:: ; 3416 (0::3416)
+	ld c, a
+	inc c
+	ld a, [hROMBank]
+	push af
+.asm_341b
+	ld hl, wdd14
+	ld a, [hld]
+	bankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+.asm_3427
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	and a
+	jr z, .asm_341b
+	dec c
+	jr nz, .asm_3427
+	pop af
+	bankswitch
+	ret
+
+Func_3438::
+	ld a, [hROMBank]
+	push af
+.asm_343b
+	ld hl, wdd1e
+	ld a, [hld]
+	bankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld b, a
+	inc d
+	dec d
+	jr nz, .asm_3465
+	xor a
+	call Func_3416
+	ld a, e
+	ld [wdd1c], a
+	ld a, d
+	ld [wdd1d], a
+	ld a, [wdd14]
+	ld [wdd1e], a
+	jr .asm_343b
+
+.asm_3465
+	ld a, l
+	ld [wdd1c], a
+	ld a, h
+	ld [wdd1d], a
+	ld c, $0
+	inc hl
+	ld a, [hl]
+	and a
+	jr nz, .asm_3476
+	ld c, $1
+.asm_3476
+	pop af
+	bankswitch
+	ret
+
+Func_347d:: ; 347d (0::347d)
+	ld a, [wcf0c]
+	dec a
+	jp z, Func_348f
+	dec a
+	jp z, Func_34b9
+	dec a
+	jp z, Func_3500
+.soft_lock
+	jr .soft_lock
+
+Func_348e::
+	ret
+
+Func_348f:: ; 348f (0::348f)
+	ld a, [hVRAMBank]
+	push af
+	ld hl, wcf0f
+	ld a, [hld]
+	vrambankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld a, $c3
+	ld [rHDMA1], a
+	ld a, $0
+	ld [rHDMA2], a
+	ld a, h
+	ld [rHDMA3], a
+	ld a, l
+	ld [rHDMA4], a
+	ld a, $0
+	ld [rHDMA5], a
+	xor a
+	ld [wcf0c], a
+	pop af
+	vrambankswitch
+	ret
+
+Func_34b9:: ; 34b9 (0::34b9)
+	ld a, [hVRAMBank]
+	push af
+	ld hl, wcf0f
+	ld a, [hld]
+	vrambankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld a, $c3
+	ld [rHDMA1], a
+	ld a, $0
+	ld [rHDMA2], a
+	ld a, h
+	ld [rHDMA3], a
+	ld a, l
+	ld [rHDMA4], a
+	ld a, $0
+	ld [rHDMA5], a
+	ld hl, wcf12
+	ld a, [hld]
+	vrambankswitch
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld a, $c3
+	ld [rHDMA1], a
+	ld a, $10
+	ld [rHDMA2], a
+	ld a, h
+	ld [rHDMA3], a
+	ld a, l
+	ld [rHDMA4], a
+	ld a, $0
+	ld [rHDMA5], a
+	xor a
+	ld [wcf0c], a
+	pop af
+	vrambankswitch
+	ret
+
+Func_3500:: ; 3500 (0::3500)
+	ld a, [hVRAMBank]
+	push af
+	ld hl, wcf13
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, $1
+	vrambankswitch
+	ld a, [wcf16]
+	ld [hl], a
+	xor a
+	vrambankswitch
+	ld a, [wcf15]
+	ld [hl], a
+	xor a
+	ld [wcf0c], a
+	pop af
+	vrambankswitch
+	ret
+
+Func_3526::
+	ld l, a
+	ld h, $0
+	ld a, [hROMBank]
+	push af
+	ld a, b
+	bankswitch
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, bc
+	add hl, de
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld b, [hl]
+	farcall Func_10c011
+	pop af
+	bankswitch
+	ret
+
+Func_3549::
+	ld a, [hROMBank]
+	push af
+	ld a, [hWRAMBank]
+	push af
+	ld hl, wdd26
+	ld a, [hld]
+	bankswitch
+	dec hl
+	call Func_02f4
+	pop af
+	wrambankswitch
+	pop af
+	bankswitch
+	ret
+
+Func_3568::
+	ld a, [hROMBank]
+	push af
+	ld a, [hWRAMBank]
+	push af
+	ld hl, wdd26
+	ld a, [hld]
+	bankswitch
+	dec hl
+	call Func_02f4
+	jr nc, .asm_358a
+	pop af
+	wrambankswitch
+	pop af
+	bankswitch
+	scf
+	ret
+
+.asm_358a
+	pop af
+	wrambankswitch
+	pop af
+	bankswitch
+	and a
+	ret
+
+Func_3597::
+	ld a, [hROMBank]
+	push af
+	ld a, [hWRAMBank]
+	push af
+	ld hl, wdd17
+	ld a, [hld]
+	bankswitch
+	dec hl
+	call Func_02f4
+	pop af
+	wrambankswitch
+	pop af
+	bankswitch
+	ret
