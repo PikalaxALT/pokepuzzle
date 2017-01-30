@@ -108,6 +108,18 @@ farcall: MACRO
 	dab \1
 	ENDM
 
+callba: MACRO
+	ld a, BANK(\1)
+	ld hl, \1
+	call FarCall
+	ENDM
+
+callba_bank1: MACRO
+	ld a, BANK(\1)
+	ld hl, \1
+	call Bank1FarCall
+	ENDM
+
 bgcoord: MACRO
 IF _NARG < 4
 	ld \1, $9800 + \3 * $20 + \2

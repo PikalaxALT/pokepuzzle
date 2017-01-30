@@ -1401,20 +1401,19 @@ Func_0a31::
 	ld l, c
 	ld h, b
 	ld bc, $6
-.asm_0a3e
 	add hl, bc
 	ld c, $7
-.asm_0a42
+.loop
 	ld a, [de]
 	cp [hl]
-	jr nz, .asm_0a4d
+	jr nz, .done
 	dec de
 	dec hl
 	dec c
-	jr nz, .asm_0a42
+	jr nz, .loop
 	xor a
 	and a
-.asm_0a4d
+.done
 	pop bc
 	ret
 
@@ -1424,170 +1423,60 @@ Func_0a4f::
 	push bc
 	ld c, $dc
 	ld b, $a
+haddr = hFFDC
+REPT 7
 	ld a, [de]
+IF haddr == hFFDC
 	add [hl]
+ELSE
+	adc [hl]
+ENDC
 	cp b
-	jr c, .asm_0a5c
+	jr c, .okay_\@
 	sub b
-.asm_0a5c
-	ld [hFFDC], a
+.okay_\@
+	ld [haddr], a
+IF haddr < hFFE2
 	ccf
 	inc hl
 	inc de
-	ld a, [de]
-	adc [hl]
-	cp b
-	jr c, .asm_0a67
-	sub b
-.asm_0a67
-	ld [hFFDD], a
-	ccf
-	inc hl
-	inc de
-	ld a, [de]
-	adc [hl]
-	cp b
-	jr c, .asm_0a72
-	sub b
-.asm_0a72
-	ld [hFFDE], a
-	ccf
-	inc hl
-	inc de
-	ld a, [de]
-	adc [hl]
-	cp b
-	jr c, .asm_0a7d
-	sub b
-.asm_0a7d
-	ld [hFFDF], a
-	ccf
-	inc hl
-	inc de
-	ld a, [de]
-	adc [hl]
-	cp b
-	jr c, .asm_0a88
-	sub b
-.asm_0a88
-	ld [hFFE0], a
-	ccf
-	inc hl
-	inc de
-	ld a, [de]
-	adc [hl]
-	cp b
-	jr c, .asm_0a93
-	sub b
-.asm_0a93
-	ld [hFFE1], a
-	ccf
-	inc hl
-	inc de
-	ld a, [de]
-	adc [hl]
-	cp b
-	jr c, .asm_0a9e
-	sub b
-.asm_0a9e
-	ld [hFFE2], a
+haddr = haddr + 1
+ENDC
+ENDR
 	pop hl
 	ld de, $6
 	add hl, de
-	ld a, [hFFE2]
+REPT 7
+	ld a, [haddr]
 	cp [hl]
-	jr z, .asm_0aae
-	jr nc, .asm_0b02
-	jr .asm_0aea
+	jr z, .next_\@
+	jr nc, .copy_original
+	jr .copy_sum
 
-.asm_0aae
+.next_\@
+IF haddr > hFFDC
 	dec hl
-	ld a, [hFFE1]
-	cp [hl]
-	jr z, .asm_0ab8
-	jr nc, .asm_0b02
-	jr .asm_0aea
-
-.asm_0ab8
-	dec hl
-	ld a, [hFFE0]
-	cp [hl]
-	jr z, .asm_0ac2
-	jr nc, .asm_0b02
-	jr .asm_0aea
-
-.asm_0ac2
-	dec hl
-	ld a, [hFFDF]
-	cp [hl]
-	jr z, .asm_0acc
-	jr nc, .asm_0b02
-	jr .asm_0aea
-
-.asm_0acc
-	dec hl
-	ld a, [hFFDE]
-	cp [hl]
-	jr z, .asm_0ad6
-	jr nc, .asm_0b02
-	jr .asm_0aea
-
-.asm_0ad6
-	dec hl
-	ld a, [hFFDD]
-	cp [hl]
-	jr z, .asm_0ae0
-	jr nc, .asm_0b02
-	jr .asm_0aea
-
-.asm_0ae0
-	dec hl
-	ld a, [hFFDC]
-	cp [hl]
-	jr z, .asm_0aea
-	jr nc, .asm_0b02
-	jr .asm_0aea
-
-.asm_0aea
+haddr = haddr +- 1
+ENDC
+ENDR
+.copy_sum
 	pop hl
 	pop hl
-	ld a, [hFFDC]
+REPT 7
+	ld a, [haddr]
 	ld [hli], a
-	ld a, [hFFDD]
-	ld [hli], a
-	ld a, [hFFDE]
-	ld [hli], a
-	ld a, [hFFDF]
-	ld [hli], a
-	ld a, [hFFE0]
-	ld [hli], a
-	ld a, [hFFE1]
-	ld [hli], a
-	ld a, [hFFE2]
-	ld [hli], a
+haddr = haddr + 1
+ENDR
 	ret
 
-.asm_0b02
+.copy_original
 	pop hl
 	pop de
+REPT 6
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+ENDR
 	ld a, [hli]
 	ld [de], a
 	ret
@@ -1827,7 +1716,7 @@ Func_0c63:: ; c63 (0:0c63)
 
 Func_0cf3:: ; cf3 (0:0cf3)
 	call Func_0d3a
-	ld a, $0
+	ld a, $0 ; nop
 	ld [wc36e], a
 	ld [wc36f], a
 	ld [wc370], a
@@ -1836,7 +1725,7 @@ Func_0cf3:: ; cf3 (0:0cf3)
 
 Func_0d05::
 	call Func_0d3a
-	ld a, $3a
+	ld a, $3a ; ld a, [hld]
 	ld [wc3a0], a
 	ld [wc360], a
 	ld [wc364], a
@@ -1845,7 +1734,7 @@ Func_0d05::
 
 Func_0d17::
 	call Func_0cf3
-	ld a, $3a
+	ld a, $3a ; ld a, [hld]
 	ld [wc3a0], a
 	ld [wc360], a
 	ld [wc364], a
@@ -1853,30 +1742,30 @@ Func_0d17::
 
 Func_0d26::
 	call Func_0d3a
-	ld a, $18
+	ld a, $18 ; jr
 	ld [wc362], a
-	ld hl, Data_1013d
-	ld a, BANK(Data_1013d)
+	ld hl, LCDInterrupt + wc363 - wLCDInterrupt
+	ld a, BANK(LCDInterrupt)
 	call GetFarByteHL
-	ld [wc363], a
+	ld [wc363], a ; asm_1018e - asm_1014c + 2
 	ret
 
 Func_0d3a:: ; d3a (0:0d3a)
 	push hl
 	push de
 	call StackFarCopyMemory
-	dwb wLCDInterrupt, $0
-	dab Func_1011c
+	dab wLCDInterrupt
+	dab LCDInterrupt
 	dw $007d
 	pop de
 	pop hl
-	ld a, $2a
+	ld a, $2a ; ld a, [hli]
 	ld [wc362], a
-	ld a, $e2
+	ld a, $e2 ; ld [$ff00+c], a
 	ld [wc363], a
-	ld a, $2a
+	ld a, $2a ; ld a, [hli]
 	ld [wc372], a
-	ld a, $fe
+	ld a, $fe ; cp $ff
 	ld [wc373], a
 	ld a, $ff
 	ld [wc374], a
@@ -2674,7 +2563,7 @@ FarCall::
 ._hl_
 	jp [hl]
 
-Func_1983::
+Bank1FarCall::
 	bankswitch
 	call ._hl_
 	ld a, $1
@@ -6176,9 +6065,9 @@ Func_348f:: ; 348f (0::348f)
 	ld a, [hld]
 	ld l, [hl]
 	ld h, a
-	ld a, $c3
+	ld a, wc300 / $100
 	ld [rHDMA1], a
-	ld a, $0
+	ld a, wc300 % $100
 	ld [rHDMA2], a
 	ld a, h
 	ld [rHDMA3], a
@@ -6201,9 +6090,9 @@ Func_34b9:: ; 34b9 (0::34b9)
 	ld a, [hld]
 	ld l, [hl]
 	ld h, a
-	ld a, $c3
+	ld a, wc300 / $100
 	ld [rHDMA1], a
-	ld a, $0
+	ld a, wc300 % $100
 	ld [rHDMA2], a
 	ld a, h
 	ld [rHDMA3], a
@@ -6217,9 +6106,9 @@ Func_34b9:: ; 34b9 (0::34b9)
 	ld a, [hld]
 	ld l, [hl]
 	ld h, a
-	ld a, $c3
+	ld a, wc310 / $100
 	ld [rHDMA1], a
-	ld a, $10
+	ld a, wc310 % $100
 	ld [rHDMA2], a
 	ld a, h
 	ld [rHDMA3], a
