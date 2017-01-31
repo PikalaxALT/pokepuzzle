@@ -273,7 +273,7 @@ Func_02f8:: ; 2f8 (0:02f8)
 	ret z
 	ld [hFF8B], a
 .asm_0311
-	ld d, $c0
+	ld d, wOAMBuffer / $100
 .asm_0313
 	ld a, [hli]
 	add c

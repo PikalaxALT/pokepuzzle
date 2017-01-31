@@ -1,13 +1,5 @@
 hPushOAM EQU $ff80
-hFF81 EQU $ff81
-hFF82 EQU $ff82
-hFF83 EQU $ff83
-hFF84 EQU $ff84
-hFF85 EQU $ff85
-hFF86 EQU $ff86
-hFF87 EQU $ff87
-hFF88 EQU $ff88
-hFF89 EQU $ff89
+
 hFF8A EQU $ff8a
 hFF8B EQU $ff8b
 hFF8C EQU $ff8c
