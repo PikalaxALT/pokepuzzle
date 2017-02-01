@@ -91,9 +91,9 @@ Func_0186:: ; 186 (0:0186)
 	xor a
 	ld [rSCX], a
 	ld [hFFAC], a
-	ld a, $a
+	ld a, 10
 	ld [hJoyHoldTimerResetFirst], a
-	ld a, $1
+	ld a, 1
 	ld [hJoyHoldTimerResetSubsequent], a
 	ld a, $d9 ; reti
 	ld [wLCDInterrupt], a

@@ -131,3 +131,31 @@ ENDM
 bcbgcoord EQUS "bgcoord bc,"
 debgcoord EQUS "bgcoord de,"
 hlbgcoord EQUS "bgcoord hl,"
+
+boardcoord: MACRO
+IF _NARG < 4
+	ld \1, wBlocksOnScreen + 8 * \3 + \2
+ELSE
+	ld \1, \4 + 8 * \3 + \2
+ENDC
+ENDM
+
+bcboardcoord EQUS "boardcoord bc,"
+deboardcoord EQUS "boardcoord de,"
+hlboardcoord EQUS "boardcoord hl,"
+
+boardcoord_a: MACRO
+IF _NARG < 3
+	ld [wBlocksOnScreen + 8 * \2 + \1], a
+ELSE
+	ld [\3 + 8 * \2 + \1], a
+ENDC
+ENDM
+
+a_boardcoord: MACRO
+IF _NARG < 3
+	ld a, [wBlocksOnScreen + 8 * \2 + \1]
+ELSE
+	ld a, [\3 + 8 * \2 + \1]
+ENDC
+ENDM
