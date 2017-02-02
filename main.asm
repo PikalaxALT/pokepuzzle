@@ -3086,29 +3086,1563 @@ Func_6969: ; 6969 (1:6969)
 	pop hl
 	ret
 
-Func_6995:
-	dr $6995, $69b3
+Func_6995: ; 6995 (1:6995)
+	push hl
+	ld hl, wcacb
+	ld a, [hl]
+	add $1
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+	jr nc, .asm_69b1
+	ld a, $ff
+	ld [hld], a
+	ld [hld], a
+	ld [hld], a
+	ld [hl], a
+.asm_69b1
+	pop hl
+	ret
 
-Func_69b3:
-	dr $69b3, $6c1f
+Func_69b3: ; 69b3 (1:69b3)
+	ld a, [wc8fa]
+	ld c, a
+	ld a, [wc8fb]
+	cp c
+	ret z
+	ld b, $0
+	ld hl, w6_d400
+	add hl, bc
+	ld a, [hl]
+	swap a
+	and $f
+	jr z, .asm_69cc
+	dec a
+	jr nz, .asm_69db
+.asm_69cc
+	call Func_7313
+	and a
+	ret nz
+	ld a, [wc87b]
+	and a
+	ret nz
+	ld a, [wc87e]
+	and a
+	ret nz
+.asm_69db
+	hlboardcoord 0, 0
+	ld a, [hli]
+	and a
+	ret nz
+	ld a, [hli]
+	and a
+	ret nz
+	ld a, [hli]
+	and a
+	ret nz
+	ld a, [hli]
+	and a
+	ret nz
+	ld a, [hli]
+	and a
+	ret nz
+	ld a, [hli]
+	and a
+	ret nz
+	ld hl, wc8fa
+	inc [hl]
+	ld hl, w6_d400
+	add hl, bc
+	ld a, [hl]
+	and $f0
+	jr nz, .asm_6a12
+	ld a, [hl]
+	dec a
+	jp z, Func_6ab6
+	dec a
+	jp z, Func_6b04
+	dec a
+	jp z, Func_6b4a
+	dec a
+	jp z, Func_6b81
+	dec a
+	jp Func_6a7c
 
-Func_6c1f:
-	dr $6c1f, $6df0
+.asm_6a12
+	ld a, [hl]
+	ld hl, w6_d1a0
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, wc8fc
+	ld a, [hl]
+	ld e, a
+	add $6
+	ld [hl], a
+	ld d, $0
+	bcboardcoord 0, 0
+	ld hl, w6_d300
+	add hl, de
+	ld a, [hl]
+	or $c0
+	ld [bc], a
+	inc c
+	inc e
+	ld hl, w6_d300
+	add hl, de
+	ld a, [hl]
+	or $c0
+	ld [bc], a
+	inc c
+	inc e
+	ld hl, w6_d300
+	add hl, de
+	ld a, [hl]
+	or $c0
+	ld [bc], a
+	inc c
+	inc e
+	ld hl, w6_d300
+	add hl, de
+	ld a, [hl]
+	or $c0
+	ld [bc], a
+	inc c
+	inc e
+	ld hl, w6_d300
+	add hl, de
+	ld a, [hl]
+	or $c0
+	ld [bc], a
+	inc c
+	inc e
+	ld hl, w6_d300
+	add hl, de
+	ld a, [hl]
+	or $c0
+	ld [bc], a
+	inc c
+	inc e
+	ld hl, w6_d058
+	ld a, $9
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d0b0
+	ld a, $4
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
 
-Func_6df0:
-	dr $6df0, $6ed3
+Func_6a7c: ; 6a7c (1:6a7c)
+	ld hl, wc901
+	ld a, [hl]
+	inc [hl]
+	and $1
+	jr nz, .asm_6a8a
+	ld de, $0
+	jr .asm_6a8d
 
-Func_6ed3:
-	dr $6ed3, $6ef3
+.asm_6a8a
+	ld de, $3
+.asm_6a8d
+	hlboardcoord 0, 0
+	add hl, de
+	ld a, $e
+	ld [hli], a
+	ld a, $f
+	ld [hli], a
+	ld a, $10
+	ld [hl], a
+	ld hl, w6_d058
+	add hl, de
+	ld a, $9
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d0b0
+	add hl, de
+	ld a, $4
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d1a0
+	add hl, de
+	ld a, $11
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
 
-Func_6ef3:
-	dr $6ef3, $7313
+Func_6ab6: ; 6ab6 (1:6ab6)
+	ld hl, wc902
+	ld a, [hl]
+	dec a
+	jr z, .asm_6ac5
+	dec a
+	jr z, .asm_6aca
+	ld de, $0
+	jr .asm_6acd
 
-Func_7313:
-	dr $7313, $73cc
+.asm_6ac5
+	ld de, $1
+	jr .asm_6acd
 
-Func_73cc:
-	dr $73cc, $7650
+.asm_6aca
+	ld de, $2
+.asm_6acd
+	ld a, [hl]
+	inc a
+	cp $3
+	jr c, .asm_6ad4
+	xor a
+.asm_6ad4
+	ld [hl], a
+	hlboardcoord 0, 0
+	add hl, de
+	ld a, $4e
+	ld [hli], a
+	ld a, $57
+	ld [hli], a
+	ld a, $58
+	ld [hli], a
+	ld a, $50
+	ld [hl], a
+	ld hl, w6_d058
+	add hl, de
+	ld a, $9
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d0b0
+	add hl, de
+	ld a, $4
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d1a0
+	add hl, de
+	ld a, $11
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_6b04: ; 6b04 (1:6b04)
+	ld hl, wc903
+	ld a, [hl]
+	inc [hl]
+	and $1
+	jr nz, .asm_6b12
+	ld de, $0
+	jr .asm_6b15
+
+.asm_6b12
+	ld de, $1
+.asm_6b15
+	hlboardcoord 0, 0
+	add hl, de
+	ld a, $8e
+	ld [hli], a
+	ld a, $9d
+	ld [hli], a
+	ld a, $8f
+	ld [hli], a
+	ld a, $9d
+	ld [hli], a
+	ld a, $90
+	ld [hl], a
+	ld hl, w6_d058
+	add hl, de
+	ld a, $9
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d0b0
+	add hl, de
+	ld a, $4
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d1a0
+	add hl, de
+	ld a, $11
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_6b4a: ; 6b4a (1:6b4a)
+	hlboardcoord 0, 0
+	ld a, $ce
+	ld [hli], a
+	ld a, $dd
+	ld [hli], a
+	ld a, $d7
+	ld [hli], a
+	ld a, $d8
+	ld [hli], a
+	ld a, $dd
+	ld [hli], a
+	ld a, $d0
+	ld [hl], a
+	ld hl, w6_d058
+	ld a, $9
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d0b0
+	ld a, $4
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d1a0
+	ld a, $11
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_6b81: ; 6b81 (1:6b81)
+	hlboardcoord 0, 0
+	ld a, $f8
+	ld [hli], a
+	ld a, $f9
+	ld [hli], a
+	ld a, $f9
+	ld [hli], a
+	ld a, $f9
+	ld [hli], a
+	ld a, $f9
+	ld [hli], a
+	ld a, $fa
+	ld [hl], a
+	ld hl, w6_d058
+	ld a, $a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d0b0
+	ld a, $4
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld hl, w6_d1a0
+	ld a, $11
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_6bb8: ; 6bb8 (1:6bb8)
+	push bc
+	push de
+	ld a, [wc8fa]
+	ld e, a
+	ld d, $0
+	ld a, [wc8fb]
+	ld c, a
+	ld b, $0
+	ld a, c
+	cp e
+	jr c, .asm_6bcc
+	ld d, $1
+.asm_6bcc
+	ld a, [hFF8A]
+	bit 7, a
+	jr z, .asm_6bd6
+	and $7f
+	jr .asm_6bd8
+
+.asm_6bd6
+	ld a, $1
+.asm_6bd8
+	add c
+	ld c, a
+	ld a, b
+	adc $0
+	ld b, $0
+	ld a, e
+	sub c
+	ld a, d
+	sbc b
+	jr nc, .asm_6be8
+	pop de
+	pop bc
+	ret
+
+.asm_6be8
+	ld a, [wc8fc]
+	ld e, a
+	ld d, $0
+	ld a, [wc8fd]
+	ld c, a
+	ld b, $0
+	ld a, c
+	cp e
+	jr c, .asm_6bfa
+	ld d, $1
+.asm_6bfa
+	ld a, [hFF8A]
+	bit 7, a
+	jr z, .asm_6c14
+	and $7f
+	add a
+	ld l, a
+	add a
+	add l
+	ld l, a
+	ld a, c
+	add l
+	ld c, a
+	ld a, b
+	adc $0
+	ld b, a
+	ld a, e
+	sub c
+	ld a, d
+	sbc b
+	jr c, .asm_6c1c
+.asm_6c14
+	callba_bank1 Func_b650
+.asm_6c1c
+	pop de
+	pop bc
+	ret
+
+Func_6c1f: ; 6c1f (1:6c1f)
+	ld a, [wc8fe]
+	ld e, a
+	ld a, [wc8ff]
+	ld d, a
+	cp e
+	ret z
+	ld b, $0
+	ld c, e
+.asm_6c2c
+	ld hl, wc900
+	ld a, c
+	cp [hl]
+	jr z, .asm_6c3d
+	ld hl, w6_d580
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr z, .asm_6c3d
+	dec a
+	ld [hl], a
+.asm_6c3d
+	ld a, c
+	add $1
+	and $7f
+	ld c, a
+	cp d
+	jr nz, .asm_6c2c
+	ld b, $0
+	ld c, e
+.asm_6c49
+	ld hl, w6_d580
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr nz, .asm_6c8b
+	ld hl, wc8fe
+	ld a, [hl]
+	add $1
+	and $7f
+	ld [hl], a
+	ld hl, w6_d500
+	add hl, bc
+	ld a, [hl]
+	and $c0
+	cp $80
+	jr nz, .asm_6c7c
+	ld a, [wceb7]
+	and a
+	jr nz, .asm_6c6f
+	ld e, $9
+	jr .asm_6c71
+
+.asm_6c6f
+	ld e, $f
+.asm_6c71
+	ld a, [hl]
+	and $3f
+	cp e
+	jr c, .asm_6c7c
+	ld a, e
+	or $80
+	jr .asm_6c7d
+
+.asm_6c7c
+	ld a, [hl]
+.asm_6c7d
+	ld [hFF8A], a
+	call Func_6bb8
+	ld a, c
+	add $1
+	and $7f
+	ld c, a
+	cp d
+	jr nz, .asm_6c49
+.asm_6c8b
+	ret
+
+Func_6c8c:
+	ld a, [hFF8A]
+	and $c0
+	sub $40
+	jr z, .asm_6c9a
+	sub $40
+	jr z, .asm_6cac
+	jr .asm_6cb8
+
+.asm_6c9a
+	ld a, [hFF8A]
+	and $3f
+	sub $2
+	ld b, a
+.asm_6ca1
+	ld a, $4
+	ld [hFF8B], a
+	call Func_6db8
+	dec b
+	jr nz, .asm_6ca1
+	ret
+
+.asm_6cac
+	ld a, [hFF8A]
+	and $3f
+	or $80
+	ld [hFF8B], a
+	call Func_6db8
+	ret
+
+.asm_6cb8
+	ld a, [hFF8A]
+	add a
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Data_6cdc
+	add hl, bc
+	ld b, $0
+.asm_6cc5
+	ld c, $0
+.asm_6cc7
+	ld a, c
+	cp [hl]
+	jr nc, .asm_6cd4
+	inc c
+	ld a, b
+	ld [hFF8B], a
+	call Func_6db8
+	jr .asm_6cc7
+
+.asm_6cd4
+	inc hl
+	inc b
+	ld a, b
+	cp $4
+	jr nz, .asm_6cc5
+	ret
+
+Data_6cdc:
+	db 0, 0, 0, 0
+	db 0, 0, 0, 0
+	db 0, 0, 0, 0
+	db 0, 0, 0, 0
+	db 1, 0, 0, 0
+	db 0, 1, 0, 0
+	db 0, 0, 1, 0
+	db 0, 0, 0, 1
+	db 1, 1, 0, 0
+	db 0, 2, 0, 0
+	db 0, 0, 2, 0
+	db 0, 0, 1, 1
+	db 0, 0, 0, 2
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 3
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 4
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 5
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 6
+	db 0, 0, 0, 7
+	db 0, 0, 0, 7
+	db 0, 0, 0, 7
+	db 0, 0, 0, 7
+
+Func_6db8: ; 6db8 (1:6db8)
+	push bc
+	push hl
+	ld a, [hFF8B]
+	bit 7, a
+	jr z, .asm_6dd0
+	ld hl, wc900
+	ld a, [hl]
+	inc a
+	jr z, .asm_6dcc
+	ld c, [hl]
+	ld b, $0
+	jr .asm_6ddf
+
+.asm_6dcc
+	ld a, [wc8ff]
+	ld [hl], a
+.asm_6dd0
+	ld hl, wc8ff
+	ld c, [hl]
+	ld b, $0
+	ld hl, wc8ff
+	ld a, [hl]
+	add $1
+	and $7f
+	ld [hl], a
+.asm_6ddf
+	ld a, [hFF8B]
+	ld hl, w6_d500
+	add hl, bc
+	ld [hl], a
+	ld hl, w6_d580
+	add hl, bc
+	ld a, $3c
+	ld [hl], a
+	pop hl
+	pop bc
+	ret
+
+Func_6df0: ; 6df0 (1:6df0)
+	push bc
+	push de
+	pushsramstateandenable 1
+	call Func_6e88
+	ld e, l
+	ld d, h
+	hlboardcoord 0, 0
+	ld bc, $50
+	call CopyBytes
+	call Func_6ea1
+	ld e, l
+	ld d, h
+	ld hl, w6_d0b0
+	ld bc, $50
+	call CopyBytes
+	call Func_6eba
+	ld e, l
+	ld d, h
+	ld hl, w6_d058
+	ld bc, $50
+	call CopyBytes
+	popsramstate
+	pop de
+	pop bc
+	ret
+
+Func_6e3f:
+	push bc
+	push de
+	pushsramstateandenable 1
+	call Func_6e88
+	deboardcoord 0, 0
+	ld bc, $50
+	call CopyBytes
+	call Func_6ea1
+	ld de, w6_d0b0
+	ld bc, $50
+	call CopyBytes
+	call Func_6eba
+	ld de, w6_d058
+	ld bc, $50
+	call CopyBytes
+	popsramstate
+	pop de
+	pop bc
+	ret
+
+Func_6e88: ; 6e88 (1:6e88)
+	ld a, [wc8da]
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_6e97
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+Pointers_6e97:
+	dw s1_a686
+	dw s1_a6d6
+	dw s1_a726
+	dw s1_a776
+	dw s1_a7c6
+
+Func_6ea1: ; 6ea1 (1:6ea1)
+	ld a, [wc8da]
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_6eb0
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+Pointers_6eb0:
+	dw s1_a816
+	dw s1_a866
+	dw s1_a8b6
+	dw s1_a906
+	dw s1_a956
+
+Func_6eba: ; 6eba (1:6eba)
+	ld a, [wc8da]
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_6ec9
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+Pointers_6ec9:
+	dw s1_a9a6
+	dw s1_a9f6
+	dw s1_aa46
+	dw s1_aa96
+	dw s1_aae6
+
+Func_6ed3: ; 6ed3 (1:6ed3)
+	ld hl, wc8a4
+	ld a, [hl]
+	and a
+	jr z, .asm_6edc
+	dec [hl]
+	ret
+
+.asm_6edc
+	ld hl, wc8a3
+	ld a, [wc8a2]
+	cp [hl]
+	jr z, .asm_6eec
+	ld b, a
+	farcall Func_c0307
+.asm_6eec
+	ld a, [wc8a2]
+	ld [wc8a3], a
+	ret
+
+Func_6ef3: ; 6ef3 (1:6ef3)
+	ld a, [wcea1]
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_6f02
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp [hl]
+
+Pointers_6f02:
+	dw Func_6f22
+	dw Func_6f3a
+	dw Func_6f58
+	dw Func_6f70
+	dw Func_6f77
+	dw Func_6f8f
+	dw Func_6faa
+	dw Func_6fc2
+	dw Func_6fe0
+	dw 0
+	dw 0
+	dw 0
+	dw 0
+	dw Func_6f8f
+	dw Func_6ff8
+	dw Func_6ffc
+
+Func_6f22: ; 6f22 (1:6f22)
+	call Func_7014
+	call Func_7568
+	callba_bank1 Func_741c5
+	call Func_702b
+	call Func_70b9
+	call Func_70f8
+	ret
+
+Func_6f3a: ; 6f3a (1:6f3a)
+	call Func_7014
+	call Func_7568
+	callba_bank1 Func_741c5
+	call Func_763f
+	call nc, Func_702b
+	call Func_70b9
+	call Func_7546
+	call Func_7133
+	ret
+
+Func_6f58: ; 6f58 (1:6f58)
+	call Func_7014
+	call Func_75a3
+	callba_bank1 Func_741c5
+	call Func_702b
+	call Func_70b9
+	call Func_7161
+	ret
+
+Func_6f70: ; 6f70 (1:6f70)
+	call Func_7014
+	call Func_7194
+	ret
+
+Func_6f77: ; 6f77 (1:6f77)
+	call Func_7014
+	call Func_75d6
+	callba_bank1 Func_741c5
+	call Func_702b
+	call Func_70b9
+	call Func_70f8
+	ret
+
+Func_6f8f: ; 6f8f (1:6f8f)
+	call Func_7014
+	call Func_75a3
+	call Func_7623
+	callba_bank1 Func_741c5
+	call Func_702b
+	call Func_70b9
+	call Func_71bc
+	ret
+
+Func_6faa: ; 6faa (1:6faa)
+	call Func_7014
+	call Func_75a3
+	call Func_7623
+	callba_bank1 Func_741c5
+	call Func_702b
+	call Func_70b9
+	ret
+
+Func_6fc2: ; 6fc2 (1:6fc2)
+	call Func_7014
+	call Func_7568
+	callba_bank1 Func_741c5
+	call Func_763f
+	call nc, Func_702b
+	call Func_70b9
+	call Func_7546
+	call Func_71e8
+	ret
+
+Func_6fe0: ; 6fe0 (1:6fe0)
+	call Func_7014
+	call Func_75a3
+	callba_bank1 Func_741c5
+	call Func_702b
+	call Func_70b9
+	call Func_7200
+	ret
+
+Func_6ff8: ; 6ff8 (1:6ff8)
+	call Func_7014
+	ret
+
+Func_6ffc: ; 6ffc (1:6ffc)
+	call Func_7014
+	call Func_75a3
+	callba_bank1 Func_741c5
+	call Func_7085
+	call Func_70b9
+	call Func_721d
+	ret
+
+Func_7014: ; 7014 (1:7014)
+	ld hl, wc88f
+	ld a, [wc889]
+	add [hl]
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+	ret nc
+	ld a, $ff
+	ld [hld], a
+	ld [hld], a
+	ld [hl], a
+	ret
+
+Func_702b: ; 702b (1:702b)
+	ld b, $4
+	ld hl, wd0b0
+	call Func_73cc
+	ret nz
+	call Func_7482
+	ld a, c
+	ld [wc894], a
+	cp $3
+	jr c, .asm_7046
+	ld a, [wc8a0]
+	ld [wc8a2], a
+	ret
+
+.asm_7046
+	ld a, [wc8a1]
+	ld [wc8a2], a
+	ret
+
+Func_704d:
+	ld b, $4
+	ld hl, wd0b0
+	call Func_73cc
+	jr nz, .asm_7070
+	call Func_7482
+	ld a, c
+	ld [wc894], a
+	cp $3
+	jr c, .asm_706a
+	ld a, [wc8a0]
+	ld [wc8a2], a
+	jr .asm_7070
+
+.asm_706a
+	ld a, [wc8a1]
+	ld [wc8a2], a
+.asm_7070
+	ld hl, wcd13
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld hl, wcd0b
+	ld a, [hli]
+	sub e
+	ld a, [hli]
+	sbc d
+	ret nc
+	ld a, [wc8a1]
+	ld [wc8a2], a
+	ret
+
+Func_7085: ; 7085 (1:7085)
+	ld b, $4
+	ld hl, wd0b0
+	call Func_73cc
+	jr nz, .asm_70a8
+	call Func_7482
+	ld a, c
+	ld [wc894], a
+	cp $3
+	jr c, .asm_70a2
+	ld a, [wc8a0]
+	ld [wc8a2], a
+	jr .asm_70a8
+
+.asm_70a2
+	ld a, [wc8a1]
+	ld [wc8a2], a
+.asm_70a8
+	ld hl, wcd38
+	ld a, [hli]
+	sub $7d
+	ld a, [hli]
+	sbc $0
+	ret nc
+	ld a, [wc8a1]
+	ld [wc8a2], a
+	ret
+
+Func_70b9: ; 70b9 (1:70b9)
+	hlboardcoord 0, 0
+	ld a, [hli]
+	or [hl]
+	inc hl
+	or [hl]
+	inc hl
+	or [hl]
+	inc hl
+	or [hl]
+	inc hl
+	or [hl]
+	jr nz, .asm_70cd
+	xor a
+	ld [wc8a6], a
+	ret
+
+.asm_70cd
+	ld hl, wc87c
+	ld a, [hli]
+	or [hl]
+	ret nz
+	ld a, [wcadf]
+	and a
+	ret nz
+	call Func_7313
+	and a
+	ret nz
+	ld a, [hJoyPressed]
+	and $2
+	jr nz, .asm_70f2
+	ld hl, wc8a6
+	ld a, [hl]
+	ld hl, wca24
+	cp [hl]
+	jr z, .asm_70f2
+	ld hl, wc8a6
+	inc [hl]
+	ret
+
+.asm_70f2
+	ld a, $1
+	ld [wcd6e], a
+	ret
+
+Func_70f8: ; 70f8 (1:70f8)
+	ld a, [wc876]
+	and a
+	jr nz, .asm_7123
+	ld hl, wScore
+	ld a, [hli]
+	sub $9f
+	ld a, [hli]
+	sbc $86
+	ld a, [hl]
+	sbc $1
+	jr c, .asm_7123
+	ld hl, wc876
+	inc [hl]
+	ld hl, wc86a
+	ld a, [hli]
+	ld [wc872], a
+	ld a, [hli]
+	ld [wc873], a
+	ld a, [hli]
+	ld [wc874], a
+	ld a, [hl]
+	ld [wc875], a
+.asm_7123
+	ld a, [wcd6e]
+	and a
+	ret z
+	ld a, $2
+	ld [wc887], a
+	ld a, $0
+	ld [wc886], a
+	ret
+
+Func_7133: ; 7133 (1:7133)
+	ld a, [wcd6e]
+	and a
+	jr nz, .asm_7140
+	ld a, [wc879]
+	and a
+	jr nz, .asm_714b
+	ret
+
+.asm_7140
+	ld a, $2
+	ld [wc887], a
+	ld a, $0
+	ld [wc886], a
+	ret
+
+.asm_714b
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_7156
+	ld a, $21
+	ld [wc7cb], a
+.asm_7156
+	ld a, $2
+	ld [wc887], a
+	ld a, $1
+	ld [wc886], a
+	ret
+
+Func_7161: ; 7161 (1:7161)
+	ld a, [wcd6e]
+	and a
+	jr nz, .asm_717e
+	call Func_7313
+	and a
+	ret nz
+	ld a, [wc8e6]
+	and a
+	ret z
+	dec a
+	and $f0
+	swap a
+	ld d, a
+	ld a, [wc894]
+	cp d
+	jr nc, .asm_7189
+	ret
+
+.asm_717e
+	ld a, $2
+	ld [wc887], a
+	ld a, $0
+	ld [wc886], a
+	ret
+
+.asm_7189
+	ld a, $2
+	ld [wc887], a
+	ld a, $2
+	ld [wc886], a
+	ret
+
+Func_7194: ; 7194 (1:7194)
+	call Func_7313
+	and a
+	ret nz
+	xor a
+	call Func_725a
+	jr z, .asm_71b1
+	ld a, [wc8da]
+	and a
+	jr z, .asm_71a6
+	ret
+
+.asm_71a6
+	ld a, $2
+	ld [wc887], a
+	ld a, $0
+	ld [wc886], a
+	ret
+
+.asm_71b1
+	ld a, $2
+	ld [wc887], a
+	ld a, $2
+	ld [wc886], a
+	ret
+
+Func_71bc: ; 71bc (1:71bc)
+	ld a, [wcd6e]
+	and a
+	jr nz, .asm_71d8
+	ld hl, wcd0b
+	ld a, [hli]
+	or [hl]
+	ret nz
+	ld a, $2
+	ld [wc887], a
+	ld a, $3
+	ld [wc886], a
+	ld a, $0
+	ld [wc888], a
+	ret
+
+.asm_71d8
+	ld a, $2
+	ld [wc887], a
+	ld a, $3
+	ld [wc886], a
+	ld a, $1
+	ld [wc888], a
+	ret
+
+Func_71e8: ; 71e8 (1:71e8)
+	ld a, [wc879]
+	and a
+	jr nz, .asm_71ef
+	ret
+
+.asm_71ef
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_71fa
+	ld a, $21
+	ld [wc7cb], a
+.asm_71fa
+	ld a, $3
+	ld [wcd70], a
+	ret
+
+Func_7200: ; 7200 (1:7200)
+	call Func_7313
+	and a
+	ret nz
+	ld a, [wc8e6]
+	and a
+	ret z
+	dec a
+	and $f0
+	swap a
+	ld d, a
+	ld a, [wc894]
+	cp d
+	jr nc, .asm_7217
+	ret
+
+.asm_7217
+	ld a, $1
+	ld [wcdac], a
+	ret
+
+Func_721d: ; 721d (1:721d)
+	ld a, [wcd6e]
+	and a
+	jr nz, .asm_7239
+	ld hl, wcd38
+	ld a, [hli]
+	or [hl]
+	ret nz
+	ld a, $0
+	ld [wc888], a
+	ld a, $2
+	ld [wc887], a
+	ld a, $4
+	ld [wc886], a
+	ret
+
+.asm_7239
+	ld a, [wceac]
+	and a
+	jr z, .asm_724f
+	ld a, $1
+	ld [wc888], a
+	ld a, $2
+	ld [wc887], a
+	ld a, $4
+	ld [wc886], a
+	ret
+
+.asm_724f
+	ld a, $2
+	ld [wc887], a
+	ld a, $0
+	ld [wc886], a
+	ret
+
+Func_725a: ; 725a (1:725a)
+	hlboardcoord 0, 0
+REPT 9
+REPT 6
+	ld a, [hli]
+	and a
+	ret nz
+ENDR
+	inc l
+	inc l
+ENDR
+	and a
+	ret
+
+Func_7313: ; 7313 (1:7313)
+	ld hl, w6_d0b0
+REPT 9
+REPT 6
+	ld a, [hli]
+	and a
+	ret nz
+ENDR
+	inc l
+	inc l
+ENDR
+	and a
+	ret
+
+Func_73cc: ; 73cc (1:73cc)
+REPT 9
+REPT 6
+	ld a, [hli]
+	and b
+	ret nz
+ENDR
+	inc l
+	inc l
+ENDR
+	and a
+	ret
+
+Func_7482: ; 7482 (1:7482)
+	hlboardcoord 0, 0
+	xor a
+	ld b, a
+	ld c, a
+REPT 9
+REPT 6
+	ld a, [hli]
+	and a
+	ret nz
+ENDR
+	inc l
+	inc l
+	inc c
+ENDR
+	ret
+
+Func_7546: ; 7546 (1:7546)
+	ld hl, wc86c
+	ld a, [hld]
+	and a
+	ret nz
+	ld a, [hld]
+	cp $10
+	ret nc
+	and a
+	ret z
+	ld a, [hl]
+	cp $3b
+	ret nz
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_7561
+	ld a, $20
+	ld [wc7cb], a
+.asm_7561
+	ld a, [wc8a1]
+	ld [wc8a2], a
+	ret
+
+Func_7568: ; 7568 (1:7568)
+	ld a, [wc889]
+	and a
+	jr z, .asm_75a2
+	ld c, a
+	ld b, $0
+	ld hl, wc88c
+	ld a, [hl]
+	add c
+	ld [hli], a
+	ld e, a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	ld d, a
+.asm_757c
+	ld hl, wcea6
+	ld a, [hl]
+	cp $63
+	jr nc, .asm_75a2
+	call Func_6796
+	ld a, e
+	sub l
+	ld c, a
+	ld a, d
+	sbc h
+	ld b, a
+	jr c, .asm_75a2
+	ld a, $b4
+	ld [wc9b0], a
+	ld hl, wcea6
+	inc [hl]
+	ld hl, wc88c
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld e, c
+	ld d, b
+	jr .asm_757c
+
+.asm_75a2
+	ret
+
+Func_75a3: ; 75a3 (1:75a3)
+	ld hl, wc877
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld a, [wcea6]
+	cp $63
+	ret nc
+	ld a, [wc87a]
+	cp $63
+	ret nc
+.asm_75b5
+	call Func_67a7
+	ld a, e
+	sub l
+	ld c, a
+	ld a, d
+	sbc h
+	ld b, a
+	ret c
+	ld a, $b4
+	ld [wc9b0], a
+	ld hl, wcea6
+	inc [hl]
+	ld hl, wc87a
+	inc [hl]
+	ld hl, wc877
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld e, c
+	ld d, b
+	jr .asm_75b5
+
+Func_75d6: ; 75d6 (1:75d6)
+	callba_bank1 Func_13671
+	ld a, e
+	and a
+	jr z, .asm_7602
+	ld d, $0
+	ld hl, Data_7612
+	add hl, de
+	ld a, [hl]
+	ld [hFF8A], a
+	ld a, [wceb7]
+	and a
+	jr nz, .asm_75fa
+	ld a, [hl]
+	cp $89
+	jr c, .asm_75fa
+	ld a, $89
+	ld [hFF8A], a
+.asm_75fa
+	callba_bank1 Func_6bb8
+.asm_7602
+	ld hl, wcea9
+	ld c, [hl]
+	ld a, [wcef8]
+	ld [hl], a
+	cp c
+	ret z
+	ld a, $b4
+	ld [wc9b0], a
+	ret
+
+Data_7612:
+	db $00
+	db $81
+	db $82
+	db $83
+	db $84
+	db $85
+	db $86
+	db $87
+	db $88
+	db $89
+	db $8a
+	db $8b
+	db $8c
+	db $00
+	db $01
+	db $02
+	db $04
+
+Func_7623: ; 7623 (1:7623)
+	ld a, [wc889]
+	ld hl, wc88e
+	add [hl]
+	ld [hl], a
+	ld a, [wca21]
+	sub [hl]
+	jr z, .asm_7633
+	jr nc, .asm_763e
+.asm_7633
+	cpl
+	inc a
+	ld [hl], a
+	ld hl, wc8a9
+	ld a, [hl]
+	inc a
+	jr z, .asm_763e
+	ld [hl], a
+.asm_763e
+	ret
+
+Func_763f: ; 763f (1:763f)
+	ld hl, wc86d
+	ld a, [hld]
+	or [hl]
+	jr nz, .asm_764c
+	dec hl
+	ld a, [hl]
+	cp $10
+	jr c, .asm_764e
+.asm_764c
+	and a
+	ret
+
+.asm_764e
+	scf
+	ret
 
 SECTION "Bank 02", ROMX, BANK [$02]
 	dr $8000, $808b
@@ -3126,7 +4660,10 @@ Func_9306::
 	dr $9306, $9c22
 
 Func_9c22::
-	dr $9c22, $b6a7
+	dr $9c22, $b650
+
+Func_b650:
+	dr $b650, $b6a7
 
 Func_b6a7:
 	dr $b6a7, $b6c5
@@ -3254,7 +4791,10 @@ Func_109c0::
 	dr $109c0, $10e63
 
 Func_10e63::
-	dr $10e63, $13cf1
+	dr $10e63, $13671
+
+Func_13671:
+	dr $13671, $13cf1
 
 SECTION "Bank 05", ROMX, BANK [$05]
 Func_14000::
@@ -3547,7 +5087,10 @@ Func_74000::
 	dr $74000, $74140
 
 Func_74140::
-	dr $74140, $74d05
+	dr $74140, $741c5
+
+Func_741c5:
+	dr $741c5, $74d05
 
 Func_74d05:
 	dr $74d05, $75a5d
@@ -3767,7 +5310,10 @@ SECTION "Bank 30", ROMX, BANK [$30]
 	dr $c0000, $c02c0
 
 Func_c02c0::
-	dr $c02c0, $c0367
+	dr $c02c0, $c0307
+
+Func_c0307:
+	dr $c0307, $c0367
 
 Func_c0367::
 	dr $c0367, $c36e6
