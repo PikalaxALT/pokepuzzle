@@ -1871,9 +1871,7 @@ wc83e:: ds 1
 wc83f:: ds 1
 wc840:: ds 1
 wc841:: ds 1
-wc842:: ds 1
-wc843:: ds 1
-wc844:: ds 1
+wScore:: ds 3 ; little-endian
 wc845:: ds 1
 wc846:: ds 1
 wc847:: ds 1

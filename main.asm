@@ -2700,29 +2700,391 @@ Pointers_6396: macro2_567a 3
 Pointers_64e1: macro2_567a 4
 Pointers_662c: macro2_567a 5
 
-Func_6777:
-	dr $6777, $67b8
+Func_6777: ; 6777 (1:6777)
+	ld a, [wcea6]
+	ld l, a
+	cp $32
+	jr c, .asm_6787
+	ld a, [wcebc]
+	and a
+	jr nz, .asm_6787
+	ld l, $32
+.asm_6787
+	ld a, l
+	add a
+	ld hl, w6_d9a0
+	add l
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
 
-Func_67b8:
-	dr $67b8, $683b
+Func_6796:
+	ld a, [wcea6]
+	add a
+	ld hl, w6_da68
+	add l
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
 
-Func_683b:
-	dr $683b, $688c
+Func_67a7:
+	ld a, [wc87a]
+	add a
+	ld hl, w6_da68
+	add l
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
 
-Func_688c:
-	dr $688c, $68c1
+Func_67b8: ; 67b8 (1:67b8)
+	ld a, c
+	cp $36
+	jr c, .asm_67bf
+	ld a, $35
+.asm_67bf
+	add a
+	ld hl, Data_67cd
+	add l
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+.asm_67c9
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ret
 
-Func_68c1:
-	dr $68c1, $68f6
+Data_67cd:
+	dw     0
+	dw     0
+	dw     0
+	dw     0
+	dw    30
+	dw    60
+	dw   150
+	dw   190
+	dw   230
+	dw   270
+	dw   310
+	dw   400
+	dw   450
+	dw   500
+	dw   550
+	dw   700
+	dw   760
+	dw   850
+	dw   970
+	dw  1120
+	dw  1300
+	dw  1510
+	dw  1750
+	dw  2020
+	dw  2320
+	dw  2650
+	dw 15000
+	dw 15570
+	dw 16170
+	dw 16800
+	dw 17460
+	dw 18150
+	dw 18870
+	dw 19620
+	dw 20400
+	dw 21200
+	dw 22000
+	dw 22800
+	dw 23600
+	dw 24400
+	dw 25200
+	dw 26000
+	dw 26800
+	dw 27600
+	dw 28400
+	dw 29200
+	dw 30000
+	dw 30800
+	dw 31600
+	dw 32400
+	dw 33200
+	dw 34000
+	dw 34800
+	dw 35600
+	dw 36400
 
-Func_68f6:
-	dr $68f6, $693c
+Func_683b: ; 683b (1:683b)
+	ld a, c
+	cp $1e
+	jr c, .asm_6842
+	ld a, $1d
+.asm_6842
+	add a
+	ld hl, Data_6850
+	add l
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ret
 
-Func_693c:
-	dr $693c, $6969
+Data_6850:
+	dw     0
+	dw    50
+	dw    80
+	dw   150
+	dw   300
+	dw   400
+	dw   500
+	dw   700
+	dw   900
+	dw  1100
+	dw  1300
+	dw  1500
+	dw  1800
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
+	dw  2100
 
-Func_6969:
-	dr $6969, $6995
+Func_688c: ; 688c (1:688c)
+	push hl
+	push bc
+	ld a, [wc889]
+	cp $36
+	jr c, .asm_6897
+	ld a, $36
+.asm_6897
+	add a
+	ld c, a
+	ld b, $0
+	ld a, [wc883]
+	and a
+	jr nz, .asm_68a6
+	ld hl, w6_db30
+	jr .asm_68a9
+
+.asm_68a6
+	ld hl, w6_db9c
+.asm_68a9
+	add hl, bc
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld hl, wc87c
+	ld a, [hli]
+	sub c
+	ld a, [hld]
+	sbc b
+	jr c, .asm_68ba
+	pop bc
+	pop hl
+	scf
+	ret
+
+.asm_68ba
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	pop bc
+	pop hl
+	and a
+	ret
+
+Func_68c1: ; 68c1 (1:68c1)
+	push hl
+	push bc
+	ld a, [wc88a]
+	cp $14
+	jr c, .asm_68cc
+	ld a, $13
+.asm_68cc
+	add a
+	ld c, a
+	ld b, $0
+	ld a, [wc883]
+	and a
+	jr nz, .asm_68db
+	ld hl, w6_dc08
+	jr .asm_68de
+
+.asm_68db
+	ld hl, w6_dc30
+.asm_68de
+	add hl, bc
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld hl, wc87c
+	ld a, [hli]
+	sub c
+	ld a, [hld]
+	sbc b
+	jr c, .asm_68ef
+	pop bc
+	pop hl
+	scf
+	ret
+
+.asm_68ef
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	pop bc
+	pop hl
+	and a
+	ret
+
+Func_68f6: ; 68f6 (1:68f6)
+	ld a, [wcea5]
+	cp $5
+	jr z, .asm_6917
+	ld a, [wceb9]
+	and a
+	jr z, .asm_690d
+	ld de, 999999 % $10000
+	push de
+	ld de, 999999 / $10000
+	push de
+	jr .asm_691f
+
+.asm_690d
+	ld de, 99999 % $10000
+	push de
+	ld de, 99999 / $10000
+	push de
+	jr .asm_691f
+
+.asm_6917
+	ld de, 9999 % $10000
+	push de
+	ld de, 9999 / $10000
+	push de
+.asm_691f
+	ld hl, wScore
+	ld a, [hl]
+	add c
+	ld [hli], a
+	ld a, [hl]
+	adc b
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hld], a
+	dec hl
+	pop bc
+	pop de
+	ld a, [hli]
+	sub e
+	ld a, [hli]
+	sbc d
+	ld a, [hl]
+	sbc c
+	ret c
+	ld a, c
+	ld [hld], a
+	ld a, d
+	ld [hld], a
+	ld [hl], e
+	ret
+
+Func_693c: ; 693c (1:693c)
+	push hl
+	push bc
+	ld a, [wc889]
+	ld hl, wcac9
+	cp [hl]
+	jr c, .asm_6948
+	ld [hl], a
+.asm_6948
+	cp $36
+	jr c, .asm_694e
+	ld a, $36
+.asm_694e
+	sub $4
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, wca29
+	add hl, bc
+	ld a, [hl]
+	add $1
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+	jr nc, .asm_6966
+	ld a, $ff
+	ld [hld], a
+	ld [hl], a
+.asm_6966
+	pop bc
+	pop hl
+	ret
+
+Func_6969: ; 6969 (1:6969)
+	push hl
+	push bc
+	ld a, [wc88a]
+	ld hl, wcaca
+	cp [hl]
+	jr c, .asm_6975
+	ld [hl], a
+.asm_6975
+	dec a
+	cp $1d
+	jr c, .asm_697c
+	ld a, $1c
+.asm_697c
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, wca8f
+	add hl, bc
+	ld a, [hl]
+	add $1
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hld], a
+	jr nc, .asm_6992
+	ld a, $ff
+	ld [hli], a
+	ld [hld], a
+.asm_6992
+	pop bc
+	pop hl
+	ret
 
 Func_6995:
 	dr $6995, $69b3
