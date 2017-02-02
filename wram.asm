@@ -1865,9 +1865,8 @@ wc838:: ds 1
 wc839:: ds 1
 wc83a:: ds 1
 wc83b:: ds 1
-wc83c:: ds 1
-wc83d:: ds 1
-wc83e:: ds 1
+wRandomStateIdx:: dw
+wRandomAdd:: ds 1
 wc83f:: ds 1
 wc840:: ds 1
 wc841:: ds 1
