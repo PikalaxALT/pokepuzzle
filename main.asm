@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 SECTION "Bank 01", ROMX, BANK [$01]
-Softlock_4000::
+Softlock_4000:: ; 4000
 	jp Softlock_4000
 
 Func_4003:: ; 4003 (1:4003)
@@ -115,7 +115,7 @@ Func_40c2: ; 40c2 (1:40c2)
 	ld [hFFBB], a
 	ret
 
-Func_4105::
+Func_4105:: ; 4105
 	callba_bank1 Func_78000
 	call Func_1ff0
 	call Func_6c1f
@@ -163,7 +163,7 @@ Func_413e: ; 413e (1:413e)
 	pop bc
 	ret
 
-Data_4174:
+Data_4174: ; 4174
 	dr $4174, $427a
 
 Func_427a: ; 427a (1:427a)
@@ -871,7 +871,7 @@ Func_46c6: ; 46c6 (1:46c6)
 	call Func_02f8
 	ret
 
-Func_4712:
+Func_4712: ; 4712
 	ld a, [hFFAD]
 	ld b, a
 	ld a, [wc866]
@@ -891,7 +891,7 @@ Func_4712:
 	call Func_02f8
 	ret
 
-Data_4731:
+Data_4731: ; 4731
 	db  6
 	db -3, -3, $00, $00
 	db  9, -3, $00, $40
@@ -900,7 +900,7 @@ Data_4731:
 	db -3, 11, $01, $00
 	db  9, 11, $01, $40
 
-Data_474a:
+Data_474a: ; 474a
 	db  6
 	db -4, -4, $00, $00
 	db 10, -4, $00, $40
@@ -1064,10 +1064,10 @@ Func_4cf7: ; 4cf7 (1:4cf7)
 	ld l, a
 	jp [hl]
 
-Func_4d06:
+Func_4d06: ; 4d06
 	ret
 
-Pointers_4d07:
+Pointers_4d07: ; 4d07
 	dw Func_4d06
 	dw Func_4d0f
 	dw Func_4dba
@@ -1174,13 +1174,13 @@ Func_4d98: ; 4d98 (1:4d98)
 	ld e, a
 	ret
 
-Data_4db2:
+Data_4db2: ; 4db2
 	dw $0400
 	dw $0156
 	dw $0100
 	dw $0200
 
-Func_4dba:
+Func_4dba: ; 4dba
 	ld a, [wGameCursorPosition]
 	call Func_55fb
 	jr c, asm_4dc9
@@ -1219,7 +1219,7 @@ asm_4dc9
 	ld [wcad2], a
 	ret
 
-Func_4dfe:
+Func_4dfe: ; 4dfe
 	ld a, [hJoyNew]
 	and A_BUTTON
 	jp nz, Func_4e15
@@ -1328,7 +1328,7 @@ Func_4e8b: ; 4e8b (1:4e8b)
 	call Func_02f8
 	ret
 
-Pointers_4ea8:
+Pointers_4ea8: ; 4ea8
 	dw Data_4eba
 	dw Data_4ebb
 	dw Data_4ecc
@@ -1339,7 +1339,7 @@ Pointers_4ea8:
 	dw Data_4f21
 	dw Data_4f32
 
-Data_4eba:
+Data_4eba: ; 4eba
 	db  0
 
 Data_4ebb: ; heart
@@ -2154,7 +2154,7 @@ Func_53da: ; 53da (1:53da)
 	pop de
 	ret
 
-Data_5426:
+Data_5426: ; 5426
 	db $10, $11, $12, $13, $14, $15, $16, $17
 	db $18, $19, $1a, $1b, $1c, $1d, $1f, $1e
 	db $10, $11, $12, $13, $14, $15, $16, $17
@@ -2590,7 +2590,7 @@ Func_5651: ; 5651 (1:5651)
 	ld l, a
 	jp [hl]
 
-Pointers_566e:
+Pointers_566e: ; 566e
 	dw Pointers_56a3
 	dw Pointers_5826
 	dw Pointers_59a9
@@ -2678,7 +2678,7 @@ Func_567a: ; 567a (1:567a)
 	ld l, a
 	jp [hl]
 
-Pointers_5697:
+Pointers_5697: ; 5697
 	dw Pointers_5fb5
 	dw Pointers_6100
 	dw Pointers_624b
@@ -2723,7 +2723,7 @@ Func_6777: ; 6777 (1:6777)
 	ld l, a
 	ret
 
-Func_6796:
+Func_6796: ; 6796
 	ld a, [wcea6]
 	add a
 	ld hl, w6_da68
@@ -2737,7 +2737,7 @@ Func_6796:
 	ld l, a
 	ret
 
-Func_67a7:
+Func_67a7: ; 67a7
 	ld a, [wc87a]
 	add a
 	ld hl, w6_da68
@@ -2770,7 +2770,7 @@ Func_67b8: ; 67b8 (1:67b8)
 	ld c, a
 	ret
 
-Data_67cd:
+Data_67cd: ; 67cd
 	dw     0
 	dw     0
 	dw     0
@@ -2845,7 +2845,7 @@ Func_683b: ; 683b (1:683b)
 	ld c, a
 	ret
 
-Data_6850:
+Data_6850: ; 6850
 	dw     0
 	dw    50
 	dw    80
@@ -3632,7 +3632,7 @@ Func_6c1f: ; 6c1f (1:6c1f)
 .asm_6c8b
 	ret
 
-Func_6c8c:
+Func_6c8c: ; 6c8c
 	ld a, [hFF8A]
 	and $c0
 	sub $40
@@ -3691,7 +3691,7 @@ Func_6c8c:
 	jr nz, .asm_6cc5
 	ret
 
-Data_6cdc:
+Data_6cdc: ; 6cdc
 	db 0, 0, 0, 0
 	db 0, 0, 0, 0
 	db 0, 0, 0, 0
@@ -3814,7 +3814,7 @@ Func_6df0: ; 6df0 (1:6df0)
 	pop bc
 	ret
 
-Func_6e3f:
+Func_6e3f: ; 6e3f
 	push bc
 	push de
 	pushsramstateandenable 1
@@ -3847,7 +3847,7 @@ Func_6e88: ; 6e88 (1:6e88)
 	ld l, a
 	ret
 
-Pointers_6e97:
+Pointers_6e97: ; 6e97
 	dw s1_a686
 	dw s1_a6d6
 	dw s1_a726
@@ -3866,7 +3866,7 @@ Func_6ea1: ; 6ea1 (1:6ea1)
 	ld l, a
 	ret
 
-Pointers_6eb0:
+Pointers_6eb0: ; 6eb0
 	dw s1_a816
 	dw s1_a866
 	dw s1_a8b6
@@ -3885,7 +3885,7 @@ Func_6eba: ; 6eba (1:6eba)
 	ld l, a
 	ret
 
-Pointers_6ec9:
+Pointers_6ec9: ; 6ec9
 	dw s1_a9a6
 	dw s1_a9f6
 	dw s1_aa46
@@ -3924,7 +3924,7 @@ Func_6ef3: ; 6ef3 (1:6ef3)
 	ld l, a
 	jp [hl]
 
-Pointers_6f02:
+Pointers_6f02: ; 6f02
 	dw Func_6f22
 	dw Func_6f3a
 	dw Func_6f58
@@ -4074,7 +4074,7 @@ Func_702b: ; 702b (1:702b)
 	ld [wc8a2], a
 	ret
 
-Func_704d:
+Func_704d: ; 704d
 	ld b, $4
 	ld hl, wd0b0
 	call Func_73cc
@@ -4587,7 +4587,7 @@ Func_75d6: ; 75d6 (1:75d6)
 	ld [wc9b0], a
 	ret
 
-Data_7612:
+Data_7612: ; 7612
 	db $00
 	db $81
 	db $82
@@ -4645,7 +4645,7 @@ Func_763f: ; 763f (1:763f)
 	ret
 
 SECTION "Bank 02", ROMX, BANK [$02]
-Func_8000:
+Func_8000: ; 8000
 	ld de, $0
 	ld hl, wcbf3
 .asm_8006
@@ -4818,7 +4818,7 @@ asm_80e7
 Func_8109: ; 8109 (2:4109)
 	jp Func_841c
 
-Data_810c:
+Data_810c: ; 810c
 	db $ff
 	db $ff
 	db $ff
@@ -4935,68 +4935,68 @@ Func_8135: ; 8135 (2:4135)
 	ld [hl], a
 	jp Func_843a
 
-Pointers_8198:
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8922,  0 & $ff
-	dw Data_8ba2, -1 & $ff
-	dw Data_8ba2,  0 & $ff
-	dw Data_8ba2, -1 & $ff
-	dw Data_8ba2,  0 & $ff
-	dw Data_8ba2, -1 & $ff
-	dw Data_8ba2,  0 & $ff
-	dw Data_8ba2, -1 & $ff
-	dw Data_8ba2,  0 & $ff
-	dw Data_8ba2, -1 & $ff
-	dw Data_8ba2,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_89c2, -1 & $ff
-	dw Data_89c2,  0 & $ff
-	dw Data_89c2, -1 & $ff
-	dw Data_89c2,  0 & $ff
-	dw Data_89c2, -1 & $ff
-	dw Data_89c2,  0 & $ff
-	dw Data_89c2, -1 & $ff
-	dw Data_89c2,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8a62, -1 & $ff
-	dw Data_8a62,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw Data_8b02, -1 & $ff
-	dw Data_8b02,  0 & $ff
-	dw -1,        -1 & $ff
+Pointers_8198: ; 8198
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8ba2, -1
+	aligned_dwb Data_8ba2,  0
+	aligned_dwb Data_8ba2, -1
+	aligned_dwb Data_8ba2,  0
+	aligned_dwb Data_8ba2, -1
+	aligned_dwb Data_8ba2,  0
+	aligned_dwb Data_8ba2, -1
+	aligned_dwb Data_8ba2,  0
+	aligned_dwb Data_8ba2, -1
+	aligned_dwb Data_8ba2,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_89c2, -1
+	aligned_dwb Data_89c2,  0
+	aligned_dwb Data_89c2, -1
+	aligned_dwb Data_89c2,  0
+	aligned_dwb Data_89c2, -1
+	aligned_dwb Data_89c2,  0
+	aligned_dwb Data_89c2, -1
+	aligned_dwb Data_89c2,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8a62, -1
+	aligned_dwb Data_8a62,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb Data_8b02, -1
+	aligned_dwb Data_8b02,  0
+	aligned_dwb -1,        -1
 
 Func_828c: ; 828c (2:428c)
 	ld hl, wcc0c
@@ -5125,7 +5125,7 @@ Func_8327: ; 8327 (2:4327)
 	inc [hl]
 	ret
 
-Pointers_8353:
+Pointers_8353: ; 8353
 	dw Pointers_8369
 	dw Pointers_8369
 	dw Pointers_8369
@@ -5235,7 +5235,7 @@ Func_83b3: ; 83b3 (2:43b3)
 	ld [hl], a
 	jp Func_843a
 
-Pointers_83e4:
+Pointers_83e4: ; 83e4
 	dw Pointers_840e
 	dw Pointers_840e
 	dw Pointers_840e
@@ -5352,18 +5352,18 @@ Func_8443: ; 8443 (2:4443)
 	ld l, a
 	jp [hl]
 
-Pointers_8490:
+Pointers_8490: ; 8490
 	dw Func_8498
 	dw Func_849d
 	dw Func_84ae
 	dw Func_84c1
 
-Func_8498:
+Func_8498: ; 8498
 	call Func_84d8
 	ld e, a
 	ret
 
-Func_849d:
+Func_849d: ; 849d
 	ld hl, hFF94
 	ld a, [hl]
 	xor $ff
@@ -5375,7 +5375,7 @@ Func_849d:
 	ld e, a
 	ret
 
-Func_84ae:
+Func_84ae: ; 84ae
 	ld hl, hFF95
 	ld a, [hl]
 	xor $ff
@@ -5388,7 +5388,7 @@ Func_84ae:
 	ld e, a
 	ret
 
-Func_84c1:
+Func_84c1: ; 84c1
 	ld hl, hFF94
 	ld a, [hl]
 	xor $ff
@@ -5456,7 +5456,7 @@ Func_84d8: ; 84d8 (2:44d8)
 	ld a, [hl]
 	ret
 
-Data_8522:
+Data_8522: ; 8522
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	db $10, $08, $05, $03, $03, $02, $02, $01, $01, $01, $01, $01, $01, $01, $01, $01
@@ -5522,14 +5522,14 @@ Data_8522:
 	db $10, $10, $0f, $0f, $0f, $0e, $0e, $0e, $0d, $0d, $0d, $0d, $0c, $0c, $0c, $0b
 	db $0b, $0b, $0b, $0a, $0a, $0a, $0a, $09, $09, $09, $09, $09, $09, $08, $08, $08
 
-Data_8922:
+Data_8922: ; 8922
 	dw  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00
 	dw  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00
 	dw  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00
 	dw  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00
 	dw  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00,  $00
 
-Data_89c2:
+Data_89c2: ; 89c2
 ; to do: replace with the appropriate sine wave
 	dw  $00,  $00,  $10,  $20,  $30,  $30,  $40,  $50,  $50,  $60,  $60,  $70,  $70,  $70,  $70,  $70
 	dw  $80,  $70,  $70,  $70,  $70,  $70,  $60,  $60,  $50,  $50,  $40,  $30,  $30,  $20,  $10,  $00
@@ -5537,7 +5537,7 @@ Data_89c2:
 	dw -$80, -$80, -$80, -$80, -$80, -$80, -$70, -$70, -$60, -$60, -$50, -$40, -$40, -$30, -$20, -$10
 	dw  $00,  $00,  $10,  $20,  $30,  $30,  $40,  $50,  $50,  $60,  $60,  $70,  $70,  $70,  $70,  $70
 
-Data_8a62:
+Data_8a62: ; 8a62
 	dw  $000,  $010,  $030,  $040,  $060,  $070,  $080,  $0a0
 	dw  $0b0,  $0c0,  $0d0,  $0e0,  $0e0,  $0f0,  $0f0,  $0f0
 	dw  $100,  $0f0,  $0f0,  $0f0,  $0e0,  $0e0,  $0d0,  $0c0
@@ -5549,7 +5549,7 @@ Data_8a62:
 	dw  $000,  $010,  $030,  $040,  $060,  $070,  $080,  $0a0
 	dw  $0b0,  $0c0,  $0d0,  $0e0,  $0e0,  $0f0,  $0f0,  $0f0
 
-Data_8b02:
+Data_8b02: ; 8b02
 	dw  $000,  $030,  $060,  $090,  $0c0,  $0f0,  $120,  $140
 	dw  $160,  $190,  $1b0,  $1c0,  $1e0,  $1f0,  $1f0,  $200
 	dw  $200,  $200,  $1f0,  $1f0,  $1e0,  $1c0,  $1b0,  $190
@@ -5561,7 +5561,7 @@ Data_8b02:
 	dw  $000,  $030,  $060,  $090,  $0c0,  $0f0,  $120,  $140
 	dw  $160,  $190,  $1b0,  $1c0,  $1e0,  $1f0,  $1f0,  $200
 
-Data_8ba2:
+Data_8ba2: ; 8ba2
 	dw  $000,  $060,  $0c0,  $120,  $180,  $1e0,  $230,  $280
 	dw  $2d0,  $310,  $350,  $380,  $3b0,  $3d0,  $3f0,  $400
 	dw  $400,  $400,  $3f0,  $3d0,  $3b0,  $380,  $350,  $310
@@ -5573,13 +5573,13 @@ Data_8ba2:
 	dw  $000,  $060,  $0c0,  $120,  $180,  $1e0,  $230,  $280
 	dw  $2d0,  $310,  $350,  $380,  $3b0,  $3d0,  $3f0,  $400
 
-Data_8c42:
+Data_8c42: ; 8c42
 	db $00, $00, $c0, $00, $90, $01, $50, $02
 	db $10, $03, $c0, $03, $70, $04, $10, $05
 	db $a0, $05, $30, $06, $a0, $06, $10, $07
 	db $60, $07, $a0, $07, $e0, $07, $f0, $07
 
-Data_8c62:
+Data_8c62: ; 8c62
 	db $00, $08, $f0, $07, $e0, $07, $a0, $07
 	db $60, $07, $10, $07, $a0, $06, $30, $06
 	db $a0, $05, $10, $05, $70, $04, $c0, $03
@@ -5597,81 +5597,1441 @@ Data_8c62:
 	db $a0, $05, $30, $06, $a0, $06, $10, $07
 	db $60, $07, $a0, $07, $e0, $07, $f0, $07
 
-Func_8ce2:
-	dr $8ce2, $8d59
+Func_8ce2: ; 8ce2 (2:4ce2)
+	push bc
+	push de
+	ld de, $0
+	ld hl, wcae9
+.asm_8cea
+	ld a, [hli]
+	and a
+	jr z, .asm_8cf9
+	inc hl
+	inc e
+	inc e
+	ld a, e
+	cp $20
+	jr c, .asm_8cea
+	pop de
+	pop bc
+	ret
 
-Func_8d59::
-	dr $8d59, $9048
+.asm_8cf9
+	xor a
+	ld [hld], a
+	inc a
+	ld [hl], a
+	ld hl, wcb09
+	add hl, de
+	xor a
+	ld [hli], a
+	ld a, [hFFAC]
+	ld [hl], a
+	ld a, b
+	sub [hl]
+	ld [hl], a
+	ld hl, wcb29
+	add hl, de
+	xor a
+	ld [hli], a
+	ld a, [hFFAD]
+	ld [hl], a
+	ld a, c
+	sub [hl]
+	ld [hl], a
+	pop bc
+	ld hl, wcba9
+	add hl, de
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld hl, wcbc9
+	add hl, de
+	ld a, [wcae8]
+	ld [hli], a
+	ld [hl], $0
+	inc a
+	jr z, .asm_8d2f
+	call Func_8ff4
+	jr .asm_8d49
 
-Func_9048:
-	dr $9048, $925e
+.asm_8d2f
+	ld hl, wcae9
+	add hl, de
+	inc [hl]
+	ld hl, wcb69
+	add hl, de
+	ld [hl], $18
+	ld hl, wcb89
+	add hl, de
+	ld [hl], $0
+	ld hl, wcba9
+	add hl, de
+	ld a, $8b
+	ld [hli], a
+	ld [hl], $70
+.asm_8d49
+	ld hl, Data_925e
+	add hl, bc
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wcb49
+	add hl, de
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	pop bc
+	ret
 
-Data_925e:
-	dr $925e, $9306
+Func_8d59: ; 8d59 (2:4d59)
+	ld de, $0
+Func_8d5c: ; 8d5c
+	ld hl, wcae9
+	add hl, de
+	ld a, [hl]
+	and a
+	jp z, Func_91b4
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_8d71
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp [hl]
 
-Func_9306::
-	dr $9306, $9991
+Pointers_8d71: ; 8d71 (2:4d71)
+	dw Func_91b4
+	dw Func_8d7b
+	dw Func_8e04
+	dw Func_8e5b
+	dw Func_8f1d
 
-Data_9991:
+Func_8d7b: ; 8d7b (2:4d7b)
+	ld hl, wcaea
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	inc [hl]
+	ld hl, Data_91bd
+	add hl, bc
+	ld a, [hl]
+	cp $80
+	jp z, Func_8d96
+	ld hl, wcb2a
+	add hl, de
+	add [hl]
+	ld [hl], a
+	jp Func_9189
+
+Func_8d96: ; 8d96 (2:4d96)
+	ld hl, wcba9
+	add hl, de
+	ld a, [hl]
+	cp $a6
+	jr z, .asm_8dac
+	call Func_1d31
+	jr z, .asm_8db5
+	cp $6
+	jr z, .asm_8db5
+	cp $f
+	jr z, .asm_8db5
+.asm_8dac
+	ld hl, wcae9
+	add hl, de
+	xor a
+	ld [hl], a
+	jp Func_9189
+
+.asm_8db5
+	ld hl, wcae9
+	add hl, de
+	inc [hl]
+	inc hl
+	ld [hl], $0
+	ld hl, wcb69
+	add hl, de
+	ld [hl], $20
+	ld hl, wcb89
+	add hl, de
+	ld [hl], $0
+	ld hl, wcba9
+	add hl, de
+	ld a, [wcea1]
+	cp $6
+	jr z, .asm_8df0
+	cp $d
+	jr nz, .asm_8deb
+.soft_lock
+	jr .soft_lock
+
+.asm_8dda
+	ld a, [wceac]
+	cp $2
+	jr z, .asm_8de6
+	lb bc, $8b, $5c
+	jr .asm_8df3
+
+.asm_8de6
+	lb bc, $84, $20
+	jr .asm_8df3
+
+.asm_8deb
+	lb bc, $8b, $6c
+	jr .asm_8df3
+
+.asm_8df0
+	lb bc, $93, $6c
+.asm_8df3
+	call Random
+	and $7
+	add b
+	ld [hli], a
+	call Random
+	and $7
+	add c
+	ld [hl], a
+	jp Func_9189
+
+Func_8e04: ; 8e04 (2:4e04)
+	ld hl, wcaea
+	add hl, de
+	ld a, [hl]
+	ld c, a
+	inc a
+	ld [hl], a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld bc, Data_91e2
+	add hl, bc
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	cp $ff
+	jr z, .asm_8e53
+	ld a, [hl]
+	ld hl, wcb69
+	add hl, de
+	add [hl]
+	and $3f
+	ld [hl], a
+	add a
+	ld l, a
+	ld h, $0
+	add hl, bc
+	push hl
+	ld bc, $20
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld hl, wcb09
+	add hl, de
+	ld a, [hl]
+	add c
+	ld [hli], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	pop hl
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld hl, wcb29
+	add hl, de
+	ld a, [hl]
+	add c
+	ld [hli], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	call Func_90c6
+	jp Func_9196
+
+.asm_8e53
+	ld hl, wcae9
+	add hl, de
+	inc [hl]
+	jp Func_9196
+
+Func_8e5b: ; 8e5b (2:4e5b)
+	ld hl, wcb0a
+	add hl, de
+	ld a, [hl]
+	add $50
+	ld [hFF8A], a
+	ld hl, wcb2a
+	add hl, de
+	ld a, [hl]
+	add $40
+	ld [hFF8B], a
+	ld hl, wcba9
+	add hl, de
+	ld a, [hli]
+	add $50
+	ld [hFF8C], a
+	ld a, [hl]
+	add $40
+	ld [hFF8D], a
+	push de
+	call Func_8443
+	pop de
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Data_8c62 + 1
+	add hl, bc
+	ld a, [hl]
+	ld hl, Data_8c42 + 1
+	add hl, bc
+	ld c, [hl]
+	ld b, a
+	ld hl, wcb09
+	add hl, de
+	ld a, [hl]
+	add $0
+	ld [hli], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	ld b, a
+	ld hl, wcb29
+	add hl, de
+	ld a, [hl]
+	add $0
+	ld [hli], a
+	ld a, [hl]
+	adc c
+	ld [hl], a
+	ld c, a
+	push bc
+	ld hl, wcba9
+	add hl, de
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
+	pop hl
+	call Func_8395
+	jr c, .asm_8ebb
+	call Func_90c6
+	jp Func_9196
+
+.asm_8ebb
+	ld hl, wcae9
+	add hl, de
+	inc [hl]
+	ld hl, wcb89
+	add hl, de
+	ld [hl], $0
+	ld hl, wcba9
+	add hl, de
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
+	ld hl, wcb09
+	add hl, de
+	xor a
+	ld [hli], a
+	ld [hl], b
+	ld hl, wcb29
+	add hl, de
+	xor a
+	ld [hli], a
+	ld [hl], c
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	inc a
+	jr z, .asm_8f1a
+	ld a, [wcea1]
+	cp $5
+	jr z, .asm_8f12
+	cp $d
+.asm_8eec
+	jr z, .asm_8eec
+	cp $f
+	jr z, .asm_8f17
+	jr .asm_8f1a
+
+.asm_8ef4
+	ld a, $1
+	ld [wcd3e], a
+	ld [wcd40], a
+	ld hl, wcb0a
+	add hl, de
+	ld b, [hl]
+	ld hl, wcb2a
+	add hl, de
+	ld c, [hl]
+	push de
+	ld d, $0
+	ld e, $2
+	farcall Func_429eb
+	pop de
+.asm_8f12
+	call Func_9097
+	jr .asm_8f1a
+
+.asm_8f17
+	call Func_8f47
+.asm_8f1a
+	jp Func_9196
+
+Func_8f1d: ; 8f1d (2:4f1d)
+	call Func_9129
+	jp nc, Func_9196
+	call Func_1d25
+	jr z, .asm_8f3e
+	cp $f
+	jr z, .asm_8f3e
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	ld [hFF8A], a
+	ld a, [wc894]
+	add a
+	add a
+	add a
+	ld [hFF8B], a
+	call Func_1f12
+.asm_8f3e
+	ld hl, wcae9
+	add hl, de
+	xor a
+	ld [hl], a
+	jp Func_9196
+
+Func_8f47: ; 8f47 (2:4f47)
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	ret z
+	bit 7, a
+	jr nz, .asm_8f72
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	add $4
+	ld c, a
+	farcall Func_67b8
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	add $4
+	cp $9
+	jr c, .asm_8f91
+	cp $d
+	jr c, .asm_8fa9
+	jr .asm_8fc1
+
+.asm_8f72
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	and $3f
+	ld c, a
+	farcall Func_683b
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	and $3f
+	cp $1
+	jr c, .asm_8f91
+	cp $2
+	jr c, .asm_8fa9
+	jr .asm_8fc1
+
+.asm_8f91
+	ld a, $0
+	ld [wcd36], a
+	farcall Func_424b0
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_8fa7
+	ld a, $18
+	ld [wc7cd], a
+.asm_8fa7
+	jr .asm_8fd7
+
+.asm_8fa9
+	ld a, $1
+	ld [wcd36], a
+	farcall Func_424b0
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_8fbf
+	ld a, $18
+	ld [wc7cd], a
+.asm_8fbf
+	jr .asm_8fd7
+
+.asm_8fc1
+	ld a, $2
+	ld [wcd36], a
+	farcall Func_424b0
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_8fd7
+	ld a, $18
+	ld [wc7cd], a
+.asm_8fd7
+	ld a, $1
+	ld [wcd3e], a
+	ld hl, wcd3c
+	ld a, [hl]
+	add c
+	ld [hli], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	ret
+
+Func_8fe6: ; 8fe6
+; unsigned short hl = (unsigned char)a * 48
+	ld l, a
+	ld h, $0
+	push bc
+	ld c, l
+	ld b, h
+	add hl, hl ; 2
+	add hl, bc ; 3
+	add hl, hl ; 6
+	add hl, hl ; 12
+	add hl, hl ; 24
+	add hl, hl ; 48
+	pop bc
+	ret
+
+Func_8ff4: ; 8ff4 (2:4ff4)
+	push hl
+	push bc
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_9045
+	ld a, $1
+	ld [wc89f], a
+	ld a, [wceb8]
+	and a
+	jr nz, .asm_9027
+	ld a, [wcea3]
+	call Func_8fe6
+	ld bc, Data_101351
+	add hl, bc
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld c, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld b, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld [bc], a
+	jr .asm_9045
+
+.asm_9027
+	ld a, [wcea3]
+	call Func_8fe6
+	ld bc, Data_101351 + 3
+	add hl, bc
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld c, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld b, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld [bc], a
+.asm_9045
+	pop bc
+	pop hl
+	ret
+
+Func_9048: ; 9048 (2:5048)
+	push hl
+	push bc
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_9094
+	ld a, [wceb8]
+	and a
+	jr nz, .asm_9076
+	ld a, [wcea4]
+	call Func_8fe6
+	ld bc, Data_101351
+	add hl, bc
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld c, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld b, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld [bc], a
+	jr .asm_9094
+
+.asm_9076
+	ld a, [wcea4]
+	call Func_8fe6
+	ld bc, Data_101351 + 3
+	add hl, bc
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld c, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld b, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld [bc], a
+.asm_9094
+	pop bc
+	pop hl
+	ret
+
+Func_9097: ; 9097 (2:5097)
+	push hl
+	push bc
+	farcall Func_424b0
+	ld a, [wc7ce]
+	and a
+	jr nz, .asm_90c3
+	ld a, [wcea3]
+	call Func_8fe6
+	ld bc, Data_101351 + 6
+	add hl, bc
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld c, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld b, a
+	inc hl
+	ld a, BANK(Data_101351)
+	call GetFarByteHL
+	ld [bc], a
+.asm_90c3
+	pop bc
+	pop hl
+	ret
+
+Func_90c6: ; 90c6 (2:50c6)
+	ld hl, wcb89
+	add hl, de
+	ld a, [hl]
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_90ef
+	add hl, bc
+	ld a, [hli]
+	or [hl]
+	jr nz, .asm_90de
+	ld hl, wcb89
+	add hl, de
+	ld [hl], a
+	jr Func_90c6
+
+.asm_90de
+	dec hl
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wcb49
+	add hl, de
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld hl, wcb89
+	add hl, de
+	inc [hl]
+	ret
+
+Pointers_90ef: ; 90ef
+	dw Data_9a3f
+	dw Data_9a3f
+	dw Data_9a50
+	dw Data_9a50
+	dw Data_9a61
+	dw Data_9a61
+	dw Data_9a72
+	dw Data_9a72
+	dw Data_9a83
+	dw Data_9a83
+	dw Data_9a94
+	dw Data_9a94
+	dw Data_9aa5
+	dw Data_9aa5
+	dw Data_9ab6
+	dw Data_9ab6
+	dw Data_9ac7
+	dw Data_9ac7
+	dw Data_9ad8
+	dw Data_9ad8
+	dw Data_9ae9
+	dw Data_9ae9
+	dw Data_9afa
+	dw Data_9afa
+	dw Data_9b0b
+	dw Data_9b0b
+	dw Data_9b1c
+	dw Data_9b1c
+	dw 0
+
+Func_9129: ; 9129 (2:5129)
+	ld hl, wcb89
+	add hl, de
+	ld a, [hl]
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, $5151
+	add hl, bc
+	ld a, [hli]
+	or [hl]
+	jr nz, .asm_913c
+	scf
+	ret
+
+.asm_913c
+	dec hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wcb49
+	add hl, de
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld hl, wcb89
+	add hl, de
+	inc [hl]
+	and a
+	ret
+
+Pointers_9151: ; 9151
+	dw Pointers_917b
+	dw Pointers_917b
+	dw Pointers_917b
+	dw Pointers_917d
+	dw Pointers_917d
+	dw Pointers_917f
+	dw Pointers_917f
+	dw Pointers_9181
+	dw Pointers_9181
+	dw Pointers_9183
+	dw Pointers_9183
+	dw Pointers_9183
+	dw Pointers_9185
+	dw Pointers_9185
+	dw Pointers_9185
+	dw Pointers_9187
+	dw Pointers_9187
+	dw Pointers_9187
+	dw Pointers_9187
+	dw Pointers_9187
+	dw 0
+
+Pointers_917b: ; 917b
+	dw Data_99a6
+Pointers_917d: ; 917d
+	dw Data_99b7
+Pointers_917f: ; 917f
+	dw Data_99c8
+Pointers_9181: ; 9181
+	dw Data_99d9
+Pointers_9183: ; 9183
+	dw Data_99ea
+Pointers_9185: ; 9185
+	dw Data_99fb
+Pointers_9187: ; 9187
+	dw Data_9a0c
+
+Func_9189: ; 9189 (2:5189)
+	ld a, [wceb2]
+	and a
+	jr z, Func_9196
+	ld a, [wc877]
+	and $1
+	jr nz, Func_91b4
+Func_9196: ; 9196 (2:5196)
+	ld hl, wcbc9
+	add hl, de
+	ld a, [hl]
+	inc a
+	jr z, Func_91b4
+	ld hl, wcb0a
+	add hl, de
+	ld b, [hl]
+	ld hl, wcb2a
+	add hl, de
+	ld c, [hl]
+	ld hl, wcb49
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push de
+	call Func_02f8
+	pop de
+Func_91b4: ; 91b4 (2:51b4)
+	inc e
+	inc e
+	ld a, e
+	cp $20
+	jp c, Func_8d5c
+	ret
+
+Data_91bd: ; 91bd
+	db -1, -1, -1, -1
+	db  0, -1,  0, -1
+	db  0,  0, -1,  0
+	db -1,  0,  0, -1
+	db  0,  0,  0,  0
+	db -1,  0,  0,  0
+	db  0,  0,  0,  0
+	db  0,  0,  0,  0
+	db  0,  0, -1,  0
+	db $80
+
+Data_91e2: ; 91e2
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8922,  0
+	aligned_dwb Data_8ba2,  1
+	aligned_dwb Data_8ba2,  1
+	aligned_dwb Data_8ba2,  1
+	aligned_dwb Data_8ba2,  1
+	aligned_dwb Data_8ba2,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_89c2,  1
+	aligned_dwb Data_89c2,  1
+	aligned_dwb Data_89c2,  1
+	aligned_dwb Data_89c2,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8a62,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb Data_8b02,  1
+	aligned_dwb -1,        -1
+
+Data_925e: ; 925e
+	dw Data_93ec
+	dw Data_93fd
+	dw Data_940e
+	dw Data_941f
+	dw Data_9430
+	dw Data_9441
+	dw Data_9452
+	dw Data_9463
+	dw Data_9474
+	dw Data_9485
+	dw Data_9496
+	dw Data_94a7
+	dw Data_94b8
+	dw Data_94c9
+	dw Data_94da
+	dw Data_94eb
+	dw Data_94fc
+	dw Data_950d
+	dw Data_951e
+	dw Data_952f
+	dw Data_9540
+	dw Data_9551
+	dw Data_9562
+	dw Data_9573
+	dw Data_9584
+	dw Data_9595
+	dw Data_95a6
+	dw Data_95b7
+	dw Data_95c8
+	dw Data_95d9
+	dw Data_95ea
+	dw Data_95fb
+	dw Data_960c
+	dw Data_961d
+	dw Data_962e
+	dw Data_963f
+	dw Data_9650
+	dw Data_9661
+	dw Data_9672
+	dw Data_9683
+	dw Data_9694
+	dw Data_96a5
+	dw Data_96b6
+	dw Data_96c7
+	dw Data_96d8
+	dw Data_96e9
+	dw Data_96fa
+	dw Data_970b
+	dw Data_971c
+	dw Data_972d
+	dw Data_973e
+	dw Data_974f
+	dw Data_9761
+	dw Data_9772
+	dw Data_9783
+	dw Data_9794
+	dw Data_97a5
+	dw Data_97b6
+	dw Data_97c7
+	dw Data_97d8
+	dw Data_97e9
+	dw Data_97fa
+	dw Data_980b
+	dw Data_981c
+	dw Data_982d
+	dw Data_983e
+	dw Data_984f
+	dw Data_9860
+	dw Data_9871
+	dw Data_9882
+	dw Data_9893
+	dw Data_98a4
+	dw Data_98b5
+	dw Data_98c6
+	dw Data_98d7
+	dw Data_98e8
+	dw Data_98f9
+	dw Data_990a
+	dw Data_991b
+	dw Data_992c
+	dw Data_993d
+	dw Data_994e
+	dw Data_995f
+	dw Data_9970
+
+Func_9306:: ; 9306
+	ld a, [wcea1]
+	cp $2
+	jr z, .asm_9312
+	cp $8
+	jr z, .asm_9312
+	ret
+
+.asm_9312
+	ld hl, wc8eb
+	ld c, [hl]
+	ld b, $0
+	inc [hl]
+	ld hl, .Data_9328
+	add hl, bc
+	ld a, [hl]
+	cp $ff
+	jr nz, .asm_934d
+	xor a
+	ld [wc8eb], a
+	jr .asm_9312
+
+.Data_9328: ; 9328
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $01, $01, $01
+	db $01, $01, $01
+	db $01, $01, $01
+	db $01, $01, $01
+	db $01, $01, $01
+	db $01, $01, $01
+	db $01, $01, $01
+	db $01, $01, $01
+	db $ff
+
+.asm_934d
+	ld [wc8ea], a
+	and a
+	jr nz, .asm_937c
+	ld a, [wcea1]
+	cp $8
+	jr nz, .asm_937c
+	ld b, $6c
+	ld a, [wcdab]
+	cp $b0
+	jr nc, .asm_937c
+	sub $10
+	and a
+	rr a
+	add $4a
+	ld c, a
+	ld hl, .Data_9373
+	call Func_02f8
+	jr .asm_937c
+
+.Data_9373:
+	db $02, $00, $00
+	db $46, $08, $00
+	db $08, $47, $08
+
+.asm_937c
+	ld hl, wc8e2
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wc8e4
+	ld a, [hli]
+	sub c
+	ld c, a
+	ld a, [hl]
+	sbc b
+	ld b, a
+	cp $a
+	jr c, .asm_9395
+	ld a, $ff
+	ld [wc8e6], a
+	ret
+
+.asm_9395
+	ld h, b
+	ld l, c
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld a, h
+	ld [wc8e6], a
+.asm_939f
+	ld a, [wc8e9]
+	ld c, a
+	ld b, $0
+	ld hl, Data_93e5
+	add hl, bc
+	ld a, [hl]
+	cp $ff
+	jr nz, .asm_93b4
+	xor a
+	ld [wc8e9], a
+	jr .asm_939f
+
+.asm_93b4
+	ld e, a
+	ld hl, wc8e8
+	ld a, [hl]
+	inc a
+	cp e
+	jr nz, .asm_93c5
+	ld a, [wc8e9]
+	inc a
+	ld [wc8e9], a
+	xor a
+.asm_93c5
+	ld [hl], a
+	ld a, [wcea1]
+	cp $8
+	ret z
+	ld a, [wc8e9]
+	and $1
+	jr nz, .asm_93d8
+	ld hl, Data_9a1d
+	jr .asm_93db
+
+.asm_93d8
+	ld hl, Data_9a2e
+.asm_93db
+	ld a, [wc8e6]
+	ld c, a
+	ld b, $68
+	call Func_02f8
+	ret
+
+Data_93e5: ; 93e5
+	db $80, $04, $06
+	db $03, $05, $02
+	db $ff
+
+Data_93ec: ; 93ec
+	dr $93ec, $93fd
+
+Data_93fd: ; 93fd
+	dr $93fd, $940e
+
+Data_940e: ; 940e
+	dr $940e, $941f
+
+Data_941f: ; 941f
+	dr $941f, $9430
+
+Data_9430: ; 9430
+	dr $9430, $9441
+
+Data_9441: ; 9441
+	dr $9441, $9452
+
+Data_9452: ; 9452
+	dr $9452, $9463
+
+Data_9463: ; 9463
+	dr $9463, $9474
+
+Data_9474: ; 9474
+	dr $9474, $9485
+
+Data_9485: ; 9485
+	dr $9485, $9496
+
+Data_9496: ; 9496
+	dr $9496, $94a7
+
+Data_94a7: ; 94a7
+	dr $94a7, $94b8
+
+Data_94b8: ; 94b8
+	dr $94b8, $94c9
+
+Data_94c9: ; 94c9
+	dr $94c9, $94da
+
+Data_94da: ; 94da
+	dr $94da, $94eb
+
+Data_94eb: ; 94eb
+	dr $94eb, $94fc
+
+Data_94fc: ; 94fc
+	dr $94fc, $950d
+
+Data_950d: ; 950d
+	dr $950d, $951e
+
+Data_951e: ; 951e
+	dr $951e, $952f
+
+Data_952f: ; 952f
+	dr $952f, $9540
+
+Data_9540: ; 9540
+	dr $9540, $9551
+
+Data_9551: ; 9551
+	dr $9551, $9562
+
+Data_9562: ; 9562
+	dr $9562, $9573
+
+Data_9573: ; 9573
+	dr $9573, $9584
+
+Data_9584: ; 9584
+	dr $9584, $9595
+
+Data_9595: ; 9595
+	dr $9595, $95a6
+
+Data_95a6: ; 95a6
+	dr $95a6, $95b7
+
+Data_95b7: ; 95b7
+	dr $95b7, $95c8
+
+Data_95c8: ; 95c8
+	dr $95c8, $95d9
+
+Data_95d9: ; 95d9
+	dr $95d9, $95ea
+
+Data_95ea: ; 95ea
+	dr $95ea, $95fb
+
+Data_95fb: ; 95fb
+	dr $95fb, $960c
+
+Data_960c: ; 960c
+	dr $960c, $961d
+
+Data_961d: ; 961d
+	dr $961d, $962e
+
+Data_962e: ; 962e
+	dr $962e, $963f
+
+Data_963f: ; 963f
+	dr $963f, $9650
+
+Data_9650: ; 9650
+	dr $9650, $9661
+
+Data_9661: ; 9661
+	dr $9661, $9672
+
+Data_9672: ; 9672
+	dr $9672, $9683
+
+Data_9683: ; 9683
+	dr $9683, $9694
+
+Data_9694: ; 9694
+	dr $9694, $96a5
+
+Data_96a5: ; 96a5
+	dr $96a5, $96b6
+
+Data_96b6: ; 96b6
+	dr $96b6, $96c7
+
+Data_96c7: ; 96c7
+	dr $96c7, $96d8
+
+Data_96d8: ; 96d8
+	dr $96d8, $96e9
+
+Data_96e9: ; 96e9
+	dr $96e9, $96fa
+
+Data_96fa: ; 96fa
+	dr $96fa, $970b
+
+Data_970b: ; 970b
+	dr $970b, $971c
+
+Data_971c: ; 971c
+	dr $971c, $972d
+
+Data_972d: ; 972d
+	dr $972d, $973e
+
+Data_973e: ; 973e
+	dr $973e, $974f
+
+Data_974f: ; 974f
+	dr $974f, $9761
+
+Data_9761: ; 9761
+	dr $9761, $9772
+
+Data_9772: ; 9772
+	dr $9772, $9783
+
+Data_9783: ; 9783
+	dr $9783, $9794
+
+Data_9794: ; 9794
+	dr $9794, $97a5
+
+Data_97a5: ; 97a5
+	dr $97a5, $97b6
+
+Data_97b6: ; 97b6
+	dr $97b6, $97c7
+
+Data_97c7: ; 97c7
+	dr $97c7, $97d8
+
+Data_97d8: ; 97d8
+	dr $97d8, $97e9
+
+Data_97e9: ; 97e9
+	dr $97e9, $97fa
+
+Data_97fa: ; 97fa
+	dr $97fa, $980b
+
+Data_980b: ; 980b
+	dr $980b, $981c
+
+Data_981c: ; 981c
+	dr $981c, $982d
+
+Data_982d: ; 982d
+	dr $982d, $983e
+
+Data_983e: ; 983e
+	dr $983e, $984f
+
+Data_984f: ; 984f
+	dr $984f, $9860
+
+Data_9860: ; 9860
+	dr $9860, $9871
+
+Data_9871: ; 9871
+	dr $9871, $9882
+
+Data_9882: ; 9882
+	dr $9882, $9893
+
+Data_9893: ; 9893
+	dr $9893, $98a4
+
+Data_98a4: ; 98a4
+	dr $98a4, $98b5
+
+Data_98b5: ; 98b5
+	dr $98b5, $98c6
+
+Data_98c6: ; 98c6
+	dr $98c6, $98d7
+
+Data_98d7: ; 98d7
+	dr $98d7, $98e8
+
+Data_98e8: ; 98e8
+	dr $98e8, $98f9
+
+Data_98f9: ; 98f9
+	dr $98f9, $990a
+
+Data_990a: ; 990a
+	dr $990a, $991b
+
+Data_991b: ; 991b
+	dr $991b, $992c
+
+Data_992c: ; 992c
+	dr $992c, $993d
+
+Data_993d: ; 993d
+	dr $993d, $994e
+
+Data_994e: ; 994e
+	dr $994e, $995f
+
+Data_995f: ; 995f
+	dr $995f, $9970
+
+Data_9970: ; 9970
+	dr $9970, $9991
+
+Data_9991: ; 9991
 	dr $9991, $9996
 
-Data_9996:
+Data_9996: ; 9996
 	dr $9996, $999b
 
-Data_999b:
+Data_999b: ; 999b
 	dr $999b, $99a0
 
-Data_99a0:
+Data_99a0: ; 99a0
 	dr $99a0, $99a6
 
-Data_99a6:
+Data_99a6: ; 99a6
 	dr $99a6, $99b7
 
-Data_99b7:
+Data_99b7: ; 99b7
 	dr $99b7, $99c8
 
-Data_99c8:
+Data_99c8: ; 99c8
 	dr $99c8, $99d9
 
-Data_99d9:
+Data_99d9: ; 99d9
 	dr $99d9, $99ea
 
-Data_99ea:
+Data_99ea: ; 99ea
 	dr $99ea, $99fb
 
-Data_99fb:
+Data_99fb: ; 99fb
 	dr $99fb, $9a0c
 
-Data_9a0c:
-	dr $9a0c, $9c22
+Data_9a0c: ; 9a0c
+	dr $9a0c, $9a1d
 
-Func_9c22::
+Data_9a1d: ; 9a1d
+	dr $9a1d, $9a2e
+
+Data_9a2e: ; 9a2e
+	dr $9a2e, $9a3f
+
+Data_9a3f: ; 9a3f
+	dr $9a3f, $9a50
+
+Data_9a50: ; 9a50
+	dr $9a50, $9a61
+
+Data_9a61: ; 9a61
+	dr $9a61, $9a72
+
+Data_9a72: ; 9a72
+	dr $9a72, $9a83
+
+Data_9a83: ; 9a83
+	dr $9a83, $9a94
+
+Data_9a94: ; 9a94
+	dr $9a94, $9aa5
+
+Data_9aa5: ; 9aa5
+	dr $9aa5, $9ab6
+
+Data_9ab6: ; 9ab6
+	dr $9ab6, $9ac7
+
+Data_9ac7: ; 9ac7
+	dr $9ac7, $9ad8
+
+Data_9ad8: ; 9ad8
+	dr $9ad8, $9ae9
+
+Data_9ae9: ; 9ae9
+	dr $9ae9, $9afa
+
+Data_9afa: ; 9afa
+	dr $9afa, $9b0b
+
+Data_9b0b: ; 9b0b
+	dr $9b0b, $9b1c
+
+Data_9b1c: ; 9b1c
+	dr $9b1c, $9c22
+
+Func_9c22:: ; 9c22
 	dr $9c22, $b650
 
-Func_b650:
+Func_b650: ; b650
 	dr $b650, $b6a7
 
-Func_b6a7:
+Func_b6a7: ; b6a7
 	dr $b6a7, $b6c5
 
-Func_b6c5:
+Func_b6c5: ; b6c5
 	dr $b6c5, $b9ec
 
 SECTION "Bank 03", ROMX, BANK [$03]
-Func_c000::
+Func_c000:: ; c000
 	dr $c000, $c04e
 
-Func_c04e::
+Func_c04e:: ; c04e
 	dr $c04e, $d08b
 
-Func_d08b::
+Func_d08b:: ; d08b
 	dr $d08b, $f3a7
 
 SECTION "Bank 04", ROMX, BANK [$04]
-Func_10000::
+Func_10000:: ; 10000
 	dr $10000, $10018
 
-Func_10018::
+Func_10018:: ; 10018
 	dr $10018, $1011c
 
 LCDInterrupt:: ; 1011c (4:411c)
@@ -5715,7 +7075,7 @@ asm_1013e
 asm_1014c
 	jr asm_1018e
 
-Func_1014e::
+Func_1014e:: ; 1014e
 	nop
 	jr nz, .asm_10166
 	ld a, [hli]
@@ -5761,106 +7121,106 @@ asm_1018e
 	ld a, $0
 	jr asm_1017f
 
-Func_10199::
+Func_10199:: ; 10199
 	dr $10199, $1025e
 
-Func_1025e::
+Func_1025e:: ; 1025e
 	dr $1025e, $1036d
 
-Func_1036d::
+Func_1036d:: ; 1036d
 	dr $1036d, $10996
 
-Func_10996::
+Func_10996:: ; 10996
 	dr $10996, $109c0
 
-Func_109c0::
+Func_109c0:: ; 109c0
 	dr $109c0, $10e63
 
-Func_10e63::
+Func_10e63:: ; 10e63
 	dr $10e63, $13671
 
-Func_13671:
+Func_13671: ; 13671
 	dr $13671, $13cf1
 
 SECTION "Bank 05", ROMX, BANK [$05]
-Func_14000::
+Func_14000:: ; 14000
 	dr $14000, $14257
 
-Func_14257::
+Func_14257:: ; 14257
 	dr $14257, $1442e
 
-Func_1442e::
+Func_1442e:: ; 1442e
 	dr $1442e, $17464
 
 SECTION "Bank 06", ROMX, BANK [$06]
 	dr $18000, $1813f
 
-Func_1813f::
+Func_1813f:: ; 1813f
 	dr $1813f, $1821d
 
-Func_1821d::
+Func_1821d:: ; 1821d
 	dr $1821d, $182b0
 
-Func_182b0::
+Func_182b0:: ; 182b0
 	dr $182b0, $1887e
 
-Func_1887e::
+Func_1887e:: ; 1887e
 	dr $1887e, $188a3
 
-Func_188a3::
+Func_188a3:: ; 188a3
 	dr $188a3, $188cf
 
-Func_188cf::
+Func_188cf:: ; 188cf
 	dr $188cf, $18a9d
 
-Func_18a9d::
+Func_18a9d:: ; 18a9d
 	dr $18a9d, $1aa77
 
 SECTION "Bank 07", ROMX, BANK [$07]
-Func_1c000::
+Func_1c000:: ; 1c000
 	dr $1c000, $1c2f4
 
-Func_1c2f4::
+Func_1c2f4:: ; 1c2f4
 	dr $1c2f4, $1c524
 
-Func_1c524::
+Func_1c524:: ; 1c524
 	dr $1c524, $1c747
 
-Func_1c747::
+Func_1c747:: ; 1c747
 	dr $1c747, $1cc63
 
-Func_1cc63::
+Func_1cc63:: ; 1cc63
 	dr $1cc63, $1cc76
 
-Func_1cc76::
+Func_1cc76:: ; 1cc76
 	dr $1cc76, $1f1e1
 
 SECTION "Bank 08", ROMX, BANK [$08]
 	dr $20000, $2015a
 
-Func_2015a::
+Func_2015a:: ; 2015a
 	dr $2015a, $2027f
 
-Func_2027f::
+Func_2027f:: ; 2027f
 	dr $2027f, $21fd3
 
 SECTION "Bank 09", ROMX, BANK [$09]
 	dr $24000, $2402f
 
-Func_2402f::
+Func_2402f:: ; 2402f
 	dr $2402f, $241b4
 
-Func_241b4::
+Func_241b4:: ; 241b4
 	dr $241b4, $2435b
 
-Func_2435b::
+Func_2435b:: ; 2435b
 	dr $2435b, $244c1
 
-Func_244c1::
+Func_244c1:: ; 244c1
 	dr $244c1, $26257
 
 SECTION "Bank 0a", ROMX, BANK [$0a]
-GFX_28000::
+GFX_28000:: ; 28000
 	dr $28000, $29c35
 
 SECTION "Bank 0b", ROMX, BANK [$0b]
@@ -5869,10 +7229,10 @@ SECTION "Bank 0b", ROMX, BANK [$0b]
 SECTION "Bank 0c", ROMX, BANK [$0c]
 	dr $30000, $30255
 
-Func_30255::
+Func_30255:: ; 30255
 	dr $30255, $3067d
 
-Func_3067d::
+Func_3067d:: ; 3067d
 	dr $3067d, $33ff1
 
 SECTION "Bank 0d", ROMX, BANK [$0d]
@@ -5884,319 +7244,326 @@ SECTION "Bank 0e", ROMX, BANK [$0e]
 SECTION "Bank 0f", ROMX, BANK [$0f]
 	dr $3c000, $3d5ab
 
-Func_3d5ab::
+Func_3d5ab:: ; 3d5ab
 	dr $3d5ab, $3d6f4
 
-Func_3d6f4::
+Func_3d6f4:: ; 3d6f4
 	dr $3d6f4, $3d706
 
-Func_3d706::
+Func_3d706:: ; 3d706
 	dr $3d706, $3db9c
 
 SECTION "Bank 10", ROMX, BANK [$10]
 	dr $40000, $40004
 
-Func_40004::
+Func_40004:: ; 40004
 	dr $40004, $42417
 
-Func_42417:
-	dr $42417, $4334d
+Func_42417: ; 42417
+	dr $42417, $424b0
+
+Func_424b0: ; 424b0
+	dr $424b0, $429eb
+
+Func_429eb: ; 429eb
+	dr $429eb, $4334d
 
 SECTION "Bank 11", ROMX, BANK [$11]
-Func_44000::
+Func_44000:: ; 44000
 	dr $44000, $46b39
 
-Func_46b39::
+Func_46b39:: ; 46b39
 	dr $46b39, $46e47
 
-Func_46e47::
+Func_46e47:: ; 46e47
 	dr $46e47, $46f43
 
 SECTION "Bank 12", ROMX, BANK [$12]
 	dr $48000, $48825
 
-Func_48825::
+Func_48825:: ; 48825
 	dr $48825, $49420
 
-GFX_49420::
+GFX_49420:: ; 49420
 	dr $49420, $496a0
 
-GFX_496a0::
+GFX_496a0:: ; 496a0
 	dr $496a0, $4a7c4
 
 SECTION "Bank 13", ROMX, BANK [$13]
 	dr $4c000, $4c219
 
-Func_4c219::
+Func_4c219:: ; 4c219
 	dr $4c219, $4fb70
 
 SECTION "Bank 14", ROMX, BANK [$14]
-Func_50000::
+Func_50000:: ; 50000
     dr $50000, $5001f
 
-Func_5001f::
+Func_5001f:: ; 5001f
 	dr $5001f, $5170a
 
-Func_5170a::
+Func_5170a:: ; 5170a
 	dr $5170a, $528f3
 
-Func_528f3::
+Func_528f3:: ; 528f3
 	dr $528f3, $5343d
 
-Func_5343d::
+Func_5343d:: ; 5343d
 	dr $5343d, $53e9e
 
 SECTION "Bank 15", ROMX, BANK [$15]
 	dr $54000, $5485a
 
-Func_5485a::
+Func_5485a:: ; 5485a
 	dr $5485a, $55282
 
-Func_55282::
+Func_55282:: ; 55282
 	dr $55282, $55ded
 
-Func_55ded::
+Func_55ded:: ; 55ded
 	dr $55ded, $56aa2
 
-Func_56aa2::
+Func_56aa2:: ; 56aa2
 	dr $56aa2, $57fc8
 
 SECTION "Bank 16", ROMX, BANK [$16]
 	dr $58000, $58d49
 
-Func_58d49::
+Func_58d49:: ; 58d49
 	dr $58d49, $58d64
 
-Func_58d64::
+Func_58d64:: ; 58d64
 	dr $58d64, $5bd87
 
 SECTION "Bank 17", ROMX, BANK [$17]
 	dr $5c000, $5d40c
 
-Func_5d40c::
+Func_5d40c:: ; 5d40c
 	dr $5d40c, $5ea8e
 
 SECTION "Bank 18", ROMX, BANK [$18]
-Func_60000::
+Func_60000:: ; 60000
 	dr $60000, $608c0
 
-Func_608c0::
+Func_608c0:: ; 608c0
 	dr $608c0, $617fb
 
-Func_617fb::
+Func_617fb:: ; 617fb
 	dr $617fb, $626c0
 
 SECTION "Bank 19", ROMX, BANK [$19]
-Func_64000::
+Func_64000:: ; 64000
 	dr $64000, $649c1
 
-Func_649c1::
+Func_649c1:: ; 649c1
 	dr $649c1, $649ce
 
-Func_649ce::
+Func_649ce:: ; 649ce
 	dr $649ce, $64c67
 
-Func_64c67::
+Func_64c67:: ; 64c67
 	dr $64c67, $64db5
 
-Func_64db5::
+Func_64db5:: ; 64db5
 	dr $64db5, $65fc4
 
-Func_65fc4::
+Func_65fc4:: ; 65fc4
 	dr $65fc4, $661c3
 
-Func_661c3::
+Func_661c3:: ; 661c3
 	dr $661c3, $661d0
 
-Func_661d0::
+Func_661d0:: ; 661d0
 	dr $661d0, $662c3
 
-Func_662c3::
+Func_662c3:: ; 662c3
 	dr $662c3, $662dd
 
-Func_662dd::
+Func_662dd:: ; 662dd
 	dr $662dd, $673ab
 
 SECTION "Bank 1a", ROMX, BANK [$1a]
 	dr $68000, $68a0f
 
-Func_68a0f:
+Func_68a0f: ; 68a0f
 	dr $68a0f, $68b3d
 
-Func_68b3d:
+Func_68b3d: ; 68b3d
 	dr $68b3d, $68c73
 
-Func_68c73::
+Func_68c73:: ; 68c73
 	dr $68c73, $68d42
 
-Func_68d42::
+Func_68d42:: ; 68d42
 	dr $68d42, $68ebb
 
-Func_68ebb::
+Func_68ebb:: ; 68ebb
 	dr $68ebb, $68ef9
 
 PseudoRNGTable:: INCBIN "data/pseudorng.bin"
 
+Func_696f9: ; 696f9
 	dr $696f9, $69b08
 
-Func_69b08::
+Func_69b08:: ; 69b08
 	dr $69b08, $6a2f4
 
-Func_6a2f4:
+Func_6a2f4: ; 6a2f4
 	dr $6a2f4, $6a7b4
 
-Func_6a7b4::
+Func_6a7b4:: ; 6a7b4
 	dr $6a7b4, $6af04
 
-Func_6af04::
+Func_6af04:: ; 6af04
 	dr $6af04, $6be85
 
 SECTION "Bank 1b", ROMX, BANK [$1b]
 	dr $6c000, $6c085
 
-Func_6c085::
+Func_6c085:: ; 6c085
 	dr $6c085, $6e509
 
-Func_6e509:
+Func_6e509: ; 6e509
 	dr $6e509, $6ee9a
 
-Func_6ee9a:
+Func_6ee9a: ; 6ee9a
 	dr $6ee9a, $6f3bc
 
 SECTION "Bank 1c", ROMX, BANK [$1c]
 	dr $70000, $70034
 
-Func_70034:
+Func_70034: ; 70034
 	dr $70034, $73cfe
 
 SECTION "Bank 1d", ROMX, BANK [$1d]
-Func_74000::
+Func_74000:: ; 74000
 	dr $74000, $74140
 
-Func_74140::
+Func_74140:: ; 74140
 	dr $74140, $741c5
 
-Func_741c5:
+Func_741c5: ; 741c5
 	dr $741c5, $74d05
 
-Func_74d05:
+Func_74d05: ; 74d05
 	dr $74d05, $75a5d
 
-Func_75a5d:
+Func_75a5d: ; 75a5d
 	dr $75a5d, $76ff5
 
-Func_76ff5::
+Func_76ff5:: ; 76ff5
 	dr $76ff5, $779a1
 
-Func_779a1::
+Func_779a1:: ; 779a1
 	dr $779a1, $77a38
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
-Func_78000::
+Func_78000:: ; 78000
 	dr $78000, $7bef5
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
-Func_7c000::
+Func_7c000:: ; 7c000
 	dr $7c000, $7c0a7
 
-Func_7c0a7::
+Func_7c0a7:: ; 7c0a7
 	dr $7c0a7, $7c33a
 
-Func_7c33a::
+Func_7c33a:: ; 7c33a
 	dr $7c33a, $7dbff
 
-Func_7dbff::
+Func_7dbff:: ; 7dbff
 	dr $7dbff, $7defa
 
-Func_7defa::
+Func_7defa:: ; 7defa
 	dr $7defa, $7df32
 
-Func_7df32::
+Func_7df32:: ; 7df32
 	dr $7df32, $7e055
 
-Func_7e055::
+Func_7e055:: ; 7e055
 	dr $7e055, $7e182
 
-Func_7e182::
+Func_7e182:: ; 7e182
 	dr $7e182, $7e19a
 
-Func_7e19a::
+Func_7e19a:: ; 7e19a
 	dr $7e19a, $7e21d
 
 SECTION "Bank 20", ROMX, BANK [MUSIC_ENGINE]
 	dr $80000, $80023
 
-Func_80023::
+Func_80023:: ; 80023
 	dr $80023, $803e3
 
-Func_803e3::
+Func_803e3:: ; 803e3
 	dr $803e3, $803e6
 
-Func_803e6::
+Func_803e6:: ; 803e6
 	dr $803e6, $80548
 
-Func_80548::
+Func_80548:: ; 80548
 	dr $80548, $80908
 
-Func_80908::
+Func_80908:: ; 80908
 	dr $80908, $8090b
 
-Func_8090b::
+Func_8090b:: ; 8090b
 	dr $8090b, $80a6d
 
-Func_80a6d::
+Func_80a6d:: ; 80a6d
 	dr $80a6d, $80e31
 
-Func_80e31::
+Func_80e31:: ; 80e31
 	dr $80e31, $80e34
 
-Func_80e34::
+Func_80e34:: ; 80e34
 	dr $80e34, $80fa3
 
-Func_80fa3::
+Func_80fa3:: ; 80fa3
 	dr $80fa3, $81383
 
-Func_81383::
+Func_81383:: ; 81383
 	dr $81383, $813ba
 
-Func_813ba::
+Func_813ba:: ; 813ba
 	dr $813ba, $8143e
 
-Func_8143e::
+Func_8143e:: ; 8143e
 	dr $8143e, $81468
 
-Func_81468::
+Func_81468:: ; 81468
 	dr $81468, $81482
 
-Func_81482::
+Func_81482:: ; 81482
 	dr $81482, $81490
 
-Func_81490::
+Func_81490:: ; 81490
 	dr $81490, $814a9
 
-Func_814a9::
+Func_814a9:: ; 814a9
 	dr $814a9, $814c5
 
-Func_814c5::
+Func_814c5:: ; 814c5
 	dr $814c5, $816fd
 
-Func_816fd::
+Func_816fd:: ; 816fd
 	dr $816fd, $81817
 
-Func_81817::
+Func_81817:: ; 81817
 	dr $81817, $81857
 
-Func_81857::
+Func_81857:: ; 81857
 	dr $81857, $8371e
 
 SECTION "Bank 21", ROMX, BANK [$21]
-Func_84000::
+Func_84000:: ; 84000
 	dr $84000, $84012
 
-Func_84012::
+Func_84012:: ; 84012
 	dr $84012, $840c0
 
-Func_840c0::
+Func_840c0:: ; 840c0
 	dr $840c0, $87a3f
 
 SECTION "Bank 22", ROMX, BANK [$22]
@@ -6206,7 +7573,7 @@ SECTION "Bank 23", ROMX, BANK [$23]
 	dr $8c000, $8ff15
 
 SECTION "Bank 24", ROMX, BANK [$24]
-Data_90000::
+Data_90000:: ; 90000
 	dr $90000, $93e1d
 
 SECTION "Bank 25", ROMX, BANK [$25]
@@ -6215,25 +7582,25 @@ SECTION "Bank 25", ROMX, BANK [$25]
 SECTION "Bank 26", ROMX, BANK [$26]
 	dr $98000, $99880
 
-Data_99880::
+Data_99880:: ; 99880
 	dr $99880, $9a4d0
 
-Data_9a4d0::
+Data_9a4d0:: ; 9a4d0
 	dr $9a4d0, $9bc4b
 
 SECTION "Bank 27", ROMX, BANK [$27]
 	dr $9c000, $9cf0f
 
-Func_9cf0f::
+Func_9cf0f:: ; 9cf0f
 	dr $9cf0f, $9d0ff
 
-Func_9d0ff::
+Func_9d0ff:: ; 9d0ff
 	dr $9d0ff, $9d106
 
-Func_9d106::
+Func_9d106:: ; 9d106
 	dr $9d106, $9d130
 
-Func_9d130::
+Func_9d130:: ; 9d130
 	dr $9d130, $9fc25
 
 SECTION "Bank 28", ROMX, BANK [$28]
@@ -6242,19 +7609,19 @@ SECTION "Bank 28", ROMX, BANK [$28]
 SECTION "Bank 29", ROMX, BANK [$29]
 	dr $a4000, $a4f4e
 
-Func_a4f4e::
+Func_a4f4e:: ; a4f4e
 	dr $a4f4e, $a507a
 
-Func_a507a::
+Func_a507a:: ; a507a
 	dr $a507a, $a509b
 
-Func_a509b::
+Func_a509b:: ; a509b
 	dr $a509b, $a50c5
 
-Func_a50c5::
+Func_a50c5:: ; a50c5
 	dr $a50c5, $a5383
 
-Func_a5383::
+Func_a5383:: ; a5383
 	dr $a5383, $a6daa
 
 SECTION "Bank 2a", ROMX, BANK [$2a]
@@ -6269,25 +7636,25 @@ SECTION "Bank 2c", ROMX, BANK [$2c]
 SECTION "Bank 2d", ROMX, BANK [$2d]
 	dr $b4000, $b6aa8
 
-Func_b6aa8::
+Func_b6aa8:: ; b6aa8
 	dr $b6aa8, $b6bdf
 
-Func_b6bdf::
+Func_b6bdf:: ; b6bdf
 	dr $b6bdf, $b6c95
 
 SECTION "Bank 2e", ROMX, BANK [$2e]
 	dr $b8000, $b8156
 
-Func_b8156::
+Func_b8156:: ; b8156
 	dr $b8156, $b8175
 
-Func_b8175::
+Func_b8175:: ; b8175
 	dr $b8175, $b878c
 
-Func_b878c::
+Func_b878c:: ; b878c
 	dr $b878c, $b8b16
 
-Func_b8b16::
+Func_b8b16:: ; b8b16
 	dr $b8b16, $bb12a
 
 SECTION "Bank 2f", ROMX, BANK [$2f]
@@ -6296,31 +7663,31 @@ SECTION "Bank 2f", ROMX, BANK [$2f]
 SECTION "Bank 30", ROMX, BANK [$30]
 	dr $c0000, $c02c0
 
-Func_c02c0::
+Func_c02c0:: ; c02c0
 	dr $c02c0, $c0307
 
-Func_c0307:
+Func_c0307: ; c0307
 	dr $c0307, $c0367
 
-Func_c0367::
+Func_c0367:: ; c0367
 	dr $c0367, $c36e6
 
 SECTION "Bank 31", ROMX, BANK [$31]
 	dr $c4000, $c727a
 
-Func_c727a::
+Func_c727a:: ; c727a
 	dr $c727a, $c738a
 
-Func_c738a::
+Func_c738a:: ; c738a
 	dr $c738a, $c7391
 
-Func_c7391::
+Func_c7391:: ; c7391
 	dr $c7391, $c73d6
 
-Func_c73d6::
+Func_c73d6:: ; c73d6
 	dr $c73d6, $c7a99
 
-Func_c7a99::
+Func_c7a99:: ; c7a99
 	dr $c7a99, $c7aec
 
 SECTION "Bank 32", ROMX, BANK [$32]
@@ -6335,16 +7702,16 @@ SECTION "Bank 34", ROMX, BANK [$34]
 SECTION "Bank 35", ROMX, BANK [$35]
 	dr $d4000, $d56c9
 
-Func_d56c9::
+Func_d56c9:: ; d56c9
 	dr $d56c9, $d5828
 
-Func_d5828::
+Func_d5828:: ; d5828
 	dr $d5828, $d584f
 
-Func_d584f::
+Func_d584f:: ; d584f
 	dr $d584f, $d5879
 
-Func_d5879::
+Func_d5879:: ; d5879
 	dr $d5879, $d6926
 
 SECTION "Bank 36", ROMX, BANK [$36]
@@ -6380,47 +7747,51 @@ SECTION "Bank 3f", ROMX, BANK [$3f]
 	dr $fc000, $ff6d0
 
 SECTION "Bank 40", ROMX, BANK [$40]
-	dr $100000, $102f36
+	dr $100000, $101351
+
+Data_101351: ; 101351
+; address, value to be loaded there
+	dr $101351, $102f36
 
 SECTION "Bank 41", ROMX, BANK [$41]
-Func_104000::
+Func_104000:: ; 104000
 	dr $104000, $104222
 
-Func_104222::
+Func_104222:: ; 104222
 	dr $104222, $10424f
 
-Func_10424f::
+Func_10424f:: ; 10424f
 	dr $10424f, $1042b3
 
-Func_1042b3::
+Func_1042b3:: ; 1042b3
 	dr $1042b3, $1042c6
 
-Func_1042c6::
+Func_1042c6:: ; 1042c6
 	dr $1042c6, $106719
 
-Func_106719::
+Func_106719:: ; 106719
 	dr $106719, $106865
 
-Func_106865::
+Func_106865:: ; 106865
 	dr $106865, $106992
 
-Func_106992::
+Func_106992:: ; 106992
 	dr $106992, $106d4a
 
 SECTION "Bank 42", ROMX, BANK [$42]
 	dr $108000, $108018
 
-Func_108018::
+Func_108018:: ; 108018
 	dr $108018, $108040
 
-Func_108040::
+Func_108040:: ; 108040
 	dr $108040, $10aa21
 
 SECTION "Bank 43", ROMX, BANK [$43]
-Func_10c000::
+Func_10c000:: ; 10c000
 	dr $10c000, $10c011
 
-Func_10c011::
+Func_10c011:: ; 10c011
 	dr $10c011, $10eb1e
 
 SECTION "Bank 44", ROMX, BANK [$44]
@@ -6486,16 +7857,16 @@ SECTION "Bank 57", ROMX, BANK [$57]
 SECTION "Bank 58", ROMX, BANK [$58]
 	dr $160000, $160445
 
-Data_160445::
+Data_160445:: ; 160445
 	dr $160445, $16044d
 
-Data_16044d::
+Data_16044d:: ; 16044d
 	dr $16044d, $1604c5
 
-Data_1604c5::
+Data_1604c5:: ; 1604c5
 	dr $1604c5, $1604ce
 
-Data_1604ce::
+Data_1604ce:: ; 1604ce
 	dr $1604ce, $1604ed
 
 SECTION "Bank 59", ROMX, BANK [$59]
@@ -6513,7 +7884,7 @@ SECTION "Bank 5c", ROMX, BANK [$5c]
 SECTION "Bank 60", ROMX, BANK [$60]
 	dr $180000, $180d40
 
-Data_180d40::
+Data_180d40:: ; 180d40
 	dr $180d40, $181ae2
 
 SECTION "Bank 61", ROMX, BANK [$61]
@@ -6531,8 +7902,8 @@ SECTION "Bank 64", ROMX, BANK [$64]
 SECTION "Bank 66", ROMX, BANK [$66]
 	dr $198000, $198c03
 
-Func_198c03::
+Func_198c03:: ; 198c03
 	dr $198c03, $198c5c
 
-Func_198c5c::
+Func_198c5c:: ; 198c5c
 	dr $198c5c, $198ccf

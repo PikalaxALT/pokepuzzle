@@ -159,3 +159,14 @@ ELSE
 	ld a, [\3 + 8 * \2 + \1]
 ENDC
 ENDM
+
+tile EQUS "+ $10 *"
+
+lb: MACRO
+	ld \1, (\2 << 8) | \3
+	ENDM
+
+aligned_dwb: MACRO
+	dwb \1, \2
+	db 0
+	ENDM

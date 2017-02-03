@@ -246,7 +246,7 @@ DefaultVBlank:
 Func_02f3:: ; 2f3 (0:02f3)
 	jp [hl]
 
-Func_02f4::
+Func_02f4:: ; 02f4
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -379,7 +379,7 @@ Func_038c:: ; 38c (0:038c)
 	jr nz, .asm_0397
 	ret
 
-Func_039d::
+Func_039d:: ; 039d
 	ld a, [hFFB5]
 	cp $a0
 	jr nc, .asm_03b5
@@ -400,7 +400,7 @@ Func_039d::
 	ld [hFFB5], a
 	ret
 
-Func_03b9::
+Func_03b9:: ; 03b9
 REPT 40
 	add hl, de
 	ld [hl], a
@@ -521,7 +521,7 @@ ENDR
 .soft_reset
 	ret
 
-Func_04bb::
+Func_04bb:: ; 04bb
 	ld a, [hLCDC]
 	set 7, a
 	ld [hLCDC], a
@@ -564,7 +564,7 @@ Func_04c4:: ; 4c4 (0:04c4)
 	ld [hFFBB], a
 	ret
 
-Func_04fb::
+Func_04fb:: ; 04fb
 	ld a, [hLCDC]
 	res 7, a
 	ld [hLCDC], a
@@ -609,7 +609,7 @@ Func_0532:: ; 532 (0:0532)
 	jr nz, .asm_0539
 	ret
 
-Func_053d::
+Func_053d:: ; 053d
 	ld hl, hFFB8
 	ld a, [hl]
 .asm_0541
@@ -617,7 +617,7 @@ Func_053d::
 	jr z, .asm_0541
 	ret
 
-Func_0545::
+Func_0545:: ; 0545
 	ld hl, wc495
 	ld b, $40
 	ld c, $69
@@ -668,7 +668,7 @@ Func_0570:: ; 570 (0:0570)
 	jr nz, .asm_0576
 	ret
 
-Func_057e::
+Func_057e:: ; 057e
 	dec bc
 	inc b
 	inc c
@@ -684,7 +684,7 @@ Func_057e::
 	jr nz, .asm_0581
 	ret
 
-Func_058d::
+Func_058d:: ; 058d
 	pop hl
 	inc hl
 	inc hl
@@ -782,7 +782,7 @@ ENDR
 	add sp, 12
 	ret
 
-Func_0621::
+Func_0621:: ; 0621
 	pop de
 	ld hl, $d
 	add hl, de
@@ -1013,7 +1013,7 @@ addr = addr +- 2
 ENDR
 	ret
 
-Func_0802::
+Func_0802:: ; 0802
 	pop hl
 	ld c, l
 	ld b, h
@@ -1025,7 +1025,7 @@ Func_0802::
 	call Func_0692
 	ret
 
-Func_0180::
+Func_0180:: ; 0180
 	push af
 	push hl
 	ld hl, sp+$4
@@ -1123,7 +1123,7 @@ StackFarCall:: ; 869 (0:0869)
 ._hl_
 	jp [hl]
 
-Func_0888::
+Func_0888:: ; 0888
 	ld c, a
 	pop de
 	ld hl, $4
@@ -1157,7 +1157,7 @@ Func_0888::
 	bankswitch
 	ret
 
-Func_08bc::
+Func_08bc:: ; 08bc
 	push hl
 	ld l, a
 	ld a, [hROMBank]
@@ -1209,7 +1209,7 @@ Func_08ef:: ; 8ef (0:08ef)
 .asm_0903
 	jr .asm_0903
 
-Func_0905::
+Func_0905:: ; 0905
 	cp $e0
 	jr nc, asm_093b ; ERAM or GBIO
 	cp $d0
@@ -1278,7 +1278,7 @@ Func_093d:: ; 93d (0:093d)
 	vrambankswitch
 	ret
 
-Func_0967::
+Func_0967:: ; 0967
 	pop hl
 	inc hl
 	inc hl
@@ -1390,7 +1390,7 @@ Pointers_09c5:
 	dab Func_108018
 	dab Func_108040
 
-Func_0a31::
+Func_0a31:: ; 0a31
 	push bc
 	ld c, l
 	ld b, h
@@ -1417,7 +1417,7 @@ Func_0a31::
 	pop bc
 	ret
 
-Func_0a4f::
+Func_0a4f:: ; 0a4f
 	push de
 	push bc
 	push bc
@@ -1481,7 +1481,7 @@ ENDR
 	ld [de], a
 	ret
 
-Func_0b19::
+Func_0b19:: ; 0b19
 	add a
 	ld e, a
 	ld d, $0
@@ -1503,7 +1503,7 @@ ENDR
 y = y + 1
 ENDR
 
-Func_0bef::
+Func_0bef:: ; 0bef
 	ld l, e
 	ld h, d
 	ld de, -1
@@ -1546,21 +1546,21 @@ Func_0c18:: ; c18 (0:0c18)
 	ld b, a
 	ret
 
-Func_0c1f::
+Func_0c1f:: ; 0c1f
 	ld hl, hFFDA
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ret
 
-Func_0c26::
+Func_0c26:: ; 0c26
 	ld a, l
 	ld [hFFDA], a
 	ld a, h
 	ld [hFFDB], a
 	ret
 
-Func_0c2d::
+Func_0c2d:: ; 0c2d
 	ld hl, hFFD5
 	ld a, [hli]
 	ld h, [hl]
@@ -1574,7 +1574,7 @@ Func_0c34:: ; c34 (0:0c34)
 	ld [hFFD6], a
 	ret
 
-Func_0c3b::
+Func_0c3b:: ; 0c3b
 	ld a, [hFFD3]
 	ld e, a
 	ld a, [hFFD4]
@@ -1723,7 +1723,7 @@ Func_0cf3:: ; cf3 (0:0cf3)
 	ld [wc371], a
 	ret
 
-Func_0d05::
+Func_0d05:: ; 0d05
 	call Func_0d3a
 	ld a, $3a ; ld a, [hld]
 	ld [wc3a0], a
@@ -1732,7 +1732,7 @@ Func_0d05::
 	ld [wc36c], a
 	ret
 
-Func_0d17::
+Func_0d17:: ; 0d17
 	call Func_0cf3
 	ld a, $3a ; ld a, [hld]
 	ld [wc3a0], a
@@ -1740,7 +1740,7 @@ Func_0d17::
 	ld [wc364], a
 	ret
 
-Func_0d26::
+Func_0d26:: ; 0d26
 	call Func_0d3a
 	ld a, $18 ; jr
 	ld [wc362], a
@@ -1801,7 +1801,7 @@ Func_0d91:: ; d91 (0:0d91)
 	ei
 	ret
 
-Fimc_0d9f::
+Fimc_0d9f:: ; 0d9f
 	call Func_0daf
 	di
 	ld a, $dd
@@ -1852,7 +1852,7 @@ Func_0daf:: ; daf (0:0daf)
 	ld [rTAC], a
 	ret
 
-Func_0df9::
+Func_0df9:: ; 0df9
 	xor a
 	ld [rSB], a
 	ld [hFFEC], a
@@ -1860,7 +1860,7 @@ Func_0df9::
 	ld [hFFEB], a
 	ret
 
-Func_0e03::
+Func_0e03:: ; 0e03
 	ld a, [hFFEB]
 	and a
 	jr nz, .asm_0e15
@@ -1874,7 +1874,7 @@ Func_0e03::
 .asm_0e15
 	ret
 
-Func_0e16::
+Func_0e16:: ; 0e16
 	ld a, [hFFEB]
 	and a
 	ret
@@ -2072,7 +2072,7 @@ Timer::
 	ld [wc33a], a
 	ret
 
-Func_0f24::
+Func_0f24:: ; 0f24
 	ld a, [wc33b]
 	ld e, a
 	ld a, [wc33a]
@@ -2129,7 +2129,7 @@ Func_0f49:: ; f49 (0:0f49)
 	ld [wc33c], a
 	ret
 
-Func_0f6a::
+Func_0f6a:: ; 0f6a
 	ld a, [wc33d]
 	ld e, a
 	ld a, [wc33c]
@@ -2158,7 +2158,7 @@ Func_0f6a::
 	ld [hli], a
 	ret
 
-Func_0f8f::
+Func_0f8f:: ; 0f8f
 	push hl
 	push bc
 	push de
@@ -2170,7 +2170,7 @@ Func_0f8f::
 	pop hl
 	ret
 
-Func_0f9f::
+Func_0f9f:: ; 0f9f
 	add a
 	add a
 	add a
@@ -2183,7 +2183,7 @@ Func_0f9f::
 	ld [hl], a
 	ret
 
-Func_0fad::
+Func_0fad:: ; 0fad
 	push hl
 	ld hl, wc5a7
 	add hl, de
@@ -2203,7 +2203,7 @@ Func_0fad::
 	ld [hl], a
 	ret
 
-Func_0fc1::
+Func_0fc1:: ; 0fc1
 	ld hl, wc5ad
 	add hl, de
 	ld a, b
@@ -2349,7 +2349,7 @@ Func_0fca:: ; fca (0:0fca)
 .soft_lock
 	jr .soft_lock
 
-Func_1095::
+Func_1095:: ; 1095
 	ld e, $7
 	ld hl, wc5a7
 .asm_109a
@@ -2385,7 +2385,7 @@ Func_1095::
 
 INCLUDE "home/music.asm"
 
-Data_1514::
+Data_1514:: ; 1514
 	dr $1514, $185c
 
 Func_185c: ; 185c (0:185c)
@@ -2494,7 +2494,7 @@ Func_18dd: ; 18dd (0:18dd)
 	nop
 	ret
 
-Func_18f1::
+Func_18f1:: ; 18f1
 	ld e, a
 	add a
 	add a
@@ -2521,7 +2521,7 @@ Func_18f1::
 .asm_1910
 	ret
 
-Data_1911::
+Data_1911:: ; 1911
 	dab Data_180d40
 	dw $0c3b
 
@@ -2534,15 +2534,15 @@ Data_1911::
 	dab Data_9a4d0
 	dw $065f
 
-Func_1925::
+Func_1925:: ; 1925
 	homecall Func_198c03
 	ret
 
-Func_1939::
+Func_1939:: ; 1939
 	homecall Func_198c5c
 	ret
 
-Data_194d::
+Data_194d:: ; 194d
 	dr $194d, $1968
 
 Func_1968: ; 1968 (0:1968)
@@ -2603,10 +2603,10 @@ FarRequestHDMATransfer::
 	call Func_1968
 	ret
 
-Func_19bc::
+Func_19bc:: ; 19bc
 	jp Func_025e
 
-Func_19bf::
+Func_19bf:: ; 19bf
 	xor a
 	vrambankswitch
 last_src = $00
@@ -2656,7 +2656,7 @@ cur_dest = cur_dest + $20
 ENDR
 	ret
 
-Func_1ba2::
+Func_1ba2:: ; 1ba2
 	ld hl, wc51a
 	ld de, wc9be
 REPT $3F
@@ -2668,7 +2668,7 @@ ENDR
 	ld [de], a
 	ret
 
-Func_1c68::
+Func_1c68:: ; 1c68
 	ld a, $1
 	vrambankswitch
 	ld a, [hWRAMBank]
@@ -2694,7 +2694,7 @@ Func_1c68::
 	wrambankswitch
 	ret
 
-Func_1c92::
+Func_1c92:: ; 1c92
 	ld hl, wc86a
 	ld a, [hli]
 	or [hl]
@@ -2704,7 +2704,7 @@ Func_1c92::
 	scf
 	ret
 
-Func_1c9d::
+Func_1c9d:: ; 1c9d
 	ld hl, wc86c
 asm_1ca0
 	inc hl
@@ -2740,7 +2740,7 @@ asm_1ca0
 	and a
 	ret
 
-Func_1cd6::
+Func_1cd6:: ; 1cd6
 	ld bc, wc8da
 	ld hl, wc8db
 	ld a, [bc]
@@ -2783,7 +2783,7 @@ Func_1cd6::
 	scf
 	ret
 
-Func_1d15::
+Func_1d15:: ; 1d15
 	call Func_1d25
 	ret nz
 	ld hl, wca16
@@ -2802,7 +2802,7 @@ Func_1d25:: ; 1d25 (0:1d25)
 	cp $8
 	ret
 
-Func_1d31::
+Func_1d31:: ; 1d31
 	ld a, [wcea1]
 	cp $5
 	ret z
@@ -2811,7 +2811,7 @@ Func_1d31::
 	jr z, .softlock
 	ret
 
-Func_1d3c::
+Func_1d3c:: ; 1d3c
 	ld a, [wcea1]
 	cp $f
 	jr z, .asm_1d48
@@ -2825,12 +2825,12 @@ Func_1d3c::
 	ld [wcea1], a
 	ret
 
-Func_1d4e::
+Func_1d4e:: ; 1d4e
 	ld a, $5
 	ld [wcea1], a
 	ret
 
-Func_1d54::
+Func_1d54:: ; 1d54
 	and a
 	jr z, .asm_1d69
 	dec a
@@ -2872,7 +2872,7 @@ Func_1d54::
 	pop hl
 	ret
 
-Func_1d81::
+Func_1d81:: ; 1d81
 	farcall Func_68c73
 	ret
 
@@ -2985,7 +2985,7 @@ Func_1d8f:: ; 1d8f (0:1d8f)
 	wrambankswitch
 	ret
 
-Func_1e2b::
+Func_1e2b:: ; 1e2b
 	ld de, $0
 .asm_1e2e
 	call Func_1d8f
@@ -3005,7 +3005,7 @@ Func_1e2b::
 	ld [hl], a
 	jr asm_1e65
 
-Func_1e48::
+Func_1e48:: ; 1e48
 	ld de, $0
 .asm_1e4b
 	call Func_1d88
@@ -3069,7 +3069,7 @@ asm_1e65
 	scf
 	ret
 
-Func_1ea7::
+Func_1ea7:: ; 1ea7
 	ld a, [hWRAMBank]
 	push af
 	ld a, $2
@@ -3089,7 +3089,7 @@ Func_1ea7::
 	wrambankswitch
 	ret
 
-Func_1ec2::
+Func_1ec2:: ; 1ec2
 	push bc
 	ld a, [hFF8A]
 	add a
@@ -3124,7 +3124,7 @@ Func_1ec2::
 .asm_1eeb
 	ret
 
-Func_1eec::
+Func_1eec:: ; 1eec
 	ld [hFFBC], a
 	ld a, [hGBC]
 	dec a
@@ -3142,7 +3142,7 @@ Func_1eec::
 	ld [hFFBB], a
 	ret
 
-Func_1f01::
+Func_1f01:: ; 1f01
 	push bc
 	ld c, a
 	add a
@@ -3160,7 +3160,7 @@ Func_1f01::
 	pop bc
 	ret
 
-Func_1f12::
+Func_1f12:: ; 1f12
 	push bc
 	push hl
 	ld hl, wc8d3
@@ -3188,7 +3188,7 @@ Func_1f12::
 	pop bc
 	ret
 
-Func_1f38::
+Func_1f38:: ; 1f38
 	ld a, [wcead]
 	and a
 	jr nz, .asm_1f42
@@ -3201,7 +3201,7 @@ Func_1f38::
 
 INCLUDE "home/random.asm"
 
-Func_1ff0::
+Func_1ff0:: ; 1ff0
 	ld a, [wcadf]
 	dec a
 	jr z, .asm_1ffa
@@ -3312,7 +3312,7 @@ Func_207a:: ; 207a (0:207a)
 	jr nz, .asm_2080
 	ret
 
-Func_208e::
+Func_208e:: ; 208e
 	pushsramstateandenable 1
 	ld hl, s1_a002
 	ld bc, $682
@@ -3332,7 +3332,7 @@ Func_208e::
 	popsramstate
 	ret
 
-Func_20d4::
+Func_20d4:: ; 20d4
 	pushsramstateandenable 1
 	ld hl, s1_a686
 	ld bc, $1831
@@ -3344,7 +3344,7 @@ Func_20d4::
 	popsramstate
 	ret
 
-Func_2104::
+Func_2104:: ; 2104
 	pushsramstateandenable 1
 	ld b, $0
 .asm_211a
@@ -3358,7 +3358,7 @@ Func_2104::
 	popsramstate
 	ret
 
-Func_212f::
+Func_212f:: ; 212f
 	pushsramstateandenable 1
 	ld b, $0
 .asm_2145
@@ -3372,7 +3372,7 @@ Func_212f::
 	popsramstate
 	ret
 
-Func_215a::
+Func_215a:: ; 215a
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3395,7 +3395,7 @@ Func_215a::
 	popsramstate
 	ret
 
-Func_2198::
+Func_2198:: ; 2198
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3418,7 +3418,7 @@ Func_2198::
 	popsramstate
 	ret
 
-Func_21d6::
+Func_21d6:: ; 21d6
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3437,7 +3437,7 @@ Func_21d6::
 	popsramstate
 	ret
 
-Func_2210::
+Func_2210:: ; 2210
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3456,7 +3456,7 @@ Func_2210::
 	popsramstate
 	ret
 
-Func_224a::
+Func_224a:: ; 224a
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3492,7 +3492,7 @@ Func_224a::
 	popsramstate
 	ret
 
-Func_229d::
+Func_229d:: ; 229d
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3528,7 +3528,7 @@ Func_229d::
 	popsramstate
 	ret
 
-Func_22f0::
+Func_22f0:: ; 22f0
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3557,7 +3557,7 @@ Func_22f0::
 	popsramstate
 	ret
 
-Func_2338::
+Func_2338:: ; 2338
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3586,7 +3586,7 @@ Func_2338::
 	popsramstate
 	ret
 
-Func_2380::
+Func_2380:: ; 2380
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3606,7 +3606,7 @@ Func_2380::
 	popsramstate
 	ret
 
-Func_23bb::
+Func_23bb:: ; 23bb
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3624,7 +3624,7 @@ Func_23bb::
 	popsramstate
 	ret
 
-Func_23f4::
+Func_23f4:: ; 23f4
 	pushsramstateandenable 1
 	call Func_2444
 	ld a, [wcdc5]
@@ -3632,7 +3632,7 @@ Func_23f4::
 	popsramstate
 	ret
 
-Func_241c::
+Func_241c:: ; 241c
 	pushsramstateandenable 1
 	call Func_2444
 	ld a, [hl]
@@ -3673,7 +3673,7 @@ Func_2444:: ; 2444 (0:2444)
 	add hl, de
 	ret
 
-Func_2470::
+Func_2470:: ; 2470
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3694,7 +3694,7 @@ Func_2470::
 	popsramstate
 	ret
 
-Func_24ac::
+Func_24ac:: ; 24ac
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3713,7 +3713,7 @@ Func_24ac::
 	popsramstate
 	ret
 
-Func_24e6::
+Func_24e6:: ; 24e6
 	pushsramstateandenable 1
 	call Func_253d
 	ld a, [wcdc6]
@@ -3724,7 +3724,7 @@ Func_24e6::
 	popsramstate
 	ret
 
-Func_2515::
+Func_2515:: ; 2515
 	pushsramstateandenable 1
 	call Func_253d
 	ld a, [hl]
@@ -3817,7 +3817,7 @@ Func_257e:: ; 257e (0:257e)
 	add hl, de
 	ret
 
-Func_25ab::
+Func_25ab:: ; 25ab
 	pushsramstateandenable 1
 	call Func_26d4
 	push hl
@@ -3883,7 +3883,7 @@ Func_25ab::
 	popsramstate
 	ret
 
-Func_2626::
+Func_2626:: ; 2626
 	pushsramstateandenable 1
 	call Func_26d4
 	ld a, [hl]
@@ -3930,7 +3930,7 @@ Func_2626::
 	popsramstate
 	ret
 
-Func_2684::
+Func_2684:: ; 2684
 	pushsramstateandenable 1
 	call Func_26d4
 	ld a, [wcdc7]
@@ -3938,7 +3938,7 @@ Func_2684::
 	popsramstate
 	ret
 
-Func_26ac::
+Func_26ac:: ; 26ac
 	pushsramstateandenable 1
 	call Func_26d4
 	ld a, [hl]
@@ -3971,7 +3971,7 @@ Func_26ea:: ; 26ea (0:26ea)
 	popsramstate_nobankswitch
 	ret
 
-Func_2706::
+Func_2706:: ; 2706
 	pushsramstateandenable_nobankswitch
 	call StackFarCopyMemory
 	dab wcdc3
@@ -3980,7 +3980,7 @@ Func_2706::
 	popsramstate_nobankswitch
 	ret
 
-Func_2722::
+Func_2722:: ; 2722
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -3999,7 +3999,7 @@ Func_2722::
 	popsramstate
 	ret
 
-Func_275c::
+Func_275c:: ; 275c
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4106,31 +4106,31 @@ Func_27fd:: ; 27fd (0:27fd)
 	popsramstate
 	ret
 
-Func_2864::
+Func_2864:: ; 2864
 	ld hl, s1_a45c
 	call Func_2796
 	ret
 
-Func_286b::
+Func_286b:: ; 286b
 	ld hl, s1_a632
 	xor a
 	ld [wcdc3], a
 	call Func_2796
 	ret
 
-Func_2876::
+Func_2876:: ; 2876
 	ld hl, s1_a45c
 	call Func_27fd
 	ret
 
-Func_287d::
+Func_287d:: ; 287d
 	ld hl, s1_a632
 	xor a
 	ld [wcdc3], a
 	call Func_27fd
 	ret
 
-Func_2888::
+Func_2888:: ; 2888
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4171,7 +4171,7 @@ Func_2888::
 	popsramstate
 	ret
 
-Func_28ea::
+Func_28ea:: ; 28ea
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4212,7 +4212,7 @@ Func_28ea::
 	popsramstate
 	ret
 
-Func_294c::
+Func_294c:: ; 294c
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4235,7 +4235,7 @@ Func_294c::
 	popsramstate
 	ret
 
-Func_298a::
+Func_298a:: ; 298a
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4258,7 +4258,7 @@ Func_298a::
 	popsramstate
 	ret
 
-Func_29c8::
+Func_29c8:: ; 29c8
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4277,7 +4277,7 @@ Func_29c8::
 	popsramstate
 	ret
 
-Func_2a02::
+Func_2a02:: ; 2a02
 	pushsramstateandenable 1
 	ld a, [wcdc3]
 	ld c, a
@@ -4296,7 +4296,7 @@ Func_2a02::
 	popsramstate
 	ret
 
-Func_2a3c::
+Func_2a3c:: ; 2a3c
 	pushsramstateandenable 1
 	call Func_2a8c
 	ld a, [wcdc5]
@@ -4304,7 +4304,7 @@ Func_2a3c::
 	popsramstate
 	ret
 
-Func_2a64::
+Func_2a64:: ; 2a64
 	pushsramstateandenable 1
 	call Func_2a8c
 	ld a, [hl]
@@ -4397,7 +4397,7 @@ Func_2b30: ; 2b30 (0:2b30)
 	ld h, a
 	jp [hl]
 
-Pointers_2b46::
+Pointers_2b46:: ; 2b46
 	dab Func_7c000
 	dab Func_7c0a7
 	dab Func_14000
@@ -4471,7 +4471,7 @@ Pointers_2b46::
 	dab Func_d584f
 	dab Func_d5879
 
-Func_2c1e::
+Func_2c1e:: ; 2c1e
 	push af
 	push bc
 	push de
@@ -4604,11 +4604,11 @@ Func_2cd9: ; 2cd9 (0:2cd9)
 	pop bc
 	ret
 
-Func_2d00::
+Func_2d00:: ; 2d00
 	farcall Func_1036d
 	ret
 
-Func_2d07::
+Func_2d07:: ; 2d07
 	ld a, [hVRAMBank]
 	push af
 	xor a
@@ -4661,7 +4661,7 @@ Func_2d07::
 	vrambankswitch
 	ret
 
-Func_2d63::
+Func_2d63:: ; 2d63
 	ld a, [hVRAMBank]
 	push af
 	xor a
@@ -4681,7 +4681,7 @@ Func_2d7c:: ; 2d7c (0:2d7c)
 .asm_2d85
 	ret
 
-Func_2d86::
+Func_2d86:: ; 2d86
 	ld hl, wc495
 	ld a, $80
 	ld [rBGPI], a
@@ -4694,7 +4694,7 @@ Func_2d86::
 	jr nz, .asm_2d91
 	ret
 
-Func_2d97::
+Func_2d97:: ; 2d97
 	ld a, $b4
 	ld [rBGPI], a
 	ld a, [wc5df]
@@ -4717,7 +4717,7 @@ Func_2db4:: ; 2db4 (0:2db4)
 	ld [wce51], a
 	ret
 
-Func_2dc3::
+Func_2dc3:: ; 2dc3
 	call Func_2db4
 	xor a
 	ld [hFFBA], a
@@ -4730,7 +4730,7 @@ Func_2dc3::
 	ld [hl], Func_2c1e / $100
 	ret
 
-Func_2dd7::
+Func_2dd7:: ; 2dd7
 	ld hl, wVBlank
 	ld [hl], $c3 ; jp
 	inc hl
@@ -4751,7 +4751,7 @@ Func_2dea:: ; 2dea (0::2dea)
 	call Func_2db4
 	ret
 
-Func_2df7::
+Func_2df7:: ; 2df7
 	ld de, wce3a
 	ld bc, $62
 	call Func_0570
@@ -4770,7 +4770,7 @@ Func_2e04:: ; 2e04 (0::2e04)
 	wrambankswitch
 	ret
 
-Func_2e1c::
+Func_2e1c:: ; 2e1c
 	ld a, $1
 	wrambankswitch
 	ld a, [wcea1]
@@ -4788,7 +4788,7 @@ Func_2e1c::
 	ld [hFFBB], a
 	ret
 
-Data_2e3d::
+Data_2e3d:: ; 2e3d
 	db $4f
 	db $60
 	db $7e
@@ -4799,7 +4799,7 @@ Data_2e3d::
 	db $bc
 	db $c5
 
-Func_2e46::
+Func_2e46:: ; 2e46
 	ld a, [hWRAMBank]
 	push af
 	ld a, $1
@@ -4833,7 +4833,7 @@ Func_2e46::
 	wrambankswitch
 	ret
 
-Func_2e7f::
+Func_2e7f:: ; 2e7f
 	dec bc
 	inc b
 	inc c
@@ -4854,7 +4854,7 @@ Func_2e7f::
 	jr nz, .asm_2e82
 	ret
 
-Func_2e98::
+Func_2e98:: ; 2e98
 .asm_2e98
 	ld a, [rSTAT]
 	and $3
@@ -4870,7 +4870,7 @@ Func_2e98::
 	jr nz, .asm_2e98
 	ret
 
-Func_2eab::
+Func_2eab:: ; 2eab
 	pop bc
 	ld hl, $9
 	add hl, bc
@@ -5025,7 +5025,7 @@ Func_2eab::
 	bankswitch
 	ret
 
-Func_2f94::
+Func_2f94:: ; 2f94
 	pop bc
 	ld hl, $8
 	add hl, bc
@@ -5203,7 +5203,7 @@ Func_2f94::
 	jr nz, .asm_3077
 	ret
 
-Func_3097::
+Func_3097:: ; 3097
 	pop bc
 	ld hl, $9
 	add hl, bc
@@ -5326,7 +5326,7 @@ Func_3097::
 	bankswitch
 	ret
 
-Func_315a::
+Func_315a:: ; 315a
 	ld l, e
 	ld h, d
 	dec bc
@@ -5384,7 +5384,7 @@ Func_315a::
 	pop af
 	ret
 
-Func_31a2::
+Func_31a2:: ; 31a2
 	ld hl, Func_31c2
 	ld de, wLCDInterrupt
 	ld bc, $7
@@ -5401,14 +5401,14 @@ Func_31a2::
 	ld [rIE], a
 	ret
 
-Func_31c2::
+Func_31c2:: ; 31c2
 	push af
 	ld a, $b0
 	ld [rWX], a
 	pop af
 	reti
 
-Func_31c9::
+Func_31c9:: ; 31c9
 .asm_31c9
 	ld a, [rSTAT]
 	and $3
@@ -5495,7 +5495,7 @@ Func_31c9::
 	jr nz, .asm_323b
 	ret
 
-Func_3240::
+Func_3240:: ; 3240
 	ld d, a
 .asm_3241
 	ld a, [rSTAT]
@@ -5511,7 +5511,7 @@ Func_3240::
 	jr nz, .asm_3241
 	ret
 
-Func_3253::
+Func_3253:: ; 3253
 	dec bc
 	inc b
 	inc c
@@ -5523,7 +5523,7 @@ Func_3253::
 	jr nz, .asm_3256
 	ret
 
-Func_325e::
+Func_325e:: ; 325e
 .asm_325e
 	ld a, d
 	ld [hli], a
@@ -5533,15 +5533,15 @@ Func_325e::
 	jr nz, .asm_325e
 	ret
 
-Func_3266::
+Func_3266:: ; 3266
 	call Random
 	jp RoughlyDivideBy5
 
-Func_326c::
+Func_326c:: ; 326c
 	call Random
 	jp RoughlyDivideBy6
 
-Func_3272::
+Func_3272:: ; 3272
 	push hl
 	push de
 	push bc
@@ -5566,7 +5566,7 @@ Func_3272::
 	pop hl
 	ret
 
-Func_3298::
+Func_3298:: ; 3298
 	push af
 	push bc
 	push de
@@ -5671,7 +5671,7 @@ Func_3298::
 	pop af
 	reti
 
-Func_3339::
+Func_3339:: ; 3339
 	ld a, [hVRAMBank]
 	push af
 	ld a, $0
@@ -5741,7 +5741,7 @@ Func_3339::
 	vrambankswitch
 	ret
 
-Func_3397::
+Func_3397:: ; 3397
 	ld a, [hVRAMBank]
 	push af
 	ld a, $0
@@ -5811,7 +5811,7 @@ Func_3397::
 	vrambankswitch
 	ret
 
-Func_33f5::
+Func_33f5:: ; 33f5
 	ld a, [hROMBank]
 	push af
 	ld hl, wdd21
@@ -5856,7 +5856,7 @@ Func_3416:: ; 3416 (0::3416)
 	bankswitch
 	ret
 
-Func_3438::
+Func_3438:: ; 3438
 	ld a, [hROMBank]
 	push af
 .asm_343b
@@ -5912,7 +5912,7 @@ Func_347d:: ; 347d (0::347d)
 .soft_lock
 	jr .soft_lock
 
-Func_348e::
+Func_348e:: ; 348e
 	ret
 
 Func_348f:: ; 348f (0::348f)
@@ -6002,7 +6002,7 @@ Func_3500:: ; 3500 (0::3500)
 	vrambankswitch
 	ret
 
-Func_3526::
+Func_3526:: ; 3526
 	ld l, a
 	ld h, $0
 	ld a, [hROMBank]
@@ -6024,7 +6024,7 @@ Func_3526::
 	bankswitch
 	ret
 
-Func_3549::
+Func_3549:: ; 3549
 	ld a, [hROMBank]
 	push af
 	ld a, [hWRAMBank]
@@ -6040,7 +6040,7 @@ Func_3549::
 	bankswitch
 	ret
 
-Func_3568::
+Func_3568:: ; 3568
 	ld a, [hROMBank]
 	push af
 	ld a, [hWRAMBank]
@@ -6066,7 +6066,7 @@ Func_3568::
 	and a
 	ret
 
-Func_3597::
+Func_3597:: ; 3597
 	ld a, [hROMBank]
 	push af
 	ld a, [hWRAMBank]
