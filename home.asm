@@ -155,7 +155,7 @@ Func_025e:: ; 25e (0:025e)
 	push hl
 	ld a, [hFFB8]
 	push af
-	call Func_0532
+	call WaitVBlank
 	call ReadJoypad
 	call Func_038c
 	call Func_0e31
@@ -599,7 +599,8 @@ Func_051d:: ; 51d (0:051d)
 	ld [rWY], a
 	ret
 
-Func_0532:: ; 532 (0:0532)
+WaitVBlank:: ; 532 (0:0532)
+; Wastes battery
 	ld hl, hVBlankHasOccurred
 	ld a, $1
 	ld [hl], a
@@ -4568,7 +4569,7 @@ Func_2cd9: ; 2cd9 (0:2cd9)
 	push hl
 	ld a, [hFFB8]
 	push af
-	call Func_0532
+	call WaitVBlank
 	call ReadJoypad
 	call Func_038c
 	call Func_0e31
@@ -4822,37 +4823,37 @@ Func_2e7f:: ; 2e7f
 	dec bc
 	inc b
 	inc c
-.asm_2e82
+.stat1
 	ld a, [rSTAT]
 	and $3
-	jr z, .asm_2e82
-.asm_2e88
+	jr z, .stat1
+.stat2
 	ld a, [rSTAT]
 	and $3
-	jr nz, .asm_2e88
+	jr nz, .stat2
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .asm_2e82
+	jr nz, .stat1
 	dec b
-	jr nz, .asm_2e82
+	jr nz, .stat1
 	ret
 
 Func_2e98:: ; 2e98
-.asm_2e98
+.stat1
 	ld a, [rSTAT]
 	and $3
-	jr z, .asm_2e98
-.asm_2e9e
+	jr z, .stat1
+.stat2
 	ld a, [rSTAT]
 	and $3
-	jr nz, .asm_2e9e
+	jr nz, .stat2
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .asm_2e98
+	jr nz, .stat1
 	ret
 
 Func_2eab:: ; 2eab
@@ -4890,78 +4891,78 @@ Func_2eab:: ; 2eab
 	push af
 	ld a, d
 	cp $80
-	jr c, .asm_2efc
+	jr c, .soft_lock
 	cp $a0
-	jr c, .asm_2ef4
+	jr c, .vram
 	cp $c0
-	jr c, .asm_2eeb
+	jr c, .sram
 	ld a, [hFF8C]
 	wrambankswitch
-	jr .asm_2efe
+	jr .got_bank
 
-.asm_2eeb
+.sram
 	ld a, [hFF8C]
 	srambankswitch
-	jr .asm_2efe
+	jr .got_bank
 
-.asm_2ef4
+.vram
 	ld a, [hFF8C]
 	vrambankswitch
-	jr .asm_2efe
+	jr .got_bank
 
-.asm_2efc
-	jr .asm_2efc
+.soft_lock
+	jr .soft_lock
 
-.asm_2efe
+.got_bank
 	ld a, [hFF8D]
 	ld l, a
 	ld a, [hFF8E]
 	ld h, a
 	cp $80
-	jr c, .asm_2f29
+	jr c, .rom_src
 	cp $a0
-	jr c, .asm_2f21
+	jr c, .vram_src
 	cp $c0
-	jr c, .asm_2f18
+	jr c, .sram_src
 	ld a, [hFF8F]
 	wrambankswitch
-	jr .asm_2f30
+	jr .got_src_bank
 
-.asm_2f18
+.sram_src
 	ld a, [hFF8F]
 	srambankswitch
-	jr .asm_2f30
+	jr .got_src_bank
 
-.asm_2f21
+.vram_src
 	ld a, [hFF8F]
 	vrambankswitch
-	jr .asm_2f30
+	jr .got_src_bank
 
-.asm_2f29
+.rom_src
 	ld a, [hFF8F]
 	bankswitch
-.asm_2f30
+.got_src_bank
 	ld a, c
 	and a
-	jr nz, .asm_2f38
+	jr nz, .nonzero_copy
 	ld a, b
 	and a
-	jr z, .asm_2f5f
-.asm_2f38
+	jr z, .no_copy
+.nonzero_copy
 	dec bc
 	inc b
 	inc c
-.asm_2f3b
+.stat1
 	ld a, [rSTAT]
 	and $3
-	jr z, .asm_2f3b
-.asm_2f41
+	jr z, .stat1
+.stat2
 	ld a, [rSTAT]
 	and $3
-	jr nz, .asm_2f41
+	jr nz, .stat2
 	ld a, [rLY]
 	cp $98
-	jr nc, .asm_2f3b
+	jr nc, .stat1
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -4975,31 +4976,31 @@ Func_2eab:: ; 2eab
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .asm_2f3b
+	jr nz, .stat1
 	dec b
-	jr nz, .asm_2f3b
-.asm_2f5f
-	ld a, [hFF90]
+	jr nz, .stat1
+.no_copy
+	ld a, [hFF90] ; remainder
 	and a
-	jr z, .asm_2f7d
+	jr z, .bankswitch_back
 	ld b, a
-.asm_2f65
+.stat3
 	ld a, [rSTAT]
 	and $3
-	jr z, .asm_2f65
-.asm_2f6b
+	jr z, .stat3
+.stat4
 	ld a, [rSTAT]
 	and $3
-	jr nz, .asm_2f6b
+	jr nz, .stat4
 	ld a, [rLY]
 	cp $98
-	jr nc, .asm_2f65
+	jr nc, .stat3
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec b
-	jr nz, .asm_2f65
-.asm_2f7d
+	jr nz, .stat3
+.bankswitch_back
 	pop af
 	wrambankswitch
 	pop af
@@ -5532,7 +5533,7 @@ Func_3272:: ; 3272
 	push bc
 	ld a, [hFFB8]
 	push af
-	call Func_0532
+	call WaitVBlank
 	call ReadJoypad
 	call Func_0e31
 	pop af
