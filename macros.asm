@@ -170,3 +170,10 @@ aligned_dwb: MACRO
 	dwb \1, \2
 	db 0
 	ENDM
+
+stackfarcopy: MACRO
+	call StackFarCopyMemory
+	dab \1 ; destination
+	dab \2 ; source
+	dw  \3 ; size
+	ENDM

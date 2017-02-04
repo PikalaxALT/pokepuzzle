@@ -1753,10 +1753,7 @@ Func_0d26:: ; 0d26
 Func_0d3a:: ; d3a (0:0d3a)
 	push hl
 	push de
-	call StackFarCopyMemory
-	dab wLCDInterrupt
-	dab LCDInterrupt
-	dw $007d
+	stackfarcopy wLCDInterrupt, LCDInterrupt, $007d
 	pop de
 	pop hl
 	ld a, $2a ; ld a, [hli]
@@ -3294,12 +3291,12 @@ Func_1ff0:: ; 1ff0
 	ld [hl], a
 	ret
 
-Func_207a:: ; 207a (0:207a)
+CalculateCheckSum:: ; 207a (0:207a)
 	ld de, $0
 	dec bc
 	inc b
 	inc c
-.asm_2080
+.loop
 	ld a, [hli]
 	add e
 	ld e, a
@@ -3307,28 +3304,22 @@ Func_207a:: ; 207a (0:207a)
 	adc $0
 	ld d, a
 	dec c
-	jr nz, .asm_2080
+	jr nz, .loop
 	dec b
-	jr nz, .asm_2080
+	jr nz, .loop
 	ret
 
 Func_208e:: ; 208e
 	pushsramstateandenable 1
 	ld hl, s1_a002
 	ld bc, $682
-	call Func_207a
+	call CalculateCheckSum
 	ld hl, s1_a000
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-	call StackFarCopyMemory
-	dab w7_d000
-	dab s1_a000
-	dw $0684
-	call StackFarCopyMemory
-	dab s2_a000
-	dab w7_d000
-	dw $0684
+	stackfarcopy w7_d000, s1_a000, $0684
+	stackfarcopy s2_a000, w7_d000, $0684
 	popsramstate
 	ret
 
@@ -3336,7 +3327,7 @@ Func_20d4:: ; 20d4
 	pushsramstateandenable 1
 	ld hl, s1_a686
 	ld bc, $1831
-	call Func_207a
+	call CalculateCheckSum
 	ld hl, s1_a684
 	ld a, e
 	ld [hli], a
@@ -3964,19 +3955,13 @@ Func_26d4:: ; 26d4 (0:26d4)
 
 Func_26ea:: ; 26ea (0:26ea)
 	pushsramstateandenable_nobankswitch
-	call StackFarCopyMemory
-	dab s1_a42a
-	dab wcdc3
-	dw $0016
+	stackfarcopy s1_a42a, wcdc3, $0016
 	popsramstate_nobankswitch
 	ret
 
 Func_2706:: ; 2706
 	pushsramstateandenable_nobankswitch
-	call StackFarCopyMemory
-	dab wcdc3
-	dab s1_a42a
-	dw $0016
+	stackfarcopy wcdc3, s1_a42a, $0016
 	popsramstate_nobankswitch
 	ret
 

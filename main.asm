@@ -6673,340 +6673,1603 @@ Data_93e5: ; 93e5
 	db $ff
 
 Data_93ec: ; 93ec
-	dr $93ec, $93fd
+	db 4
+	db  $00,  $00, $08, $02
+	db  $00,  $08, $09, $02
+	db  $08,  $00, $0a, $02
+	db  $08,  $08, $0b, $02
 
 Data_93fd: ; 93fd
-	dr $93fd, $940e
+	db 4
+	db  $00,  $00, $0c, $02
+	db  $00,  $08, $0d, $02
+	db  $08,  $00, $0e, $02
+	db  $08,  $08, $0f, $02
 
 Data_940e: ; 940e
-	dr $940e, $941f
+	db 4
+	db  $00,  $00, $30, $02
+	db  $00,  $08, $31, $02
+	db  $08,  $00, $37, $02
+	db  $08,  $08, $0f, $02
 
 Data_941f: ; 941f
-	dr $941f, $9430
+	db 4
+	db  $00,  $00, $32, $02
+	db  $00,  $08, $33, $02
+	db  $08,  $00, $38, $02
+	db  $08,  $08, $39, $02
 
 Data_9430: ; 9430
-	dr $9430, $9441
+	db 4
+	db  $00,  $00, $34, $22
+	db  $00,  $08, $34, $02
+	db  $08,  $00, $3a, $22
+	db  $08,  $08, $3a, $02
 
 Data_9441: ; 9441
-	dr $9441, $9452
+	db 4
+	db  $00,  $00, $35, $02
+	db  $00,  $08, $36, $02
+	db  $08,  $00, $3b, $02
+	db  $08,  $08, $3c, $02
 
 Data_9452: ; 9452
-	dr $9452, $9463
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $1a, $02
+	db  $08,  $08, $2a, $02
 
 Data_9463: ; 9463
-	dr $9463, $9474
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $11, $02
+	db  $08,  $08, $21, $02
 
 Data_9474: ; 9474
-	dr $9474, $9485
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $12, $02
+	db  $08,  $08, $22, $02
 
 Data_9485: ; 9485
-	dr $9485, $9496
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $13, $02
+	db  $08,  $08, $23, $02
 
 Data_9496: ; 9496
-	dr $9496, $94a7
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $14, $02
+	db  $08,  $08, $24, $02
 
 Data_94a7: ; 94a7
-	dr $94a7, $94b8
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $15, $02
+	db  $08,  $08, $25, $02
 
 Data_94b8: ; 94b8
-	dr $94b8, $94c9
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $16, $02
+	db  $08,  $08, $26, $02
 
 Data_94c9: ; 94c9
-	dr $94c9, $94da
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $17, $02
+	db  $08,  $08, $27, $02
 
 Data_94da: ; 94da
-	dr $94da, $94eb
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $18, $02
+	db  $08,  $08, $28, $02
 
 Data_94eb: ; 94eb
-	dr $94eb, $94fc
+	db 4
+	db  $00,  $00, $1e, $02
+	db  $08,  $00, $2e, $02
+	db  $00,  $08, $19, $02
+	db  $08,  $08, $29, $02
 
 Data_94fc: ; 94fc
-	dr $94fc, $950d
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $1a, $02
+	db  $08,  $08, $2a, $02
 
 Data_950d: ; 950d
-	dr $950d, $951e
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $11, $02
+	db  $08,  $08, $21, $02
 
 Data_951e: ; 951e
-	dr $951e, $952f
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $12, $02
+	db  $08,  $08, $22, $02
 
 Data_952f: ; 952f
-	dr $952f, $9540
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $13, $02
+	db  $08,  $08, $23, $02
 
 Data_9540: ; 9540
-	dr $9540, $9551
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $14, $02
+	db  $08,  $08, $24, $02
 
 Data_9551: ; 9551
-	dr $9551, $9562
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $15, $02
+	db  $08,  $08, $25, $02
 
 Data_9562: ; 9562
-	dr $9562, $9573
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $16, $02
+	db  $08,  $08, $26, $02
 
 Data_9573: ; 9573
-	dr $9573, $9584
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $17, $02
+	db  $08,  $08, $27, $02
 
 Data_9584: ; 9584
-	dr $9584, $9595
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $18, $02
+	db  $08,  $08, $28, $02
 
 Data_9595: ; 9595
-	dr $9595, $95a6
+	db 4
+	db  $00,  $00, $1f, $02
+	db  $08,  $00, $2f, $02
+	db  $00,  $08, $19, $02
+	db  $08,  $08, $29, $02
 
 Data_95a6: ; 95a6
-	dr $95a6, $95b7
+	db 4
+	db  $08,  $00, $03, $02
+	db  $00,  $00, $02, $02
+	db  $00,  $08, $1a, $02
+	db  $08,  $08, $2a, $02
 
 Data_95b7: ; 95b7
-	dr $95b7, $95c8
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $11, $02
+	db  $08,  $08, $21, $02
 
 Data_95c8: ; 95c8
-	dr $95c8, $95d9
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $12, $02
+	db  $08,  $08, $22, $02
 
 Data_95d9: ; 95d9
-	dr $95d9, $95ea
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $13, $02
+	db  $08,  $08, $23, $02
 
 Data_95ea: ; 95ea
-	dr $95ea, $95fb
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $14, $02
+	db  $08,  $08, $24, $02
 
 Data_95fb: ; 95fb
-	dr $95fb, $960c
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $15, $02
+	db  $08,  $08, $25, $02
 
 Data_960c: ; 960c
-	dr $960c, $961d
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $16, $02
+	db  $08,  $08, $26, $02
 
 Data_961d: ; 961d
-	dr $961d, $962e
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $17, $02
+	db  $08,  $08, $27, $02
 
 Data_962e: ; 962e
-	dr $962e, $963f
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $18, $02
+	db  $08,  $08, $28, $02
 
 Data_963f: ; 963f
-	dr $963f, $9650
+	db 4
+	db  $00,  $00, $02, $02
+	db  $08,  $00, $03, $02
+	db  $00,  $08, $19, $02
+	db  $08,  $08, $29, $02
 
 Data_9650: ; 9650
-	dr $9650, $9661
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $1a, $02
+	db  $08,  $08, $2a, $02
 
 Data_9661: ; 9661
-	dr $9661, $9672
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $11, $02
+	db  $08,  $08, $21, $02
 
 Data_9672: ; 9672
-	dr $9672, $9683
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $12, $02
+	db  $08,  $08, $22, $02
 
 Data_9683: ; 9683
-	dr $9683, $9694
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $13, $02
+	db  $08,  $08, $23, $02
 
 Data_9694: ; 9694
-	dr $9694, $96a5
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $14, $02
+	db  $08,  $08, $24, $02
 
 Data_96a5: ; 96a5
-	dr $96a5, $96b6
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $15, $02
+	db  $08,  $08, $25, $02
 
 Data_96b6: ; 96b6
-	dr $96b6, $96c7
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $16, $02
+	db  $08,  $08, $26, $02
 
 Data_96c7: ; 96c7
-	dr $96c7, $96d8
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $17, $02
+	db  $08,  $08, $27, $02
 
 Data_96d8: ; 96d8
-	dr $96d8, $96e9
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $18, $02
+	db  $08,  $08, $28, $02
 
 Data_96e9: ; 96e9
-	dr $96e9, $96fa
+	db 4
+	db  $00,  $00, $04, $02
+	db  $08,  $00, $05, $02
+	db  $00,  $08, $19, $02
+	db  $08,  $08, $29, $02
 
 Data_96fa: ; 96fa
-	dr $96fa, $970b
+	db 4
+	db  $00,  $00, $06, $02
+	db  $08,  $00, $07, $02
+	db  $00,  $08, $1a, $02
+	db  $08,  $08, $2a, $02
 
 Data_970b: ; 970b
-	dr $970b, $971c
+	db 4
+	db  $00,  $00, $06, $02
+	db  $08,  $00, $07, $02
+	db  $00,  $08, $11, $02
+	db  $08,  $08, $21, $02
 
 Data_971c: ; 971c
-	dr $971c, $972d
+	db 4
+	db  $00,  $00, $06, $02
+	db  $08,  $00, $07, $02
+	db  $00,  $08, $12, $02
+	db  $08,  $08, $22, $02
 
 Data_972d: ; 972d
-	dr $972d, $973e
+	db 4
+	db  $00,  $00, $06, $02
+	db  $08,  $00, $07, $02
+	db  $00,  $08, $13, $02
+	db  $08,  $08, $23, $02
 
 Data_973e: ; 973e
-	dr $973e, $974f
+	db 4
+	db  $00,  $00, $06, $02
+	db  $08,  $00, $07, $02
+	db  $00,  $08, $14, $02
+	db  $08,  $08, $24, $02
 
 Data_974f: ; 974f
-	dr $974f, $9761
+	db 4
+	db  $00,  $00, $3d, $02
+	db  $00,  $08, $3e, $02
+	db  $08,  $00, $3f, $22
+	db  $08,  $08, $3f, $02
+
+Data_9760: ; 9760
+	db 0
 
 Data_9761: ; 9761
-	dr $9761, $9772
+	db 4
+	db  $00,  $00, $10, $01
+	db  $00,  $08, $11, $01
+	db  $08,  $00, $20, $01
+	db  $08,  $08, $21, $01
 
 Data_9772: ; 9772
-	dr $9772, $9783
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $12, $01
+	db  $08,  $08, $22, $01
 
 Data_9783: ; 9783
-	dr $9783, $9794
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $13, $01
+	db  $08,  $08, $23, $01
 
 Data_9794: ; 9794
-	dr $9794, $97a5
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $14, $01
+	db  $08,  $08, $24, $01
 
 Data_97a5: ; 97a5
-	dr $97a5, $97b6
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $15, $01
+	db  $08,  $08, $25, $01
 
 Data_97b6: ; 97b6
-	dr $97b6, $97c7
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $16, $01
+	db  $08,  $08, $26, $01
 
 Data_97c7: ; 97c7
-	dr $97c7, $97d8
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $17, $01
+	db  $08,  $08, $27, $01
 
 Data_97d8: ; 97d8
-	dr $97d8, $97e9
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $18, $01
+	db  $08,  $08, $28, $01
 
 Data_97e9: ; 97e9
-	dr $97e9, $97fa
+	db 4
+	db  $00,  $00, $10, $01
+	db  $08,  $00, $20, $01
+	db  $00,  $08, $19, $01
+	db  $08,  $08, $29, $01
 
 Data_97fa: ; 97fa
-	dr $97fa, $980b
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $1a, $01
+	db  $08,  $08, $2a, $01
 
 Data_980b: ; 980b
-	dr $980b, $981c
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $11, $01
+	db  $08,  $08, $21, $01
 
 Data_981c: ; 981c
-	dr $981c, $982d
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $12, $01
+	db  $08,  $08, $22, $01
 
 Data_982d: ; 982d
-	dr $982d, $983e
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $13, $01
+	db  $08,  $08, $23, $01
 
 Data_983e: ; 983e
-	dr $983e, $984f
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $14, $01
+	db  $08,  $08, $24, $01
 
 Data_984f: ; 984f
-	dr $984f, $9860
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $15, $01
+	db  $08,  $08, $25, $01
 
 Data_9860: ; 9860
-	dr $9860, $9871
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $16, $01
+	db  $08,  $08, $26, $01
 
 Data_9871: ; 9871
-	dr $9871, $9882
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $17, $01
+	db  $08,  $08, $27, $01
 
 Data_9882: ; 9882
-	dr $9882, $9893
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $18, $01
+	db  $08,  $08, $28, $01
 
 Data_9893: ; 9893
-	dr $9893, $98a4
+	db 4
+	db  $00,  $00, $1b, $01
+	db  $08,  $00, $2b, $01
+	db  $00,  $08, $19, $01
+	db  $08,  $08, $29, $01
 
 Data_98a4: ; 98a4
-	dr $98a4, $98b5
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $1a, $01
+	db  $08,  $08, $2a, $01
 
 Data_98b5: ; 98b5
-	dr $98b5, $98c6
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $11, $01
+	db  $08,  $08, $21, $01
 
 Data_98c6: ; 98c6
-	dr $98c6, $98d7
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $12, $01
+	db  $08,  $08, $22, $01
 
 Data_98d7: ; 98d7
-	dr $98d7, $98e8
+	db 4
+	db  $00,  $08, $13, $01
+	db  $08,  $08, $23, $01
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
 
 Data_98e8: ; 98e8
-	dr $98e8, $98f9
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $14, $01
+	db  $08,  $08, $24, $01
 
 Data_98f9: ; 98f9
-	dr $98f9, $990a
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $15, $01
+	db  $08,  $08, $25, $01
 
 Data_990a: ; 990a
-	dr $990a, $991b
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $16, $01
+	db  $08,  $08, $26, $01
 
 Data_991b: ; 991b
-	dr $991b, $992c
+	db 4
+	db  $00,  $08, $17, $01
+	db  $08,  $08, $27, $01
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
 
 Data_992c: ; 992c
-	dr $992c, $993d
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $18, $01
+	db  $08,  $08, $28, $01
 
 Data_993d: ; 993d
-	dr $993d, $994e
+	db 4
+	db  $08,  $00, $6e, $01
+	db  $00,  $00, $47, $01
+	db  $00,  $08, $19, $01
+	db  $08,  $08, $29, $01
 
 Data_994e: ; 994e
-	dr $994e, $995f
+	db 4
+	db  $00,  $00, $1c, $01
+	db  $00,  $08, $1d, $01
+	db  $08,  $08, $2d, $01
+	db  $08,  $00, $20, $01
 
 Data_995f: ; 995f
-	dr $995f, $9970
+	db 4
+	db  $00,  $00, $6f, $00
+	db  $08,  $00, $7e, $00
+	db  $00,  $08, $6f, $20
+	db  $08,  $08, $7e, $20
 
 Data_9970: ; 9970
-	dr $9970, $9991
+	db 8
+	db  $00,  $00, $48, $02
+	db  $00,  $08, $49, $02
+	db  $00,  $10, $4a, $02
+	db  $00,  $18, $4b, $02
+	db  $08,  $00, $4c, $02
+	db  $08,  $08, $4d, $02
+	db  $08,  $10, $4e, $02
+	db  $08,  $18, $4f, $02
 
 Data_9991: ; 9991
-	dr $9991, $9996
+	db 1
+	db  $04,  $05, $5a, $01
 
 Data_9996: ; 9996
-	dr $9996, $999b
+	db 1
+	db  $04,  $05, $5b, $00
 
 Data_999b: ; 999b
-	dr $999b, $99a0
+	db 1
+	db  $05,  $05, $5a, $41
 
 Data_99a0: ; 99a0
-	dr $99a0, $99a6
+	db 1
+	db  $05,  $04, $5b, $60
+
+Data_99a5: ; 99a5
+	db 0
 
 Data_99a6: ; 99a6
-	dr $99a6, $99b7
+	db 4
+	db -$08, -$08, $56, $60
+	db -$08,  $00, $56, $40
+	db  $00, -$08, $56, $20
+	db  $00,  $00, $56, $00
 
 Data_99b7: ; 99b7
-	dr $99b7, $99c8
+	db 4
+	db  $02,  $02, $56, $00
+	db -$0a,  $02, $56, $40
+	db -$0a, -$0a, $56, $60
+	db  $02, -$0a, $56, $20
 
 Data_99c8: ; 99c8
-	dr $99c8, $99d9
+	db 4
+	db  $03,  $03, $57, $00
+	db -$0b,  $03, $57, $40
+	db -$0b, -$0b, $57, $60
+	db  $03, -$0b, $57, $20
 
 Data_99d9: ; 99d9
-	dr $99d9, $99ea
+	db 4
+	db  $04,  $04, $57, $00
+	db -$0c,  $04, $57, $40
+	db -$0c, -$0c, $57, $60
+	db  $04, -$0c, $57, $20
 
 Data_99ea: ; 99ea
-	dr $99ea, $99fb
+	db 4
+	db  $05,  $05, $58, $00
+	db -$0d,  $05, $58, $40
+	db  $05, -$0d, $58, $20
+	db -$0d, -$0d, $58, $60
 
 Data_99fb: ; 99fb
-	dr $99fb, $9a0c
+	db 4
+	db  $06,  $06, $58, $00
+	db -$0e,  $06, $58, $40
+	db  $06, -$0e, $58, $20
+	db -$0e, -$0e, $58, $60
 
 Data_9a0c: ; 9a0c
-	dr $9a0c, $9a1d
+	db 4
+	db  $07,  $07, $59, $00
+	db -$0f,  $07, $59, $40
+	db  $07, -$0f, $59, $20
+	db -$0f, -$0f, $59, $60
 
 Data_9a1d: ; 9a1d
-	dr $9a1d, $9a2e
+	db 4
+	db -$07,  $00, $5c, $00
+	db -$07,  $08, $5d, $00
+	db -$07,  $10, $5e, $00
+	db -$07,  $18, $5f, $00
 
 Data_9a2e: ; 9a2e
-	dr $9a2e, $9a3f
+	db 4
+	db -$07,  $00, $5c, $02
+	db -$07,  $08, $5d, $02
+	db -$07,  $10, $5e, $02
+	db -$07,  $18, $5f, $02
 
 Data_9a3f: ; 9a3f
-	dr $9a3f, $9a50
+	db 4
+	db  $00,  $00, $20, $0f
+	db  $00,  $08, $21, $0f
+	db  $08,  $00, $30, $0f
+	db  $08,  $08, $31, $0f
 
 Data_9a50: ; 9a50
-	dr $9a50, $9a61
+	db 4
+	db  $00,  $00, $22, $08
+	db  $00,  $08, $23, $08
+	db  $08,  $00, $32, $08
+	db  $08,  $08, $33, $08
 
 Data_9a61: ; 9a61
-	dr $9a61, $9a72
+	db 4
+	db  $00,  $00, $24, $0f
+	db  $00,  $08, $25, $0f
+	db  $08,  $00, $34, $0f
+	db  $08,  $08, $35, $0f
 
 Data_9a72: ; 9a72
-	dr $9a72, $9a83
+	db 4
+	db  $00,  $00, $26, $08
+	db  $00,  $08, $27, $08
+	db  $08,  $00, $36, $08
+	db  $08,  $08, $37, $08
 
 Data_9a83: ; 9a83
-	dr $9a83, $9a94
+	db 4
+	db  $00,  $00, $28, $0f
+	db  $00,  $08, $29, $0f
+	db  $08,  $00, $38, $0f
+	db  $08,  $08, $39, $0f
 
 Data_9a94: ; 9a94
-	dr $9a94, $9aa5
+	db 4
+	db  $00,  $08, $24, $28
+	db  $00,  $00, $25, $28
+	db  $08,  $08, $34, $28
+	db  $08,  $00, $35, $28
 
 Data_9aa5: ; 9aa5
-	dr $9aa5, $9ab6
+	db 4
+	db  $00,  $08, $22, $2f
+	db  $00,  $00, $23, $2f
+	db  $08,  $08, $32, $2f
+	db  $08,  $00, $33, $2f
 
 Data_9ab6: ; 9ab6
-	dr $9ab6, $9ac7
+	db 4
+	db  $00,  $00, $20, $08
+	db  $00,  $08, $21, $08
+	db  $08,  $00, $30, $08
+	db  $08,  $08, $31, $08
 
 Data_9ac7: ; 9ac7
-	dr $9ac7, $9ad8
+	db 4
+	db  $00,  $00, $22, $0f
+	db  $00,  $08, $23, $0f
+	db  $08,  $00, $32, $0f
+	db  $08,  $08, $33, $0f
 
 Data_9ad8: ; 9ad8
-	dr $9ad8, $9ae9
+	db 4
+	db  $00,  $00, $24, $08
+	db  $00,  $08, $25, $08
+	db  $08,  $00, $34, $08
+	db  $08,  $08, $35, $08
 
 Data_9ae9: ; 9ae9
-	dr $9ae9, $9afa
+	db 4
+	db  $00,  $00, $26, $0f
+	db  $00,  $08, $27, $0f
+	db  $08,  $00, $36, $0f
+	db  $08,  $08, $37, $0f
 
 Data_9afa: ; 9afa
-	dr $9afa, $9b0b
+	db 4
+	db  $00,  $00, $28, $08
+	db  $00,  $08, $29, $08
+	db  $08,  $00, $38, $08
+	db  $08,  $08, $39, $08
 
 Data_9b0b: ; 9b0b
-	dr $9b0b, $9b1c
+	db 4
+	db  $00,  $08, $24, $2f
+	db  $00,  $00, $25, $2f
+	db  $08,  $08, $34, $2f
+	db  $08,  $00, $35, $2f
 
 Data_9b1c: ; 9b1c
-	dr $9b1c, $9c22
+	db 4
+	db  $00,  $08, $22, $28
+	db  $00,  $00, $23, $28
+	db  $08,  $08, $32, $28
+	db  $08,  $00, $33, $28
 
-Func_9c22:: ; 9c22
-	dr $9c22, $b650
+Func_9b2d: ; 9b2d
+	ld a, [wceab]
+	call Func_0180
+	dab Func_10130e
+	ld [wcd08], a
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Pointers_a028
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, l
+	ld [wcd09], a
+	ld a, h
+	ld [wcd0a], a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wcea5]
+	; * 18
+	ld c, a
+	add a
+	add a
+	add a
+	add c
+	add a
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld a, [hli]
+	ld [wcd0b], a
+	ld [wcd0d], a
+	ld [wcd0f], a
+	ld a, [hli]
+	ld [wcd0c], a
+	ld [wcd0e], a
+	ld [wcd10], a
+	ld a, [hli]
+	ld [wcd13], a
+	ld a, [hli]
+	ld [wcd14], a
+	ld a, [hli]
+	ld [wcd11], a
+	ld a, [hli]
+	ld [wcd12], a
+	ld a, [hli]
+	ld [wcd15], a
+	ld a, [hli]
+	ld [wcd16], a
+	ld a, [hli]
+	ld [wcd17], a
+	ld a, [hli]
+	ld [wcd18], a
+	ld a, [hli]
+	ld [wcd19], a
+	ld [wcd1b], a
+	ld a, [hli]
+	ld [wcd1a], a
+	ld [wcd1c], a
+	ld a, [hli]
+	ld [wcd1d], a
+	ld a, [hli]
+	ld [wcd1e], a
+	ld a, [hli]
+	ld [wcd1f], a
+	ld a, [hli]
+	ld [wcd20], a
+	ld a, [hli]
+	ld [wcd28], a
+	ld [wcd2a], a
+	ld a, [hli]
+	ld [wcd29], a
+	ld [wcd2b], a
+	xor a
+	ld [wcd21], a
+	ld [wcd22], a
+	ld [wcd23], a
+	ld [wcd24], a
+	ld [wcd25], a
+	xor a
+	ld [wcd26], a
+	ld [wcd27], a
+	ld [wcd2c], a
+	ld [wcd2d], a
+	ld [wcd2e], a
+	xor a
+	ld [wcd2f], a
+	ld [wcd30], a
+	ld [wcd31], a
+	ld [wcd32], a
+	ld [wcd34], a
+	ld hl, wcd0d
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld bc, $0
+.asm_9bf5
+	ld a, e
+	sub $9
+	ld e, a
+	ld a, d
+	sbc $0
+	ld d, a
+	jr c, .asm_9c02
+	inc bc
+	jr .asm_9bf5
+
+.asm_9c02
+	ld hl, wcd44
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld de, $0
+.asm_9c0b
+	ld a, c
+	sub $8
+	ld c, a
+	ld a, b
+	sbc $0
+	ld b, a
+	jr c, .asm_9c18
+	inc de
+	jr .asm_9c0b
+
+.asm_9c18
+	ld hl, wcd42
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	call Func_9fd7
+	ret
+
+Func_9c22: ; 9c22 (2:5c22)
+	call Func_1d31
+	ret nz
+	call Func_9c30
+	call Func_9e57
+	call Func_9f22
+	ret
+
+Func_9c30: ; 9c30 (2:5c30)
+	xor a
+	ld [wcd2f], a
+	call Func_9fd7
+Func_9c37: ; 9c37 (2:5c37)
+	ld hl, wcd2c
+	ld a, [hli]
+	or [hl]
+	jp z, Func_9d13
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	ld c, l
+	ld b, h
+	inc bc
+	ld a, [hl]
+	dec a
+	jp z, Func_9c65
+	dec a
+	jp z, Func_9c9f
+	dec a
+	jp z, Func_9ccc
+	dec a
+	jp z, Func_9ce0
+	dec a
+	jp z, Func_9cf0
+	dec a
+	jp z, Func_9ce7
+	ld a, [bc]
+	ld [wcd2f], a
+	jp Func_9d08
+
+Func_9c65: ; 9c65 (2:5c65)
+	ld a, [wcd30]
+	and a
+	jp nz, Func_9d08
+	ld a, [bc]
+	and $7f
+	ld [wcd30], a
+	xor a
+	ld [wcd31], a
+	ld [wcd34], a
+	call Func_9ef5
+	ld hl, wcd09
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, $c
+	add hl, de
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wcea5]
+	add a
+	add a
+	add a
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld c, l
+	ld b, h
+	ld hl, wcd32
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	jp Func_9d08
+
+Func_9c9f: ; 9c9f (2:5c9f)
+	ld hl, wcd11
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld hl, wcd0b
+	ld a, [hli]
+	add e
+	ld e, a
+	ld a, [hld]
+	adc d
+	ld d, a
+	ld a, [wcd0d]
+	sub e
+	ld a, [wcd0e]
+	sbc d
+	jr nc, .asm_9cc0
+	ld a, [wcd0d]
+	ld e, a
+	ld a, [wcd0e]
+	ld d, a
+.asm_9cc0
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	ld hl, wcd0f
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	jp Func_9cfa
+
+Func_9ccc: ; 9ccc (2:5ccc)
+	ld hl, wcd2e
+	ld a, [hl]
+	and a
+	jr nz, .asm_9cd9
+	ld a, [bc]
+	and a
+	jr nz, .asm_9cd8
+	inc a
+.asm_9cd8
+	ld [hl], a
+.asm_9cd9
+	dec [hl]
+	jp nz, Func_9d13
+	jp Func_9cfa
+
+Func_9ce0: ; 9ce0 (2:5ce0)
+	ld a, [wcd30]
+	and a
+	jp nz, Func_9d13
+Func_9ce7: ; 9ce7 (2:5ce7)
+	ld hl, wcd2c
+	xor a
+	ld [hli], a
+	ld [hl], a
+	jp Func_9d13
+
+Func_9cf0: ; 9cf0 (2:5cf0)
+	ld a, [wcd30]
+	and a
+	jp z, Func_9cfa
+	jp Func_9d13
+
+Func_9cfa: ; 9cfa (2:5cfa)
+	ld hl, wcd2c
+	ld a, [hl]
+	add $2
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+	jp Func_9c37
+
+Func_9d08: ; 9d08 (2:5d08)
+	ld hl, wcd2c
+	ld a, [hl]
+	add $2
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+Func_9d13: ; 9d13 (2:5d13)
+	ld a, [wcd27]
+	and a
+	jr z, .asm_9d37
+	ld hl, wcd2a
+	ld a, [hl]
+	sub $1
+	ld [hli], a
+	ld a, [hl]
+	sbc $0
+	ld [hld], a
+	jr nc, .asm_9d37
+	ld a, [wcd28]
+	ld [hli], a
+	ld a, [wcd29]
+	ld [hli], a
+	ld hl, wcd27
+	ld a, [hl]
+	sub $1
+	jr c, .asm_9d37
+	ld [hl], a
+.asm_9d37
+	ld hl, wcd21
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	call Func_9eae
+	ld hl, wcd21
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld hl, wcd42
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wcd23
+	ld a, [hli]
+	sub c
+	ld a, [hld]
+	sbc b
+	jr c, .asm_9d5d
+	ld a, [hl]
+	sub c
+	ld [hli], a
+	ld a, [hl]
+	sbc b
+	ld [hl], a
+	jr .asm_9d63
+
+.asm_9d5d
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	xor a
+	ld [hld], a
+	ld [hl], a
+.asm_9d63
+	call Func_9ebc
+	ld hl, wcd1b
+	ld a, [hl]
+	sub $1
+	ld [hli], a
+	ld a, [hl]
+	sbc $0
+	ld [hl], a
+	jr nc, .asm_9d8a
+	ld a, [wcd1a]
+	ld [hld], a
+	ld a, [wcd19]
+	ld [hl], a
+	ld hl, wcd1d
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wcd1f
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	call Func_9eca
+.asm_9d8a
+	ld hl, wcd2c
+	ld a, [hli]
+	or [hl]
+	jp nz, Func_9deb
+	ld hl, wcd15
+	ld a, [hl]
+	add $1
+	ld [hli], a
+	ld a, [hl]
+	adc $0
+	ld [hld], a
+	ld a, [wcd17]
+	ld c, a
+	ld a, [wcd18]
+	ld b, a
+	ld a, [hli]
+	sub c
+	ld a, [hld]
+	sbc b
+	jp c, Func_9deb
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld hl, wcd26
+	ld a, [hl]
+	inc a
+	jr z, .asm_9db7
+	ld [hl], a
+.asm_9db7
+	call Func_9ef5
+	ld hl, wcd09
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, $2
+	add hl, de
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wcea5]
+	add a
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call Random
+	and $3f
+	ld b, a
+.asm_9dd9
+	ld a, b
+	cp [hl]
+	jr c, .asm_9de2
+	inc hl
+	inc hl
+	inc hl
+	jr .asm_9dd9
+
+.asm_9de2
+	inc hl
+	ld a, [hli]
+	ld [wcd2c], a
+	ld a, [hl]
+	ld [wcd2d], a
+Func_9deb: ; 9deb (2:5deb)
+	ld a, [wcd30]
+	and a
+	jr z, .asm_9dff
+	ld hl, wcd31
+	cp [hl]
+	jr z, .asm_9e21
+	ld hl, wcd34
+	ld a, [hl]
+	and a
+	jr z, .asm_9e04
+	dec [hl]
+.asm_9dff
+	xor a
+	ld [wcd35], a
+	ret
+
+.asm_9e04
+	ld hl, wcd32
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call Random
+	and $7
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld a, [hl]
+	ld [wcd34], a
+	ld a, $1
+	ld [wcd35], a
+	ld hl, wcd31
+	inc [hl]
+	ret
+
+.asm_9e21
+	xor a
+	ld [wcd30], a
+	ld [wcd32], a
+	ld [wcd34], a
+	ld a, $2
+	ld [wcd35], a
+	ret
+
+Func_9e31: ; 9e31
+	ld hl, wcd42
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	ld hl, wcd23
+	ld a, [hli]
+	sub c
+	ld a, [hld]
+	sbc b
+	jr c, .asm_9e48
+	ld a, [hl]
+	sub c
+	ld [hli], a
+	ld a, [hl]
+	sbc b
+	ld [hl], a
+	jr .asm_9e4e
+
+.asm_9e48
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	xor a
+	ld [hld], a
+	ld [hl], a
+.asm_9e4e
+	call Func_9ebc
+	ret
+
+Func_9e52: ; 9e52
+	ld a, b
+	call Func_9f5f
+	ret
+
+Func_9e57: ; 9e57 (2:5e57)
+	ld a, [wcd2f]
+	and a
+	call nz, Func_9e6d
+	ld a, [wcd35]
+	dec a
+	jr z, .asm_9e68
+	dec a
+	jr z, asm_9e92
+	ret
+
+.asm_9e68
+	ld a, [wcd31]
+	or $80
+Func_9e6d: ; 9e6d (2:5e6d)
+	ld [wcbf0], a
+	ld b, a
+	call Func_9f92
+	ld hl, wcbee
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	ld hl, wcbec
+	ld a, $6c
+	ld [hli], a
+	ld a, [wcd46]
+	cpl
+	inc a
+	add $90
+	ld [hl], a
+	call Func_8000
+	farcall Func_4244a
+	ret
+
+asm_9e92
+	ld a, $ff
+	ld [wcbf0], a
+	ld hl, wcbee
+	ld [hli], a
+	ld [hl], a
+	ld hl, wcbec
+	ld a, $6c
+	ld [hli], a
+	ld a, [wcd46]
+	cpl
+	inc a
+	add $90
+	ld [hl], a
+	call Func_8000
+	ret
+
+Func_9eae: ; 9eae (2:5eae)
+	ld hl, wcd0b
+	ld a, [hl]
+	sub c
+	ld [hli], a
+	ld a, [hl]
+	sbc b
+	ld [hld], a
+	ret nc
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_9ebc: ; 9ebc (2:5ebc)
+	ld hl, wcd0f
+	ld a, [hl]
+	sub c
+	ld [hli], a
+	ld a, [hl]
+	sbc b
+	ld [hld], a
+	ret nc
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+Func_9eca: ; 9eca (2:5eca)
+	push bc
+	push de
+	ld hl, wcd0b
+	ld a, [hli]
+	sub c
+	ld c, a
+	ld a, [hld]
+	sbc b
+	ld b, a
+	jr c, .asm_9ee0
+	ld a, c
+	sub e
+	ld a, b
+	sbc d
+	jr c, .asm_9ee0
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+.asm_9ee0
+	pop de
+	pop bc
+	ld hl, wcd0f
+	ld a, [hli]
+	sub c
+	ld c, a
+	ld a, [hld]
+	sbc b
+	ld b, a
+	ret c
+	ld a, c
+	sub e
+	ld a, b
+	sbc d
+	ret c
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ret
+
+Func_9ef5: ; 9ef5 (2:5ef5)
+	ld c, $0
+	ld a, [wcd26]
+	dec a
+	jr nz, .asm_9f04
+	ld a, c
+	add $8
+	ld c, a
+	ld b, $0
+	ret
+
+.asm_9f04
+	ld a, [wcd27]
+	and a
+	jr z, .asm_9f0c
+	inc c
+	inc c
+.asm_9f0c
+	ld hl, wcd13
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld hl, wcd0b
+	ld a, [hli]
+	sub e
+	ld a, [hl]
+	sbc d
+	jr nc, .asm_9f1f
+	inc c
+	inc c
+	inc c
+	inc c
+.asm_9f1f
+	ld b, $0
+	ret
+
+Func_9f22: ; 9f22 (2:5f22)
+	ld hl, wc8d2
+	ld c, [hl]
+	ld b, $0
+.asm_9f28
+	ld hl, wc8d3
+	ld a, c
+	cp [hl]
+	jr z, .asm_9f59
+	ld hl, wc8be
+	add hl, bc
+	ld a, [hl]
+	and $c0
+	jr z, .asm_9f4b
+	cp $40
+	jr z, .asm_9f4b
+	cp $80
+	jr z, .asm_9f45
+	ld a, [wcd25]
+	jr .asm_9f4c
+
+.asm_9f45
+	ld a, [hl]
+	ld [wcd25], a
+	jr .asm_9f4f
+
+.asm_9f4b
+	ld a, [hl]
+.asm_9f4c
+	call Func_9f5f
+.asm_9f4f
+	ld a, c
+	inc a
+	cp $a
+	jr nz, .asm_9f56
+	xor a
+.asm_9f56
+	ld c, a
+	jr .asm_9f28
+
+.asm_9f59
+	ld hl, wc8d3
+	ld a, [hld]
+	ld [hl], a
+	ret
+
+Func_9f5f: ; 9f5f (2:5f5f)
+	push bc
+	ld c, a
+	ld b, $0
+	ld l, c
+	ld h, b
+	add hl, hl
+	ld e, l
+	ld d, h
+	ld hl, Data_b590
+	add hl, bc
+	ld c, [hl]
+	ld hl, wcd27
+	ld a, [hl]
+	add c
+	jr nc, .asm_9f76
+	ld a, $ff
+.asm_9f76
+	ld [hl], a
+	ld hl, Pointers_b410
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld hl, wcd21
+	ld a, [hl]
+	add e
+	ld [hli], a
+	ld a, [hl]
+	adc d
+	ld [hl], a
+	ld hl, wcd23
+	ld a, [hl]
+	add e
+	ld [hli], a
+	ld a, [hl]
+	adc d
+	ld [hl], a
+	pop bc
+	ret
+
+Func_9f92: ; 9f92 (2:5f92)
+	ld a, b
+	and $c0
+	sub $40
+	jr z, .asm_9fa5
+	sub $40
+	jr z, .asm_9faa
+	ld hl, $0
+	ld a, b
+	sub $4
+	jr .asm_9fcd
+
+.asm_9fa5
+	ld hl, $a4
+	jr .asm_9fd4
+
+.asm_9faa
+	ld a, [wceb3]
+	and a
+	jr nz, .asm_9fc2
+	ld a, [wceb7]
+	and a
+	jr nz, .asm_9fba
+	ld e, $a
+	jr .asm_9fbc
+
+.asm_9fba
+	ld e, $10
+.asm_9fbc
+	ld a, b
+	and $3f
+	cp e
+	jr nc, .asm_9fc8
+.asm_9fc2
+	ld hl, $68
+	ld a, b
+	jr .asm_9fcd
+
+.asm_9fc8
+	ld hl, $a2
+	jr .asm_9fd4
+
+.asm_9fcd
+	and $3f
+	add a
+	ld e, a
+	ld d, $0
+	add hl, de
+.asm_9fd4
+	ld e, l
+	ld d, h
+	ret
+
+Func_9fd7: ; 9fd7
+	dr $9fd7, $a028
+
+Pointers_a028: ; a028
+	dr $a028, $b410
+
+Pointers_b410: ; b410
+	dr $b410, $b590
+
+Data_b590: ; b590
+	dr $b590, $b650
 
 Func_b650: ; b650
 	dr $b650, $b6a7
@@ -7260,7 +8523,10 @@ Func_40004:: ; 40004
 	dr $40004, $42417
 
 Func_42417: ; 42417
-	dr $42417, $424b0
+	dr $42417, $4244a
+
+Func_4244a: ; 4244a
+	dr $4244a, $424b0
 
 Func_424b0: ; 424b0
 	dr $424b0, $429eb
@@ -7747,7 +9013,10 @@ SECTION "Bank 3f", ROMX, BANK [$3f]
 	dr $fc000, $ff6d0
 
 SECTION "Bank 40", ROMX, BANK [$40]
-	dr $100000, $101351
+	dr $100000, $10130e
+
+Func_10130e: ; 10130e
+	dr $10130e, $101351
 
 Data_101351: ; 101351
 ; address, value to be loaded there
