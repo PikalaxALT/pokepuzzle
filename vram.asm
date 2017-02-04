@@ -1,0 +1,5 @@
+VTilesOB EQU $8000
+VTilesShared EQU $8800
+VTilesBG EQU $9000
+VBGMap EQU $9800
+VWindow EQU $9c00
