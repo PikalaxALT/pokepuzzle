@@ -83,8 +83,8 @@ Func_40c2: ; 40c2 (1:40c2)
 	jr z, .asm_40ea
 	cp $4
 	jr z, .asm_40f2
-.asm_40e0
-	jr .asm_40e0
+.soft_lock
+	jr .soft_lock
 
 .asm_40e2
 	ld a, $6

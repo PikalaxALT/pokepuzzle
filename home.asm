@@ -619,9 +619,9 @@ Func_053d:: ; 053d
 	ret
 
 Func_0545:: ; 0545
-	ld hl, wc495
+	ld hl, wBGPalBuffer
 	ld b, $40
-	ld c, $69
+	ld c, rBGPD % $100
 	ld a, $80
 	ld [rBGPI], a
 .asm_0550
@@ -632,7 +632,7 @@ Func_0545:: ; 0545
 	ld b, $40
 	ld a, $80
 	ld [rOBPI], a
-	ld c, $6b
+	ld c, rOBPD % $100
 .asm_055d
 	ld a, [hli]
 	ld [$ff00+c], a
@@ -654,7 +654,7 @@ CopyBytes::
 	jr nz, .asm_0566
 	ret
 
-Func_0570:: ; 570 (0:0570)
+ClearMemory:: ; 570 (0:0570)
 	xor a
 	ld l, e
 	ld h, d
@@ -669,7 +669,7 @@ Func_0570:: ; 570 (0:0570)
 	jr nz, .asm_0576
 	ret
 
-Func_057e:: ; 057e
+StrCmp:: ; 057e
 	dec bc
 	inc b
 	inc c
@@ -708,7 +708,7 @@ Func_058d:: ; 058d
 	ld a, c
 	ld [hFF8C], a
 	ld a, d
-	call Func_08ef
+	call DestinationBankSwitch
 	push de
 	dec hl
 	ld a, [hld]
@@ -1195,7 +1195,7 @@ GetFarByteHL:: ; 8da (0:08da)
 	pop de
 	ret
 
-Func_08ef:: ; 8ef (0:08ef)
+DestinationBankSwitch:: ; 8ef (0:08ef)
 	cp $e0
 	jr nc, asm_093b ; ERAM or GBIO
 	cp $d0
@@ -1207,8 +1207,8 @@ Func_08ef:: ; 8ef (0:08ef)
 	cp $80
 	jr nc, asm_0927 ; VRAMX
 	; better luck next time
-.asm_0903
-	jr .asm_0903
+.soft_lock
+	jr .soft_lock
 
 Func_0905:: ; 0905
 	cp $e0
@@ -1265,7 +1265,7 @@ Func_093d:: ; 93d (0:093d)
 	ld a, d
 	push bc
 	ld b, c
-	call Func_08ef
+	call DestinationBankSwitch
 	pop bc
 	pop af
 	pop bc
@@ -1789,260 +1789,9 @@ Func_0d3a:: ; d3a (0:0d3a)
 	ld [wLCDInterrupt + 7], a
 	ret
 
-Func_0d91:: ; d91 (0:0d91)
-	call Func_0daf
-	di
-	ld a, $0
-	ld [rSB], a
-	ld a, $80
-	ld [rSC], a
-	ei
-	ret
+INCLUDE "home/serial.asm"
 
-Fimc_0d9f:: ; 0d9f
-	call Func_0daf
-	di
-	ld a, $dd
-	ld [hFFEC], a
-	ld [rSB], a
-	ld a, $80
-	ld [rSC], a
-	ei
-	ret
-
-Func_0daf:: ; daf (0:0daf)
-	ld de, wc320
-	ld bc, $22
-	call Func_0570
-	ld de, wc100
-	ld bc, $200
-	call Func_0570
-	ld de, hFFE7
-	ld bc, $a
-	call Func_0570
-	ld a, $20
-	ld [hFFE9], a
-	ld a, [hGBC]
-	cp $0
-	jr z, .asm_0de0
-	cp $1
-	jr z, .asm_0de4
-	cp $2
-	jr z, .asm_0de0
-	cp $3
-	jr z, .asm_0de0
-.asm_0de0
-	ld a, $e0
-	jr .asm_0de8
-
-.asm_0de4
-	ld a, $c0
-	jr .asm_0de8
-
-.asm_0de8
-	ld [hFFEF], a
-	ld a, $3
-	ld [rTAC], a
-	ld a, $7
-	ld [rTMA], a
-	ld [rTIMA], a
-	ld a, $3
-	ld [rTAC], a
-	ret
-
-Func_0df9:: ; 0df9
-	xor a
-	ld [rSB], a
-	ld [hFFEC], a
-	ld [hFFE8], a
-	ld [hFFEB], a
-	ret
-
-Func_0e03:: ; 0e03
-	ld a, [hFFEB]
-	and a
-	jr nz, .asm_0e15
-	ld a, $fe
-	ld [hFFED], a
-	ld [rSB], a
-	ld a, $81
-	ld [rSC], a
-	xor a
-	ld [hFFF0], a
-.asm_0e15
-	ret
-
-Func_0e16:: ; 0e16
-	ld a, [hFFEB]
-	and a
-	ret
-
-.asm_0e1a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .asm_0e1a
-	ret
-
-Func_0e20:: ; e20 (0:0e20)
-	ld a, [hFFF0]
-	inc a
-	ret z
-	ld [hFFF0], a
-	ret
-
-asm_0e27
-	ld a, BANK(Func_1025e)
-	bankswitch
-	jp Func_1025e
-
-Func_0e31:: ; e31 (0:0e31)
-	call Func_0e3f
-	ld a, [hFFEB]
-	and a
-	jr z, .asm_0e3e
-	call Func_0e20
-	jr z, asm_0e27
-.asm_0e3e
-	ret
-
-Func_0e3f:: ; e3f (0:0e3f)
-	ld a, [hFFEB]
-	and a
-	ret z
-	ld a, [hFFEA]
-	and a
-	ret nz
-	ld a, [hFFE7]
-	and a
-	ret z
-	ld a, [hFFEA]
-	and a
-	ret nz
-	ld a, $81
-	ld [rSC], a
-	ret
-
-Serial::
-	ei
-	push af
-	push hl
-	push bc
-	push de
-	ld a, [hFFEE]
-	and a
-	jr z, .asm_0e63
-	pop de
-	pop bc
-	pop hl
-	pop af
-	reti
-.asm_0e63
-	ld a, $1
-	ld [hFFEE], a
-	xor a
-	ld [hFFF0], a
-	ld a, [hFFEB]
-	and a
-	jr nz, .asm_0eae
-	ld a, [hFFEC]
-	and a
-	jr z, .asm_0ea5
-	ld a, [rSB]
-	cp $dd
-	jr z, .asm_0e8d
-	cp $fe
-	jr z, .asm_0e97
-.asm_0e7e
-	xor a
-	ld [hFFE7], a
-	ld [hFFED], a
-	ld a, $dd
-	ld [rSB], a
-	ld a, $80
-	ld [rSC], a
-	jr .asm_0ef0
-
-.asm_0e8d
-	ld a, $1
-	ld [hFFEB], a
-	ld [hFFE8], a
-	ld [hFFE7], a
-	jr .asm_0ea5
-
-.asm_0e97
-	ld a, [hFFED]
-	and a
-	jr nz, .asm_0e7e
-	ld a, $1
-	ld [hFFEB], a
-	xor a
-	ld [hFFE8], a
-	ld [hFFE7], a
-.asm_0ea5
-	xor a
-	ld [rSB], a
-	ld a, $80
-	ld [rSC], a
-	jr .asm_0ef0
-
-.asm_0eae
-	ld a, $1
-	ld [hFFEA], a
-	ld a, [hFFE7]
-	xor $1
-	ld [hFFE7], a
-	ld h, wc300 / $100
-	ld a, [hFFE9]
-	ld l, a
-	ld a, [rSB]
-	ld [hl], a
-	ld a, l
-	ld b, a
-	add $7
-	ld l, a
-	ld a, [hl]
-	ld [rSB], a
-	ld a, $80
-	ld [rSC], a
-	inc b
-	ld a, b
-	ld [hFFE9], a
-	cp $24
-	jr nz, .asm_0ee3
-	ld a, $20
-	ld [hFFE9], a
-	xor a
-	ld [hFFEA], a
-	call Func_0f49
-	call Func_0f24
-	jr .asm_0ef0
-
-.asm_0ee3
-	ld a, [hFFE7]
-	and a
-	jr z, .asm_0ef0
-	ld a, [hFFEF]
-	ld [rTIMA], a
-	ld a, $7
-	ld [rTAC], a
-.asm_0ef0
-	xor a
-	ld [hFFEE], a
-	pop de
-	pop bc
-	pop hl
-	pop af
-	reti
-
-Timer::
-	push af
-	ld a, $3
-	ld [rTAC], a
-	ld a, $81
-	ld [rSC], a
-	pop af
-	reti
+Func_0f03:: ; 0f03
 	ld hl, wc336
 	ld a, [hld]
 	ld b, a
@@ -2162,7 +1911,7 @@ Func_0f8f:: ; 0f8f
 	push de
 	ld de, wc5a7
 	ld bc, $38
-	call Func_0570
+	call ClearMemory
 	pop de
 	pop bc
 	pop hl
@@ -3027,8 +2776,8 @@ asm_1e65
 	push af
 	ld a, $2
 	wrambankswitch
-	ld hl, wd000
-	ld de, wc495
+	ld hl, wBGPalStagingBuffer
+	ld de, wBGPalBuffer
 	ld bc, $80
 	dec bc
 	inc b
@@ -3041,7 +2790,7 @@ asm_1e65
 	jr nz, .asm_1e7a
 	dec b
 	jr nz, .asm_1e7a
-	ld hl, wd080
+	ld hl, w2_d080
 	ld de, wc51a
 	ld bc, $40
 	dec bc
@@ -4318,7 +4067,7 @@ Func_2a99: ; 2a99 (0:2a99)
 	enablesram
 	ld de, s0_a000
 	ld bc, $a00
-	call Func_0570
+	call ClearMemory
 	pop af
 	sramstate
 	pop af
@@ -4668,7 +4417,7 @@ Func_2d7c:: ; 2d7c (0:2d7c)
 	ret
 
 Func_2d86:: ; 2d86
-	ld hl, wc495
+	ld hl, wBGPalBuffer
 	ld a, $80
 	ld [rBGPI], a
 	ld b, $10
@@ -4733,14 +4482,14 @@ Func_2de3:: ; 2de3 (0::2de3)
 Func_2dea:: ; 2dea (0::2dea)
 	ld de, wce34
 	ld bc, $68
-	call Func_0570
+	call ClearMemory
 	call Func_2db4
 	ret
 
 Func_2df7:: ; 2df7
 	ld de, wce3a
 	ld bc, $62
-	call Func_0570
+	call ClearMemory
 	call Func_2db4
 	ret
 
@@ -4751,7 +4500,7 @@ Func_2e04:: ; 2e04 (0::2e04)
 	wrambankswitch
 	ld de, wdaa1
 	ld bc, $50f
-	call Func_0570
+	call ClearMemory
 	pop af
 	wrambankswitch
 	ret
@@ -5044,7 +4793,7 @@ Func_2f94:: ; 2f94
 	push af
 	ld a, d
 	cp $80
-	jr c, .asm_2fe2
+	jr c, .soft_lock
 	cp $a0
 	jr c, .asm_2fda
 	cp $c0
@@ -5063,8 +4812,8 @@ Func_2f94:: ; 2f94
 	vrambankswitch
 	jr .asm_2fe4
 
-.asm_2fe2
-	jr .asm_2fe2
+.soft_lock
+	jr .soft_lock
 
 .asm_2fe4
 	ld a, [hFF8D]
@@ -5224,7 +4973,7 @@ Func_3097:: ; 3097
 	push af
 	ld a, d
 	cp $80
-	jr c, .asm_30ea
+	jr c, .soft_lock
 	cp $a0
 	jr c, .asm_30e2
 	cp $c0
@@ -5243,8 +4992,8 @@ Func_3097:: ; 3097
 	vrambankswitch
 	jr .asm_30ec
 
-.asm_30ea
-	jr .asm_30ea
+.soft_lock
+	jr .soft_lock
 
 .asm_30ec
 	ld a, [hFF8D]
