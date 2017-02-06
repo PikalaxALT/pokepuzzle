@@ -669,7 +669,7 @@ ClearMemory:: ; 570 (0:0570)
 	jr nz, .asm_0576
 	ret
 
-StrCmp:: ; 057e
+StringCompare:: ; 057e
 	dec bc
 	inc b
 	inc c
